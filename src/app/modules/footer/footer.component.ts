@@ -40,10 +40,12 @@ export class FooterComponent implements OnInit {
 				Separamos los nombres de categorías
 				=============================================*/
 
-				this.categoriesList.push(resp[i].name)
-
-			}
-
+				this.categoriesList.push(
+					{
+						"name": resp[i].name,
+						"id": resp[i].id
+					})
+			}			
 		})
 	}
 
@@ -63,12 +65,11 @@ export class FooterComponent implements OnInit {
 			Separar las categorías
 			=============================================*/
 
-			this.categoriesList.forEach(category=>{
+			this.categoriesList.map(category=>{
 				
 				/*=============================================
 				Tomamos la colección de las sub-categorías filtrando con los nombres de categoría
-				=============================================*/
-
+				=============================================*/				
 				this.subCategoriesService.getFilterData("category", category)
 				.subscribe(resp=>{
 					
@@ -78,27 +79,40 @@ export class FooterComponent implements OnInit {
 					=============================================*/
 
 					let i;
-
+					
 					for(i in resp){
-
-						arraySubCategories.push({
-
-							"category": resp[i].category,
-							"subcategory": resp[i].name,
-							"url": resp[i].url
-
+						let validacion = true;
+						arraySubCategories.map((item)=>{
+							if(item.id === resp[i].id){
+								validacion = false;
+							}
 						})
-
+						if(validacion === true){
+							arraySubCategories.push({
+								"category": resp[i].category,
+								"subcategory": resp[i].name,
+								"url": resp[i].url,
+								"id": resp[i].id
+							})
+						}
 					}
-
+					
 					/*=============================================
 					Recorremos el array de objetos nuevo para buscar coincidencias con los nombres de categorías
 					=============================================*/
+					arraySubCategories.map((item)=>{						
+						if(category.id === item.category){
+							$(`[category-footer='${category.id}']`).after(
 
-					for(i in arraySubCategories){
+								`<a href="products/${item.url}">${item.subcategory}</a>`
 
-						if(category == arraySubCategories[i].category){		
-
+		                    )
+						}	
+					})
+					
+					/*for(i in arraySubCategories){
+						
+						if(category.id === arraySubCategories[i].category){		
 							$(`[category-footer='${category}']`).after(
 
 								`<a href="products/${arraySubCategories[i].url}">${arraySubCategories[i].subcategory}</a>`
@@ -109,11 +123,7 @@ export class FooterComponent implements OnInit {
 						}
 
 
-					}
-
-
-											
-
+					}*/
 				})
 
 			})			

@@ -3,12 +3,10 @@ OwlCarouselConfig
 =============================================*/
 
 export let OwlCarouselConfig = {
-
-	fnc: function(){
-
-		var target = $('.owl-slider');
+    fnc: function () {
+        var target = $('.owl-slider');
         if (target.length > 0) {
-            target.each(function() {
+            target.each(function () {
                 var el = $(this),
                     dataAuto = el.data('owl-auto'),
                     dataLoop = el.data('owl-loop'),
@@ -69,12 +67,9 @@ export let OwlCarouselConfig = {
                         }
                     });
                 }
-
             });
         }
-
-	}
-
+    }
 }
 
 /*=============================================
@@ -83,10 +78,10 @@ BackgroundImage
 
 export let BackgroundImage = {
 
-    fnc: function(){
+    fnc: function () {
 
         var databackground = $('[data-background]');
-        databackground.each(function() {
+        databackground.each(function () {
             if ($(this).attr('data-background')) {
                 var image_path = $(this).attr('data-background');
                 $(this).css({
@@ -106,16 +101,16 @@ CarouselNavigation
 
 export let CarouselNavigation = {
 
-    fnc: function(){
+    fnc: function () {
 
         var prevBtn = $('.ps-carousel__prev'),
             nextBtn = $('.ps-carousel__next');
-        prevBtn.on('click', function(e) {
+        prevBtn.on('click', function (e) {
             e.preventDefault();
             var target = $(this).attr('href');
             $(target).trigger('prev.owl.carousel', [1000]);
         });
-        nextBtn.on('click', function(e) {
+        nextBtn.on('click', function (e) {
             e.preventDefault();
             var target = $(this).attr('href');
             $(target).trigger('next.owl.carousel', [1000]);
@@ -132,7 +127,7 @@ SlickConfig
 
 export let SlickConfig = {
 
-    fnc:function(){
+    fnc: function () {
         var product = $('.ps-product--detail');
         if (product.length > 0) {
             var primary = product.find('.ps-product__gallery'),
@@ -202,7 +197,7 @@ ProductLightbox
 
 export let ProductLightbox = {
 
-    fnc: function() {
+    fnc: function () {
         var product = $('.ps-product--detail');
         if (product.length > 0) {
             $('.ps-product__gallery').lightGallery({
@@ -252,13 +247,13 @@ CountDown
 
 export let CountDown = {
 
-    fnc: function() {
+    fnc: function () {
         var time = $(".ps-countdown");
-        time.each(function() {
+        time.each(function () {
             var el = $(this),
                 value = $(this).data('time');
             var countDownDate = new Date(value).getTime();
-            var timeout = setInterval(function() {
+            var timeout = setInterval(function () {
                 var now = new Date().getTime(),
                     distance = countDownDate - now;
                 var days = Math.floor(distance / (1000 * 60 * 60 * 24)),
@@ -285,8 +280,8 @@ Rating
 
 export let Rating = {
 
-    fnc: function() {
-        $('select.ps-rating').each(function() {
+    fnc: function () {
+        $('select.ps-rating').each(function () {
             var readOnly;
             if ($(this).attr('data-read-only') == 'true') {
                 readOnly = true
@@ -308,10 +303,10 @@ ProgressBar
 =============================================*/
 
 export let ProgressBar = {
-   
-    fnc: function() {
+
+    fnc: function () {
         var progress = $('.ps-progress');
-        progress.each(function(e) {
+        progress.each(function (e) {
             var value = $(this).data('value');
             $(this).find('span').css({
                 width: value + "%"
@@ -327,22 +322,22 @@ DinamicRating
 
 export let DinamicRating = {
 
-    fnc: function(response){
+    fnc: function (response) {
 
         /*=============================================
         Calculamos el total de las calificaciones de las reseñas
-        =============================================*/    
+        =============================================*/
 
         let totalReview = 0;
         let rating = 0;
 
-        for(let i = 0; i < JSON.parse(response.reviews).length; i++){
+        for (let i = 0; i < JSON.parse(response.reviews).length; i++) {
 
             totalReview += Number(JSON.parse(response.reviews)[i]["review"]);
 
         }
 
-        rating = Math.round(totalReview/JSON.parse(response.reviews).length);
+        rating = Math.round(totalReview / JSON.parse(response.reviews).length);
 
         return rating;
 
@@ -357,24 +352,24 @@ DinamicReview
 export let DinamicReviews = {
 
 
-     fnc: function(response){
+    fnc: function (response) {
 
         /*=============================================
         Clasificamos la cantidad de estrellas según la calificación
-        =============================================*/    
+        =============================================*/
 
         let reviews = [];
 
-        for(let r = 0; r < 5; r++){
+        for (let r = 0; r < 5; r++) {
 
-            if(response < (r+1)){
+            if (response < (r + 1)) {
 
                 reviews[r] = 2
-            
-            }else{
+
+            } else {
 
                 reviews[r] = 1
-            }    
+            }
         }
 
         return reviews;
@@ -388,8 +383,8 @@ DinamicPrice
 
 export let DinamicPrice = {
 
-    fnc: function(response){
-    
+    fnc: function (response) {
+
         let type;
         let value;
         let offer;
@@ -400,30 +395,30 @@ export let DinamicPrice = {
         let today = new Date();
 
 
-        if(response.offer != ""){
+        if (response.offer != "") {
 
             offerDate = new Date(
 
                 parseInt(JSON.parse(response.offer)[2].split("-")[0]),
-                parseInt(JSON.parse(response.offer)[2].split("-")[1])-1,
+                parseInt(JSON.parse(response.offer)[2].split("-")[1]) - 1,
                 parseInt(JSON.parse(response.offer)[2].split("-")[2])
 
             )
 
-            if(today < offerDate){
+            if (today < offerDate) {
 
                 type = JSON.parse(response.offer)[0];
                 value = JSON.parse(response.offer)[1];
 
-                if(type == "Disccount"){
+                if (type == "Disccount") {
 
-                    offer = (response.price-(response.price * value/100)).toFixed(2)    
-                }    
+                    offer = (response.price - (response.price * value / 100)).toFixed(2)
+                }
 
-                if(type == "Fixed"){
+                if (type == "Fixed") {
 
                     offer = value;
-                    value = Math.round(offer*100/response.price);
+                    value = Math.round(offer * 100 / response.price);
 
                 }
 
@@ -431,21 +426,21 @@ export let DinamicPrice = {
 
                 price = `<p class="ps-product__price sale">$<span class="end-price">${offer}</span> <del>$${response.price} </del></p>`;
 
-            }else{
+            } else {
 
-                price = `<p class="ps-product__price">$<span class="end-price">${response.price}</span></p>`; 
+                price = `<p class="ps-product__price">$<span class="end-price">${response.price}</span></p>`;
             }
 
-        }else{
+        } else {
 
             price = `<p class="ps-product__price">$<span class="end-price">${response.price}</span></p>`;
         }
 
         /*=============================================
         Definimos si el producto tiene stock
-        =============================================*/    
+        =============================================*/
 
-        if(response.stock == 0){
+        if (response.stock == 0) {
 
             disccount = `<div class="ps-product__badge out-stock">Out Of Stock</div>`;
 
@@ -464,19 +459,19 @@ Pagination
 =============================================*/
 export let Pagination = {
 
-    fnc: function(){
+    fnc: function () {
 
         var target = $('.pagination');
-        
+
         if (target.length > 0) {
 
-            target.each(function() {
-                
+            target.each(function () {
+
                 var tg = $(this),
-                    totalPages = tg.data('total-pages'),                
+                    totalPages = tg.data('total-pages'),
                     actualPage = tg.data('actual-page'),
-                    currentRoute = tg.data('current-route');    
-   
+                    currentRoute = tg.data('current-route');
+
                 tg.twbsPagination({
                     totalPages: totalPages,
                     startPage: actualPage,
@@ -485,12 +480,12 @@ export let Pagination = {
                     last: "Last",
                     prev: '<i class="fas fa-angle-left"></i>',
                     next: '<i class="fas fa-angle-right"></i>'
-                }).on("page", function(evt, page){
+                }).on("page", function (evt, page) {
 
-                     window.location.href = currentRoute+"&"+page;
+                    window.location.href = currentRoute + "&" + page;
 
                 })
-               
+
 
             })
         }
@@ -504,7 +499,7 @@ Select2Cofig
 =============================================*/
 export let Select2Cofig = {
 
-    fnc: function(){
+    fnc: function () {
 
         $('select.ps-select').select2({
             placeholder: $(this).data('placeholder'),
@@ -519,13 +514,13 @@ Search
 =============================================*/
 export let Search = {
 
-    fnc: function(response){
+    fnc: function (response) {
 
         var search = response.toLowerCase();
 
         var match = /^[a-z0-9ñÑáéíóú ]*$/;
 
-        if(match.test(search)){
+        if (match.test(search)) {
 
             var searchTest = search.replace(/[ ]/g, "_");
             searchTest = searchTest.replace(/[ñ]/g, "n");
@@ -548,8 +543,8 @@ Tabs
 =============================================*/
 export let Tabs = {
 
-    fnc: function() {
-        $('.ps-tab-list  li > a ').on('click', function(e) {
+    fnc: function () {
+        $('.ps-tab-list  li > a ').on('click', function (e) {
             e.preventDefault();
             var target = $(this).attr('href');
             $(this).closest('li').siblings('li').removeClass('active');
@@ -557,7 +552,7 @@ export let Tabs = {
             $(target).addClass('active');
             $(target).siblings('.ps-tab').removeClass('active');
         });
-        $('.ps-tab-list.owl-slider .owl-item a').on('click', function(e) {
+        $('.ps-tab-list.owl-slider .owl-item a').on('click', function (e) {
             e.preventDefault();
             var target = $(this).attr('href');
             $(this).closest('.owl-item').siblings('.owl-item').removeClass('active');
@@ -574,27 +569,27 @@ Quantity
 =============================================*/
 export let Quantity = {
 
-    fnc:function(){
+    fnc: function () {
 
-        $(".quantity").each(function(){
+        $(".quantity").each(function () {
 
             var spinner = $(this),
-            input = spinner.find('input[type="number"]'),
-            btnUp = spinner.find('.up'),
-            btnDown = spinner.find('.down'),
-            min = input.attr("min"),
-            max = input.attr("max")
+                input = spinner.find('input[type="number"]'),
+                btnUp = spinner.find('.up'),
+                btnDown = spinner.find('.down'),
+                min = input.attr("min"),
+                max = input.attr("max")
 
 
-            btnUp.click(function(){
+            btnUp.click(function () {
 
                 var oldValue = parseInt(input.val());
 
-                if(oldValue >= max){
+                if (oldValue >= max) {
 
                     var newVal = oldValue;
 
-                }else{
+                } else {
 
                     var newVal = oldValue + 1;
                 }
@@ -604,15 +599,15 @@ export let Quantity = {
 
             })
 
-            btnDown.click(function(){
+            btnDown.click(function () {
 
                 var oldValue = parseInt(input.val());
 
-                if(oldValue <= min){
+                if (oldValue <= min) {
 
                     var newVal = oldValue;
 
-                }else{
+                } else {
 
                     var newVal = oldValue - 1;
                 }
@@ -633,4 +628,3 @@ export let Quantity = {
 
 
 
- 

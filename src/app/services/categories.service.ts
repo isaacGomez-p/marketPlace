@@ -8,13 +8,14 @@ import { Api } from '../config';
 export class CategoriesService {
 
 	private api:String = Api.url;
+	private apiUrl:String = Api.urlApi;
+
+	private url: String = 'http://190.60.254.186/Publicada/api'
 
   	constructor(private http:HttpClient) { }
 
   	getData(){
-
-		return this.http.get(`${this.api}categories.json`);
-
+		return this.http.get(`${this.url}/MKP_Productos?idCate=1`);
 	}
 
 	getFilterData(orderBy:String, equalTo:String){

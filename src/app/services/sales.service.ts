@@ -9,11 +9,13 @@ export class SalesService {
 
 	private api:String = Api.url;
 
+	private url: String = 'http://190.60.254.186/Publicada/api'
+
   	constructor(private http:HttpClient) { }
 
 	getData(){
 
-		return this.http.get(`${this.api}sales.json`);
+		return this.http.get(`${this.url}/MKP_Productos?idSal=1`);
 
 	}
 }

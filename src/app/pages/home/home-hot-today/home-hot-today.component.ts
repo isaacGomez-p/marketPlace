@@ -48,7 +48,7 @@ export class HomeHotTodayComponent implements OnInit {
 			=============================================*/
 
 			let i;
-
+			console.log("products: " + JSON.stringify(resp))
 			for(i in resp){
 
 				getProducts.push({
@@ -59,20 +59,19 @@ export class HomeHotTodayComponent implements OnInit {
 				})
 
 				this.products.push(resp[i]);
-
+				console.log("agrego ------ ")
 			}
 
 			/*=============================================
 			Recorremos cada oferta y stock para clasificar las ofertas actuales y los productos que si tengan stock
 			=============================================*/
 
-			for(i in getProducts){
-
+			for(i in getProducts){				
 				fechaOferta = new Date(
 
-					parseInt(getProducts[i]["offer"][2].split("-")[0]),
-					parseInt(getProducts[i]["offer"][2].split("-")[1])-1,
-					parseInt(getProducts[i]["offer"][2].split("-")[2])
+					parseInt("2020-06-30".split("-")[0]),
+					parseInt("2020-06-30".split("-")[1])-1,
+					parseInt("2020-06-30".split("-")[2])
 
 				)
 
@@ -95,8 +94,7 @@ export class HomeHotTodayComponent implements OnInit {
 		let getSales = [];
 
 		this.salesService.getData()		
-		.subscribe( resp => {
-			
+		.subscribe( resp => {			
 			/*=============================================
 			Recorremos cada venta para separar los productos y las cantidades
 			=============================================*/
@@ -149,12 +147,12 @@ export class HomeHotTodayComponent implements OnInit {
 			let block = 0;
 
 			filterSales.forEach((sale, index)=>{
-			
+				console.log("entro " + JSON.stringify(resp[i]))
 				/*=============================================
 				Filtramos hasta 20 ventas
 				=============================================*/	
-
-				if(index < 20){
+				this.topSales.push(resp[i])		
+				/*if(index < 20){
 
 					block ++;
 
@@ -170,15 +168,15 @@ export class HomeHotTodayComponent implements OnInit {
 						}			
 
 					})
-
+					
 				}
-
+					*/
 			})
 
 			/*=============================================
 			Enviamos el máximo de bloques para mostrar 4 productos por bloque
 			=============================================*/	
-
+			block ++;
 			for(let i = 0; i < Math.ceil(block/4); i++){
 
 				this.topSalesBlock.push(i);
@@ -464,9 +462,9 @@ export class HomeHotTodayComponent implements OnInit {
 
 							offerDate = new Date(
 
-				                parseInt(JSON.parse(top20Array[i][f].offer)[2].split("-")[0]),
-				                parseInt(JSON.parse(top20Array[i][f].offer)[2].split("-")[1])-1,
-				                parseInt(JSON.parse(top20Array[i][f].offer)[2].split("-")[2])
+				                //parseInt(JSON.parse(top20Array[i][f].offer)[2].split("-")[0]),
+				                //parseInt(JSON.parse(top20Array[i][f].offer)[2].split("-")[1])-1,
+				                //parseInt(JSON.parse(top20Array[i][f].offer)[2].split("-")[2])
 
 				            )
 

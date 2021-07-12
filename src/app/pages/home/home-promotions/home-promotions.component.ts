@@ -1,3 +1,4 @@
+import { CategoriesService } from './../../../services/categories.service';
 import { Component, OnInit } from '@angular/core';
 import { Path } from '../../../config';
 
@@ -15,10 +16,15 @@ export class HomePromotionsComponent implements OnInit {
 	category:Array<any> = [];
 	url:Array<any> = [];
 	preload:Boolean = false;
+	categories: any = [];
 
-  	constructor(private productsService: ProductsService) { }
+  	constructor(private productsService: ProductsService, private cartegoriaService: CategoriesService) { }
 
   	ngOnInit(): void {
+
+		this.cartegoriaService.getData().subscribe(data => {
+			this.categories = data;
+		});
 
 		this.preload = true;
 
@@ -50,12 +56,27 @@ export class HomePromotionsComponent implements OnInit {
 
 			}
 
+			for(i in resp){
+				
+				this.banner_default.push(resp[i].default_banner)
+				this.categories.map((item) => {
+					if (item.id === resp[i].category) {							
+						this.category.push(item.url)
+					}
+				})				
+				this.url.push(resp[i].url)
+
+				this.preload = false;
+
+			}
+
+
 			/*=============================================
 			Seleccionar data de productos con límites
 			=============================================*/
 
 
-			this.productsService.getLimitData(Object.keys(resp)[index], 2)
+/*			this.productsService.getLimitData(Object.keys(resp)[index], 2)
 			.subscribe( resp => { 
 
 				let i;
@@ -70,7 +91,7 @@ export class HomePromotionsComponent implements OnInit {
 
 				}
 
-			})
+			})*/
 
 		})
 

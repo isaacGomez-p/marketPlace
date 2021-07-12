@@ -24,7 +24,7 @@ export class HeaderPromotionComponent implements OnInit {
 		this.productsService.getData()
 		.subscribe(resp =>{
 			
-			// console.log("resp", resp[Object.keys(resp)[1]]);
+			//console.log("resp", resp[Object.keys(resp)[1]]);
 
 			/*=============================================
 			Tomar la longitud del objeto
@@ -50,7 +50,8 @@ export class HeaderPromotionComponent implements OnInit {
 			=============================================*/
 
 			this.top_banner = JSON.parse(resp[Object.keys(resp)[index]].top_banner);
-			this.category = resp[Object.keys(resp)[index]].category;
+			//this.category = resp[Object.keys(resp)[index]].category;
+			this.category = 'clothing-apparel';
 			this.url = resp[Object.keys(resp)[index]].url;
 			
 			this.preload = false;
