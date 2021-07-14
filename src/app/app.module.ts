@@ -38,6 +38,15 @@ import { VendorStoreComponent } from './pages/product/product-left/vendor-store/
 import { ReviewsComponent } from './pages/product/product-left/reviews/reviews.component';
 import { SimilarBoughtComponent } from './pages/product/similar-bought/similar-bought.component';
 import { RelatedProductComponent } from './pages/product/related-product/related-product.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
+
+import { FormsModule } from '@angular/forms';
+import { AccountComponent } from './pages/account/account.component';
+import { AccountBreadcrumbComponent } from './pages/account/account-breadcrumb/account-breadcrumb.component';
+import { AccountProfileComponent } from './pages/account/account-profile/account-profile.component';
+import { AccountWishlistComponent } from './pages/account/account-profile/account-wishlist/account-wishlist.component';
+
 
 
 @NgModule({
@@ -74,12 +83,20 @@ import { RelatedProductComponent } from './pages/product/related-product/related
     VendorStoreComponent,
     ReviewsComponent,
     SimilarBoughtComponent,
-    RelatedProductComponent
+    RelatedProductComponent,
+    LoginComponent,
+    RegisterComponent,
+    AccountComponent,
+    AccountBreadcrumbComponent,
+    AccountProfileComponent,
+    AccountWishlistComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
