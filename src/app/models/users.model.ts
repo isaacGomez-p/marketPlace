@@ -11,5 +11,10 @@ export class UsersModel{
 	picture:string;
 	idToken:string;
 	needConfirm:boolean;
+	country: string;
+	state: string;
+	city: string;
+	phone: string;
+	address: string;
 
 }

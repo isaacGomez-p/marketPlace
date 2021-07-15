@@ -117,68 +117,25 @@ export class RegisterComponent implements OnInit {
   =============================================*/
 
 	onSubmit(f: NgForm ){
-  
+    //console.log("f"+ JSON.stringify(f[0]));
     if(f.invalid ){
-
       return;
-
     }
 
-    /*=============================================
-    Alerta suave mientras se registra el usuario
-    =============================================*/
-
-    Sweetalert.fnc("loading", "Loading...", null)
-
-		/*=============================================
-  	Registro en Firebase Authentication
-  	=============================================*/
 		
 		this.user.returnSecureToken = true;
-
-		this.usersService.registerAuth(this.user)
+    this.user.address ="address";
+    this.user.city = "city";
+    this.user.country = "country";
+    this.user.phone = "phone";
+    this.user.picture = "picture";
+    this.user.state = "state";
+    console.log("this user:" + JSON.stringify(this.user));
+    
+		this.usersService.registerDatabase(this.user)
 		.subscribe(resp=>{
-			
-			if(resp["email"] == this.user.email){
-
-       /*=============================================
-        Enviar correo de verificación
-        =============================================*/
-
-        let body = {
-
-          requestType: "VERIFY_EMAIL",
-          idToken: resp["idToken"]
-        
-        }
-
-        this.usersService.sendEmailVerificationFnc(body)
-        .subscribe(resp=>{
-          
-          if(resp["email"] == this.user.email){
-
-            /*=============================================
-            Registro en Firebase Database
-            =============================================*/
-
-            this.user.displayName = `${this.user.first_name } ${this.user.last_name}`;
-            this.user.method = "direct";
-            this.user.needConfirm = false;
-            this.user.username = this.user.username.toLowerCase();
-     
-            this.usersService.registerDatabase(this.user)
-            .subscribe(resp=>{
-              
-               Sweetalert.fnc("success", "Confirm your account in your email (check spam)", "login")
-
-            })
-
-          }
-
-        })				
-
-			}
-
+      console.log(resp);
+			Sweetalert.fnc("success", "Confirm your account in your email (check spam)", "login")         		
 		}, err =>{
 
       Sweetalert.fnc("error", err.error.error.message, null)

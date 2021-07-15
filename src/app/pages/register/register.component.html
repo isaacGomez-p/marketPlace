@@ -1,4 +1,4 @@
-<!--=====================================
+    <!--=====================================
 Breadcrumb
 ======================================-->  
 
@@ -127,7 +127,6 @@ Login - Register Content
                             pattern="[A-Za-z]{2,8}"
                             data-toggle="tooltip"
                             title="Enter your username with at least 2 characters, maximum 8 characters without using numbers"
-                            (change)="validate(username)"
                             #username
                             >
 
@@ -151,7 +150,6 @@ Login - Register Content
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}"  
                             data-toggle="tooltip"
                             title="Enter your password with at least 4 characters and must include uppercase, lowercase letters and numbers"
-                            (change)="validate(password)"
                             #password
                             >
 
