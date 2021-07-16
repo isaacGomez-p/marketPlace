@@ -20,6 +20,7 @@ declare var $:any;
 export class RegisterComponent implements OnInit {
 
 	user: UsersModel;
+  usuarios: any = [];
 
 	constructor(private usersService: UsersService){ 
 
@@ -77,20 +78,21 @@ export class RegisterComponent implements OnInit {
 
       input.value = input.value.toLowerCase();
 
-      this.usersService.getFilterData("username", input.value)
+      this.usersService.loginAux()
       .subscribe(resp=>{
-        
-        if(Object.keys(resp).length > 0){
-
-          $(input).parent().addClass('was-validated')
-
-          input.value = "";
-
-          Sweetalert.fnc("error", "Username already exists", null)
-
-          return;
-         
-        }
+        this.usuarios = resp;
+        this.usuarios.map(us =>{
+          if(input.value === us.username){
+            $(input).parent().addClass('was-validated')
+  
+            input.value = "";
+  
+            Sweetalert.fnc("error", "Este nombre de usuario ya existe.", null)
+  
+            return;
+           
+          }
+        })     
 
       })
 
@@ -135,10 +137,9 @@ export class RegisterComponent implements OnInit {
 		this.usersService.registerDatabase(this.user)
 		.subscribe(resp=>{
       console.log(resp);
-			Sweetalert.fnc("success", "Confirm your account in your email (check spam)", "login")         		
-		}, err =>{
-
-      Sweetalert.fnc("error", err.error.error.message, null)
+			Sweetalert.fnc("success", "Registro confirmado.", "login")         		
+		}, err =>{      
+      Sweetalert.fnc("error", "Este correo electrónico ya está registrado.", null)      
 
     })
 
