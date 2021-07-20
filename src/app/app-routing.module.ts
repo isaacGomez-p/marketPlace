@@ -20,7 +20,7 @@ const routes: Routes = [
 	{path: 'search/:param', component: SearchComponent },
 	{path: 'login', component: LoginComponent },
 	{path: 'register', component: RegisterComponent },
-	{path: 'account', component: AccountComponent },
+	{path: 'account', component: AccountComponent},
 
 	{path: '**', pathMatch:'full', component: Error404Component }
 

@@ -11,10 +11,23 @@ import { UsersService } from '../../../services/users.service';
 export class AccountBreadcrumbComponent implements OnInit {
 
 	displayName:string;
-
+	usuarios: any = []
 	constructor(private usersService: UsersService) { }
 
 	ngOnInit(): void {
+		if(localStorage.getItem("idToken") !== undefined){	
+			this.usersService.loginAux().subscribe(data=>{
+				this.usuarios = data;
+				this.usuarios.map((item)=>{
+					if(item.email === localStorage.getItem("email") ){
+						this.displayName = item.first_name + " " + item.last_name;
+					}
+				});
+				
+			});
+		}
+		
+		
 
 		/*=============================================
 		Validar si existe usuario autenticado

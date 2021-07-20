@@ -20,10 +20,17 @@ export class HeaderMobileComponent implements OnInit {
 	categories: Object = null;
 	render: Boolean = true;
 	categoriesList: Array<any> = [];
-
+	authValidate: boolean = false;
+	picture: String;
 	constructor(private categoriesService: CategoriesService, private subCategoriesService: SubCategoriesService) { }
 
 	ngOnInit(): void {
+
+
+		if(localStorage.getItem("idToken") !== undefined){			
+			this.authValidate = true;
+			this.picture = `<img src="assets/img/users/1.jpg" class="img-fluid rounded-circle ml-auto">`;
+		}
 
 		/*=============================================
 		Tomamos la data de las categorías

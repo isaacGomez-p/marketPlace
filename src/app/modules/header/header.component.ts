@@ -19,10 +19,15 @@ export class HeaderComponent implements OnInit {
 	categories: Object = null;
 	arrayTitleList: Array<any> = [];
 	render: Boolean = true;
-
+	authValidate: boolean = false;
+	picture: String;
 	constructor(private categoriesService: CategoriesService, private subCategoriesService: SubCategoriesService) { }
 
-	ngOnInit(): void {
+	ngOnInit(): void {		
+		if(localStorage.getItem("idToken") !== undefined){			
+			this.authValidate = true;
+			this.picture = `<img src="assets/img/users/1.jpg" class="img-fluid rounded-circle ml-auto">`;
+		}
 
 		/*=============================================
 		Tomamos la data de las categorías

@@ -41,10 +41,14 @@ export class AccountProfileComponent implements OnInit {
 				this.usuarios.map((item)=>{
 					if(item.email === localStorage.getItem("email")){
 						this.username = item.username;
-						this.displayName = item.first_name + item.last_name;
+						this.displayName = item.first_name + " " +item.last_name;
 						this.email = item.email;
-						this.picture = `assets/img/users/default/default.png`;
+						this.picture = 'assets/img/users/1.jpg';
 						this.preload = false;
+						this.vendor = true;
+						/*if(item.vendor === true){
+							this.vendor = true;
+						}*/
 					}
 				})
 				
