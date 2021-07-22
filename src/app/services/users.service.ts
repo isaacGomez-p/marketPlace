@@ -219,9 +219,9 @@ export class UsersService {
 	Cambiar la contraseña
 	=============================================*/
 
-  	changePasswordFnc(body:object){
+  	changePasswordFnc(body:UsersModel){
 
-  		return this.http.post(`${this.changePassword}`, body)
+  		return this.http.put(`${this.url}/MKP_Productos?id=`+body.id, body)
 
   	}
 

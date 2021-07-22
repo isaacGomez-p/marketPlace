@@ -5,6 +5,7 @@ import { Path, Server } from '../../../config';
 import { Sweetalert, Tooltip } from '../../../functions';
 
 import { UsersService } from '../../../services/users.service';
+import { UsersModel } from 'src/app/models/users.model';
 
 declare var jQuery:any;
 declare var $:any;
@@ -27,6 +28,7 @@ export class AccountProfileComponent implements OnInit {
 	preload:boolean = false;
 	server:string = Server.url;
 	image:File = null;
+	body:UsersModel;
 	usuarios: any = []
 	constructor(private usersService: UsersService,
 				private http: HttpClient) { }
@@ -43,7 +45,7 @@ export class AccountProfileComponent implements OnInit {
 						this.username = item.username;
 						this.displayName = item.first_name + " " +item.last_name;
 						this.email = item.email;
-						this.picture = 'assets/img/users/1.jpg';
+						this.picture = 'assets/img/users/default/default.png';
 						this.preload = false;
 						this.vendor = true;
 						/*if(item.vendor === true){
@@ -210,15 +212,30 @@ export class AccountProfileComponent implements OnInit {
 
 	    	Sweetalert.fnc("loading", "Loading...", null)
 
-	    	let body = {
-
-	    		idToken: localStorage.getItem('idToken'),
-	    		password: value,
-	    		returnSecureToken: true
-
-	    	}
-
-	    	this.usersService.changePasswordFnc(body)
+			let email : String = localStorage.getItem("email");
+			let us : UsersModel;
+			console.log("email"+ email);
+			this.usersService.loginAux().subscribe(resp =>{
+				this.usuarios = resp;
+				this.usuarios.map(usuario =>{				
+						if(usuario.email === email){
+							us = usuario;		
+							us.password = value;				
+							console.log("USSS"+JSON.stringify(us));				
+							this.usersService.changePasswordFnc(us).subscribe(change =>{
+							Sweetalert.fnc("success", "Cambio de contraseña realizado", "account")
+						}, err =>{
+							Sweetalert.fnc("error", "Ha ocurrido un error en el cambio de contraseña.")
+						})
+					}
+				})
+			}, err=>{
+				Sweetalert.fnc("error", "Correo electrónico no registrado correctamente. Vuelva a iniciar sesión.")
+			})	
+			console.log("Usuario" + JSON.stringify(this.body));
+			
+			/*
+	    	this.usersService.changePasswordFnc(this.body)
 	    	.subscribe(resp1=>{	
 
       			let value = {
@@ -233,13 +250,13 @@ export class AccountProfileComponent implements OnInit {
 					Almacenamos el Token de seguridad en el localstorage
 					=============================================*/
 
-					localStorage.setItem("idToken", resp1["idToken"]);
+					/*localStorage.setItem("idToken", resp1["idToken"]);
 
 					/*=============================================
 					Almacenamos la fecha de expiración localstorage
 					=============================================*/
 
-					let today = new Date();
+					/*let today = new Date();
 
 					today.setSeconds(resp1["expiresIn"]);
 
@@ -253,11 +270,14 @@ export class AccountProfileComponent implements OnInit {
 
 	    		Sweetalert.fnc("error", err.error.error.message, null)
 
-	    	})
+	    	})*/
 
 	    }
 
     }
+
+	
+
 
   	/*=============================================
    	Validar Imagen
@@ -318,6 +338,7 @@ export class AccountProfileComponent implements OnInit {
 
     uploadImage(){
 
+		console.log()
     	const formData = new FormData();
 
     	formData.append('file', this.image);
@@ -344,11 +365,15 @@ export class AccountProfileComponent implements OnInit {
     					Sweetalert.fnc("success", "¡Your photo has been updated!", "account")
     				}
 
-    			})
+    			}, err =>{
+					Sweetalert.fnc("error", "Hubo un error al conectarse al servidor apache.")
+				})
 
     		}
 
-    	})
+    	}, err =>{
+			Sweetalert.fnc("error", "Hubo un error al conectarse al servidor apache")
+		})
 
     }
 

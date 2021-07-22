@@ -200,14 +200,11 @@ export class LoginComponent implements OnInit {
 		/*=============================================
 		  Validar que el correo esté verificado
 	=============================================*/
-		console.log("sadsadasdasdemail: " + this.user.email + " clave: " + this.user.password)
 		this.usersService.loginAux().subscribe(
 			data => {
 				this.usuarios = data;
 				this.usuarios.map((item) => {
-					console.log("_email_: " + item.email + " clave: " + item.password + JSON.stringify(item))
 					if (this.user.email === item.email && this.user.password === item.password) {
-						console.log("validado")
 						localStorage.setItem("idToken", 'lasdlasdqqeasd1231');
 
 						/*=============================================

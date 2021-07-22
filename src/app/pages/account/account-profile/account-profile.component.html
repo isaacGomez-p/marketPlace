@@ -129,7 +129,7 @@ MODAL PARA ESCRIBIR LA NUEVA CONTRASEÑA
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">New Password</h4>
+        <h4 class="modal-title">Nueva Contraseña</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -149,12 +149,12 @@ MODAL PARA ESCRIBIR LA NUEVA CONTRASEÑA
                 minlength="4"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}"  
                 data-toggle="tooltip"
-                title="Enter your password with at least 4 characters and must include uppercase, lowercase letters and numbers"
+                title="Ingresa la nueva contraseña con al menos 4 caracteres. Debe incluir letras minúsculas, mayúsculas y números. "
                 (change)="validate(password)"
                 required>
 
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill in this field correctly.</div>
+                <div class="valid-feedback">Válido.</div>
+                <div class="invalid-feedback">Por favor llena el campo correctamente.</div>
 
             </div>
 
