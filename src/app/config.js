@@ -115,5 +115,5 @@ Exportamos el endPoint del servidor para administrar archivos
 
 export let Server = {
 
-	url:'http://localhost/marketplace-account/src/assets/img/index.php?key=[YOUR-API-KEY]'
+	url:'http://localhost/marketPlace/src/assets/img/index.php?key=KEY789456'
 }

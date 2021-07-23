@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from 'src/app/services/users.service';
 import { Path } from '../../config';
 import { Search } from '../../functions';
 
@@ -21,12 +22,26 @@ export class HeaderComponent implements OnInit {
 	render: Boolean = true;
 	authValidate: boolean = false;
 	picture: String;
-	constructor(private categoriesService: CategoriesService, private subCategoriesService: SubCategoriesService) { }
+	usuarios: any = [];
+	constructor(private categoriesService: CategoriesService, private subCategoriesService: SubCategoriesService, private serviceUsuario: UsersService) { }
 
 	ngOnInit(): void {		
 		if(localStorage.getItem("idToken") !== undefined){			
-			this.authValidate = true;
-			this.picture = `<img src="assets/img/users/1.jpg" class="img-fluid rounded-circle ml-auto">`;
+			if(localStorage.getItem("email") !== undefined){			
+				this.serviceUsuario.loginAux().subscribe(data => {
+					this.usuarios = data;
+					this.usuarios.map((item)=>{
+						if(item.email === localStorage.getItem("email")){
+							this.authValidate = true;
+							if(item.state !== 'state'){
+								this.picture = `<img src="assets/img/users/`+item.username.toLowerCase()+`/`+item.state+`" class="img-fluid rounded-circle ml-auto">`;
+							}else{
+								this.picture = `<img src="assets/img/users/default/default.png" class="img-fluid rounded-circle ml-auto">`;
+							}							
+						}
+					})					
+				});				
+			}			
 		}
 
 		/*=============================================

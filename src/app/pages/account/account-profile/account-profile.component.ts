@@ -29,7 +29,8 @@ export class AccountProfileComponent implements OnInit {
 	server:string = Server.url;
 	image:File = null;
 	body:UsersModel;
-	usuarios: any = []
+	usuarios: any = [];
+	idUser: number = 0;
 	constructor(private usersService: UsersService,
 				private http: HttpClient) { }
 
@@ -43,9 +44,15 @@ export class AccountProfileComponent implements OnInit {
 				this.usuarios.map((item)=>{
 					if(item.email === localStorage.getItem("email")){
 						this.username = item.username;
+						this.idUser = item.id;
 						this.displayName = item.first_name + " " +item.last_name;
-						this.email = item.email;
-						this.picture = 'assets/img/users/default/default.png';
+						this.email = item.email;						
+						if(item.state !== 'state'){
+							this.picture = 'assets/img/users/' + item.username.toLowerCase() + "/" +item.state;
+						}else{
+							this.picture = 'assets/img/users/default/default.png';
+						}
+						
 						this.preload = false;
 						this.vendor = true;
 						/*if(item.vendor === true){
@@ -337,8 +344,7 @@ export class AccountProfileComponent implements OnInit {
     =============================================*/
 
     uploadImage(){
-
-		console.log()
+		
     	const formData = new FormData();
 
     	formData.append('file', this.image);
@@ -348,16 +354,34 @@ export class AccountProfileComponent implements OnInit {
     	formData.append('height', '200');
 
     	this.http.post(this.server, formData)
-    	.subscribe(resp =>{
-    		
+    	.subscribe(resp =>{    		
+			console.log("resp: " + JSON.stringify(resp))
     		if(resp["status"] == 200){
 
     			let body = {
 
     				picture: resp["result"]
     			}
+				let us : UsersModel;
+				this.usersService.loginAux().subscribe(resp1 =>{
+					this.usuarios = resp1;
+					this.usuarios.map(usuario =>{				
+							if(usuario.id === this.idUser){
+								us = usuario;
+								us.state = resp["result"];
+								console.log("USSS"+JSON.stringify(us));		
+								this.usersService.changePasswordFnc(us).subscribe(change =>{
+								Sweetalert.fnc("success", "Cambio de imagen satisfactorio", "account")
+							}, err =>{
+								Sweetalert.fnc("error", "Ha ocurrido un error en el cambio de contraseña.")
+							})
+						}
+					})
+				}, err=>{
+					Sweetalert.fnc("error", "Usuario no encontrado. Vuelva a iniciar sesión.")
+				})	
 
-    			this.usersService.patchData(this.id, body)
+    			/*this.usersService.patchData(this.id, body)
     			.subscribe(resp=>{
 
     				if(resp["picture"] != ""){
@@ -367,10 +391,8 @@ export class AccountProfileComponent implements OnInit {
 
     			}, err =>{
 					Sweetalert.fnc("error", "Hubo un error al conectarse al servidor apache.")
-				})
-
+				})*/
     		}
-
     	}, err =>{
 			Sweetalert.fnc("error", "Hubo un error al conectarse al servidor apache")
 		})
