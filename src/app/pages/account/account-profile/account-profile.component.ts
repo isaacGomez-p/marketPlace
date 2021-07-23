@@ -31,6 +31,15 @@ export class AccountProfileComponent implements OnInit {
 	body:UsersModel;
 	usuarios: any = [];
 	idUser: number = 0;
+
+	productos: any = [
+		{
+			"id": "2"
+		},
+		{
+			"id": "3"
+		}
+	]
 	constructor(private usersService: UsersService,
 				private http: HttpClient) { }
 
@@ -43,6 +52,7 @@ export class AccountProfileComponent implements OnInit {
 				this.usuarios = data;
 				this.usuarios.map((item)=>{
 					if(item.email === localStorage.getItem("email")){
+						this.id = item.id;
 						this.username = item.username;
 						this.idUser = item.id;
 						this.displayName = item.first_name + " " +item.last_name;
@@ -227,8 +237,7 @@ export class AccountProfileComponent implements OnInit {
 				this.usuarios.map(usuario =>{				
 						if(usuario.email === email){
 							us = usuario;		
-							us.password = value;				
-							console.log("USSS"+JSON.stringify(us));				
+							us.password = value;											
 							this.usersService.changePasswordFnc(us).subscribe(change =>{
 							Sweetalert.fnc("success", "Cambio de contraseña realizado", "account")
 						}, err =>{
@@ -368,6 +377,7 @@ export class AccountProfileComponent implements OnInit {
 					this.usuarios.map(usuario =>{				
 							if(usuario.id === this.idUser){
 								us = usuario;
+								us.city = JSON.stringify(this.productos);
 								us.state = resp["result"];
 								console.log("USSS"+JSON.stringify(us));		
 								this.usersService.changePasswordFnc(us).subscribe(change =>{

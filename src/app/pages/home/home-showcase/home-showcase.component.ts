@@ -173,6 +173,8 @@ export class HomeShowcaseComponent implements OnInit {
 									}
 								})
 								if (validacion === true) {
+
+
 									arrayProducts.push({
 										"category": item.url,
 										"url": i.url,
@@ -185,6 +187,7 @@ export class HomeShowcaseComponent implements OnInit {
 										"vertical_slider": i.vertical_slider,
 										"id": i.id,
 									})
+
 								}
 							}
 
@@ -225,6 +228,7 @@ export class HomeShowcaseComponent implements OnInit {
 					Recorremos el array de objetos nuevo para buscar coincidencias con las url de categorías
 					=============================================*/
 					for (i in arrayProducts) {
+						console.log("------------------------ " + JSON.stringify(arrayProducts));
 						if (category.url == arrayProducts[i].category) {
 
 							/*=============================================
@@ -326,8 +330,8 @@ export class HomeShowcaseComponent implements OnInit {
 				                    <div class="ps-product__thumbnail">
 
 				                    	<a href="product/${arrayProducts[i].url}">
-
-				                    		<img src="assets/img/products/${arrayProducts[i].category}/${arrayProducts[i].image}" alt="">
+											
+				                    		<img src="assets/img/products/${arrayProducts[i].category == 'consumer-electrict' ? 'consumer-electric' : arrayProducts[i].category}/${arrayProducts[i].image}" alt="">
 
 				                    	</a>
 

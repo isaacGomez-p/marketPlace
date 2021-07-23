@@ -124,7 +124,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-		
+		this.user.username = this.user.username.toLowerCase();
 		this.user.returnSecureToken = true;
     this.user.address ="address";
     this.user.city = "city";
