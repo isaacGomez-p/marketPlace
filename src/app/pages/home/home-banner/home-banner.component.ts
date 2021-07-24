@@ -69,13 +69,12 @@ export class HomeBannerComponent implements OnInit {
 					this.categories.map((item) => {
 						if (item.id === resp[i].category) {							
 							this.category.push(item.url)
-							console.log("category: " + item.url)
+							
 						}
 					})
 
 					//this.category.push(resp[i].category)
-					this.url.push(resp[i].url)
-					console.log("url: " + resp[i].url)
+					this.url.push(resp[i].url)					
 					this.preload = false;
 				}
 				/*this.productsService.getLimitData(Object.keys(resp)[index], 5)

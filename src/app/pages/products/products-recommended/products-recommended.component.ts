@@ -33,6 +33,7 @@ export class ProductsRecommendedComponent implements OnInit {
 	productos: any = [];
 	categorias: any = [];
 	categoria: number = 0;
+	rutaCategoria: String = "";
 	constructor(private productsService: ProductsService,
 		private categoriasService: CategoriesService,
 		private activateRoute: ActivatedRoute) { }
@@ -58,6 +59,7 @@ export class ProductsRecommendedComponent implements OnInit {
 				if (itemC.url === params) {
 					console.log("entro 4 - 1")
 					this.categoria = itemC.id
+					this.rutaCategoria = itemC.url
 				}
 			})
 		})
@@ -137,6 +139,7 @@ Declaramos función para mostrar los productos recomendados
 
 		for (i in response) {
 			if (this.categoria === response[i].category) {
+				response[i].category = this.rutaCategoria
 				getSales.push(response[i]);
 			}
 

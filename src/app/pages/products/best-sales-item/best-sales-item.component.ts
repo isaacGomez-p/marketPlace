@@ -5,12 +5,14 @@ import { OwlCarouselConfig,
 	     Rating, 
 	     DinamicRating, 
 	     DinamicReviews, 
-	     DinamicPrice } from '../../../functions';
+	     DinamicPrice,
+		 Sweetalert } from '../../../functions';
 
 import { ProductsService} from '../../../services/products.service';
 
 import { ActivatedRoute } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { UsersService } from 'src/app/services/users.service';
 
 declare var jQuery:any;
 declare var $:any;
@@ -32,10 +34,12 @@ export class BestSalesItemComponent implements OnInit {
 
 	productos: any = [];
 	categorias: any = [];
+	rutaCategoria: String = "";
 	categoria: number = 0;
+	usuarios: any = [];
   	constructor(private productsService: ProductsService,
 				private categoriasService: CategoriesService,
-  		        private activateRoute: ActivatedRoute,) { }
+  		        private activateRoute: ActivatedRoute, private usuarioService: UsersService) { }
 
   	ngOnInit(): void {
 
@@ -52,28 +56,21 @@ export class BestSalesItemComponent implements OnInit {
 		=============================================*/	
 
 		this.categoriasService.getData().subscribe(data => {
-			console.log("entro 3")
 			this.categorias = data;
 			this.categorias.map((itemC) => {
-				console.log("entro 4")
-				if (itemC.url === params) {
-					console.log("entro 4 - 1")
+				if (itemC.url === params) {					
 					this.categoria = itemC.id
+					this.rutaCategoria = itemC.url
 				}
 			})
 		})
 		
-		this.productsService.getData().subscribe(resp1 => {
-			console.log("entro 5")
+		this.productsService.getData().subscribe(resp1 => {			
 			this.productos = resp1;
-			this.productos.map((item) => {
-				console.log("entro 6")
-				if (item.category === this.categoria) {
-					console.log("entro 7")
+			this.productos.map((item) => {				
+				if (item.category === this.categoria) {					
 					if(Object.keys(resp1).length > 0){
-
 						this.productsFnc(resp1);
-		
 					}else{
 		
 						/*=============================================
@@ -137,6 +134,7 @@ export class BestSalesItemComponent implements OnInit {
 
   		for(i in response){
 			if (this.categoria === response[i].category) {
+				response[i].category = this.rutaCategoria
 				getSales.push(response[i]);					
 			}	
 				
@@ -191,4 +189,46 @@ export class BestSalesItemComponent implements OnInit {
   		}
 
   	}
+
+	addWishList(product){
+		if(localStorage.getItem("idToken") !== undefined){
+			if(localStorage.getItem("email") !== undefined){
+				this.usuarioService.loginAux().subscribe(data=>{
+					this.usuarios = data;
+					this.usuarios.map(item => {
+						if(item.email === localStorage.getItem("email")){
+							let deseos = JSON.parse(item.city)
+							let validacion = true;
+							deseos.map(itemDeseos => {
+								if(itemDeseos.id+"" === product.id+""){
+									validacion = false;
+								}
+							})
+							if(validacion === true){
+								deseos.push(
+									{
+										"id": product.id+''
+									}
+								)
+								item.city = JSON.stringify(deseos);
+								this.modificarUsuario(item)
+								
+							}else{
+								Sweetalert.fnc("error", "Ya se encuentra registrado.", null)      
+							}
+							
+						}
+					})
+				})
+			}
+		}else{
+			Sweetalert.fnc("error", "Por favor inicie sesión", null)      
+		}
+	}
+
+	modificarUsuario(usuario){
+		this.usuarioService.changePasswordFnc(usuario).subscribe(data => {
+			Sweetalert.fnc("success", "Agregado correctamente.", null)
+		});
+	}
 }

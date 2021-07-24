@@ -146,8 +146,7 @@ export class HomeHotTodayComponent implements OnInit {
 
 			let block = 0;
 
-			filterSales.forEach((sale, index)=>{
-				console.log("entro " + JSON.stringify(resp[i]))
+			filterSales.forEach((sale, index)=>{				
 				/*=============================================
 				Filtramos hasta 20 ventas
 				=============================================*/	

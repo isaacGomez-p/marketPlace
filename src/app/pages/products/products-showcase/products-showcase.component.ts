@@ -43,6 +43,7 @@ export class ProductsShowcaseComponent implements OnInit {
 	productos: any = [];
 	categorias: any = [];
 	categoria: number = -1;
+	rutaCategoria: String = "";
 	constructor(private productsService: ProductsService,
 		private categoriasService: CategoriesService,
 		private activateRoute: ActivatedRoute) { }
@@ -96,6 +97,7 @@ export class ProductsShowcaseComponent implements OnInit {
 				if (itemC.url === this.params) {
 					console.log("entro 4 - 1")
 					this.categoria = itemC.id
+					this.rutaCategoria = itemC.url
 					console.log("--- " + this.categoria)
 					this.productsService.getData().subscribe(resp1 => {
 						console.log("entro 5")
@@ -181,6 +183,7 @@ Declaramos función para mostrar el catálogo de productos
 
 			if (this.categoria === response[i].category) {
 				total++;
+				response[i].category = this.rutaCategoria
 				getProducts.push(response[i]);
 			}
 		}

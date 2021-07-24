@@ -34,7 +34,7 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
   usuarios: any = [];
   productosAll: any = [];
   categoriasAll: any = [];
-  //dtOptions: DataTables.Settings = {};
+  dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
   popoverMessage: string = 'Are you sure to remove it?';
@@ -42,16 +42,15 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
   constructor(private usersService: UsersService,
     private productsService: ProductsService, private categoriaService: CategoriesService) { }
 
-  ngOnInit(): void {
-    console.log("id: " + this.childItem);
+  ngOnInit(): void {    
     /*=============================================
     Agregamos opciones a DataTable
     =============================================*/
 
-    /*this.dtOptions = {
+    this.dtOptions = {
       pagingType: 'full_numbers',
       processing: true
-    }*/
+    }
 
     /*=============================================
     Seleccionamos el id del usuario
@@ -85,12 +84,12 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
                       this.categoriasAll = dataCategorias;
                       this.categoriasAll.map((itemCategorias) => {
                         if (itemCategorias.id === itemProductos.category) {
-                          if(itemCategorias.url === 'consumer-electrict'){
-                            itemProductos.category =   'consumer-electric';
-                          }else{                            
-                              itemProductos.category = itemCategorias.url                            
-                          }     
-                          if(itemProductos.category === 'home-kitchen'){
+                          if (itemCategorias.url === 'consumer-electrict') {
+                            itemProductos.category = 'consumer-electric';
+                          } else {
+                            itemProductos.category = itemCategorias.url
+                          }
+                          if (itemProductos.category === 'home-kitchen') {
                             itemProductos.image = '1.jpg';
                           }
                           this.products.push(itemProductos);
@@ -99,6 +98,12 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
                           =============================================*/
 
                           this.price.push(itemProductos.price)
+
+                          if (load == this.wishlist.length) {
+
+                            this.dtTrigger.next();
+               
+                          }
                         }
                       });
 
@@ -191,12 +196,20 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
   =============================================*/
 
   removeProduct(product) {
-
+    console.log("entro ");
+    let provisional = []
     /*=============================================
     Buscamos coincidencia para remover el producto
     =============================================*/
-
-    this.wishlist.forEach((list, index) => {
+    this.wishlist.map((item)=>{
+      if(item.id !== product){            
+        console.log("agrego");
+        provisional.push(item);
+      }
+    })
+    console.log("salio " + JSON.stringify(provisional));
+    this.wishlist = provisional
+    /*this.wishlist.forEach((list, index) => {
 
       if (list == product) {
 
@@ -205,7 +218,7 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
       }
 
     })
-
+    */
     /*=============================================
     Actualizamos en Firebase la lista de deseos
     =============================================*/

@@ -16,6 +16,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 import { ProductsService } from '../../../services/products.service';
+import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
 	selector: 'app-product-left',
@@ -38,9 +39,10 @@ export class ProductLeftComponent implements OnInit {
 	tags: String = null;
 	totalReviews: String;
 	url: string = "";
-
+	categorias: any = [];
 	constructor(private activateRoute: ActivatedRoute,
-		private productsService: ProductsService) { }
+		private productsService: ProductsService,
+		private categoriaService: CategoriesService) { }
 
 	ngOnInit(): void {
 		this.url = this.activateRoute.snapshot.params["param"];
@@ -71,89 +73,105 @@ export class ProductLeftComponent implements OnInit {
 
 		let i;
 		let getProduct = [];
+		console.log("--- productos " + JSON.stringify(response));
+		this.categoriaService.getData().subscribe(data => {
+			this.categorias = data;
+			for (i in response) {
+				if (this.url === response[i].url) {
+					this.categorias.map((item) => {
+						console.log("--- item.id " + (item.id) + " -- " + response[i].category);
+						if (item.id === response[i].category) {
+							response[i].category = item.url
+							getProduct.push(response[i]);
+							console.log("agrego --- ")
+						}
+						console.log("sale 1 --- ")
+					})
+					console.log("sale 2 --- ")
+					console.log("sale 3 --- ")
 
-		for (i in response) {
-			if (this.url === response[i].url) {
-				getProduct.push(response[i]);
+				}
+				console.log("sale 4 --- ")
 			}
-		}
 
-		/*=============================================
-		Filtramos el producto
-		=============================================*/
 
-		getProduct.forEach((product, index) => {
-
-			this.product.push(product);
-
-			this.rating.push(DinamicRating.fnc(this.product[index]));
-
-			this.reviews.push(DinamicReviews.fnc(this.rating[index]));
-
-			//this.price.push(DinamicPrice.fnc(this.product[index]));
 
 			/*=============================================
-		Agregamos la fecha al descontador
-		=============================================*/
+			Filtramos el producto
+			=============================================*/
+			console.log("1 --- ")
+			getProduct.forEach((product, index) => {
+				console.log("2 --- ")
+				this.product.push(product);
 
-			if (this.product[index].offer != "") {
+				this.rating.push(DinamicRating.fnc(this.product[index]));
 
-				const date = JSON.parse(this.product[index].offer)[2];
+				this.reviews.push(DinamicReviews.fnc(this.rating[index]));
 
-				this.countd.push(
+				//this.price.push(DinamicPrice.fnc(this.product[index]));
 
-					new Date(
-						/*parseInt(date.split("-")[0]),
-						parseInt(date.split("-")[1])-1,
-						parseInt(date.split("-")[2])
-						*/
-						parseInt('2021-07-30'.split("-")[0]),
-						parseInt('2021-07-30'.split("-")[1]) - 1,
-						parseInt('2021-07-30'.split("-")[2])
+				/*=============================================
+				Agregamos la fecha al descontador
+				=============================================*/
+
+				if (this.product[index].offer != "") {
+
+					const date = JSON.parse(this.product[index].offer)[2];
+
+					this.countd.push(
+
+						new Date(
+							/*parseInt(date.split("-")[0]),
+							parseInt(date.split("-")[1])-1,
+							parseInt(date.split("-")[2])
+							*/
+							parseInt('2021-07-30'.split("-")[0]),
+							parseInt('2021-07-30'.split("-")[1]) - 1,
+							parseInt('2021-07-30'.split("-")[2])
+						)
+
 					)
 
-				)
+				}
 
-			}
+				/*=============================================
+				Gallery
+				=============================================*/
+				console.log("3 --- ")
+				this.gallery.push(JSON.parse(this.product[index].gallery))
 
-			/*=============================================
-			Gallery
-			=============================================*/
+				/*=============================================
+				Video
+				=============================================*/
 
-			this.gallery.push(JSON.parse(this.product[index].gallery))
+				if (JSON.parse(this.product[index].video)[0] == "youtube") {
 
-			/*=============================================
-			Video
-			=============================================*/
+					this.video = `https://www.youtube.com/embed/${JSON.parse(this.product[index].video)[1]}?rel=0&autoplay=0 `
 
-			if (JSON.parse(this.product[index].video)[0] == "youtube") {
+				}
 
-				this.video = `https://www.youtube.com/embed/${JSON.parse(this.product[index].video)[1]}?rel=0&autoplay=0 `
+				if (JSON.parse(this.product[index].video)[0] == "vimeo") {
 
-			}
+					this.video = `https://player.vimeo.com/video/${JSON.parse(this.product[index].video)[1]}`
 
-			if (JSON.parse(this.product[index].video)[0] == "vimeo") {
+				}
 
-				this.video = `https://player.vimeo.com/video/${JSON.parse(this.product[index].video)[1]}`
+				/*=============================================
+				 Agregamos los tags
+				 =============================================*/
 
-			}
+				this.tags = this.product[index].tags.split(",");
 
-			/*=============================================
-			 Agregamos los tags
-			 =============================================*/
-
-			this.tags = this.product[index].tags.split(",");
-
-			/*=============================================
-			  Total Reviews
-			  =============================================*/
-			this.totalReviews = JSON.parse(this.product[index].reviews).length;
+				/*=============================================
+				  Total Reviews
+				  =============================================*/
+				this.totalReviews = JSON.parse(this.product[index].reviews).length;
 
 
-			this.cargando = false;
+				this.cargando = false;
 
+			})
 		})
-
 	}
 
 	callback() {

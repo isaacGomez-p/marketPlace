@@ -1,11 +1,11 @@
 <!--=====================================
 Nav Account
-======================================--> 
+======================================-->
 
 <div class="ps-section__content">
 
     <ul class="ps-section__links">
-        <li  class="active"><a href=my-account_wishlist.html>My Wishlist</a></li>
+        <li class="active"><a href=my-account_wishlist.html>My Wishlist</a></li>
         <li><a href="my-account_my-shopping.html">My Shopping</a></li>
         <li><a href="my-account_new-store.html">My Store</a></li>
         <li><a href="my-account_my-sales.html">My Sales</a></li>
@@ -13,15 +13,16 @@ Nav Account
 
     <!--=====================================
     Wishlist
-    ======================================--> 
+    ======================================-->
 
     <div class="table-responsive">
-        <table>
-      <!-- <table class="table ps-table--whishlist dt-responsive" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+
+        <table class="table ps-table--whishlist dt-responsive" datatable [dtOptions]="dtOptions"
+            [dtTrigger]="dtTrigger">
 
             <thead>
 
-                <tr>               
+                <tr>
 
                     <th>Product name</th>
 
@@ -37,20 +38,13 @@ Nav Account
 
             </thead>
 
-            
+            <tr *ngIf="products.length == 0">
+                <td colspan="3" class="text-center">You haven't products in the wishlist yet!</td>
+            </tr>
 
-                <tr
-                *ngIf="products.length == 0">
-                
-                    <td colspan="3" class="text-center">You haven't products in the wishlist yet!</td>    
-                </tr>
--->
-                <!-- Product -->
-                <tbody>
-                <tr
-                *ngFor="let product of products; let i = index; let lastIndex = last"
-                >
-
+            <!-- Product -->
+            <tbody>
+                <tr *ngFor="let product of products; let i = index; let lastIndex = last">
                     <td>
                         <div class="ps-product--cart">
 
@@ -58,7 +52,8 @@ Nav Account
 
                                 <a href="product/{{product.url}}">
 
-                                    <img src="{{path}}img/products/{{product.category}}/{{product.image}}" alt="{{product.name}}">
+                                    <img src="{{path}}img/products/{{product.category}}/{{product.image}}"
+                                        alt="{{product.name}}">
 
                                 </a>
 
@@ -68,7 +63,7 @@ Nav Account
 
                                 <a href="product/{{product.url}}">
 
-                                  {{product.name}}
+                                    {{product.name}}
 
                                 </a>
 
@@ -79,47 +74,41 @@ Nav Account
                     </td>
 
                     <td class="ps-product">
-                        
+
                         <div [innerHTML]="price[i]"></div>
 
                     </td>
 
                     <td>
-                        
-                         <span 
-                         *ngIf="product.stock == 0"
-                         class="ps-tag ps-tag--out-stock">Out-stock</span>
 
-                         <span 
-                         *ngIf="product.stock > 0"
-                         class="ps-tag ps-tag--in-stock">In-stock</span>
+                        <span *ngIf="product.stock == 0" class="ps-tag ps-tag--out-stock">Out-stock</span>
+
+                        <span *ngIf="product.stock > 0" class="ps-tag ps-tag--in-stock">In-stock</span>
 
                     </td>
 
                     <td>
-                        <a 
-                        *ngIf="product.stock > 0"
-                        class="ps-btn" href="#">
+                        <a *ngIf="product.stock > 0" class="ps-btn" href="#">
                             Add to cart
                         </a>
                     </td>
-
+                        
                     <td>
-                       <!-- <a 
+                        <!--<a 
                         mwlConfirmationPopover
                         [popoverMessage]="popoverMessage"
                         placement="left"
                         class="removeProduct"
                         style="cursor:pointer"
-                        (confirm)="removeProduct(product.url)"
+                        (confirm)="removeProduct(product.id)"
                         [attr.remove]="product.url">
                             <i class="icon-cross"></i>
                         </a>-->
                     </td>
 
-                {{ lastIndex ? callback() : ""}}
+                    {{ lastIndex ? callback() : ""}}
 
-                </tr> 
+                </tr>
 
 
             </tbody>
