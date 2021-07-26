@@ -7,6 +7,7 @@ import { Rating,
 
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../../services/products.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-product-right',
@@ -24,7 +25,8 @@ export class ProductRightComponent implements OnInit {
   	cargando:Boolean = false;
 
   	constructor(private activateRoute: ActivatedRoute,
-  		        private productsService: ProductsService) { }
+  		        private productsService: ProductsService,
+				private usuarioService: UsersService) { }
 
   	ngOnInit(): void {
 
@@ -117,5 +119,9 @@ export class ProductRightComponent implements OnInit {
   			Rating.fnc();
 
   		}
+	}
+
+	addWishList(product){
+		this.usuarioService.addWishList(product);
 	}
 }

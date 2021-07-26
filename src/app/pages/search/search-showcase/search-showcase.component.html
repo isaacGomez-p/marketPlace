@@ -10,7 +10,7 @@ Products found
 
     <div class="ps-shopping__header">
 
-        <p><strong> {{productFound}}</strong> Products found</p>
+        <p><strong> {{productFound}}</strong> No se encontraron productos</p>
 
         <div class="ps-shopping__actions">
 
@@ -29,7 +29,7 @@ Products found
 
             <div class="ps-shopping__view">
 
-                <p>View</p>
+                <p>Vista</p>
 
                 <ul class="ps-tab-list">
 
@@ -87,7 +87,7 @@ Products found
                                     <img src="{{path}}img/products/{{product.category}}/{{product.image}}" alt="{{product.name}}">
                                 </a>
 
-                                <div [innerHTML]="price[i][1]"></div>
+                                <div [innerHTML]="price[i]"></div>
 
                                 <ul class="ps-product__actions">
 
@@ -104,7 +104,7 @@ Products found
                                     </li>
 
                                     <li>
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist">
+                                        <a style="cursor:pointer;" (click)="addWishList(product)" data-toggle="tooltip" data-placement="top" title="Add to Whishlist">
                                             <i class="icon-heart"></i>
                                         </a>
                                     </li>                      
@@ -136,7 +136,7 @@ Products found
 
                                     </div>
 
-                                    <div [innerHTML]="price[i][0]"></div>
+                                    <div [innerHTML]="price[i]"></div>
 
                                 </div>
 
@@ -145,7 +145,7 @@ Products found
                                     <a class="ps-product__title" href="product/{{product.url}}">
                                     {{product.name}}</a>
 
-                                    <div [innerHTML]="price[i][0]"></div>
+                                    <div [innerHTML]="price[i]"></div>
 
                                 </div>
 
@@ -229,7 +229,7 @@ Products found
 
                         <div class="ps-product__shopping">
 
-                            <div [innerHTML]="price[i][0]"></div>
+                            <div [innerHTML]="price[i]"></div>
 
                             <a class="ps-btn" href="#">Add to cart</a>
 

@@ -9,6 +9,7 @@ import { ProductsService } from '../../../../services/products.service';
 
 import { Subject } from 'rxjs';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { UsersModel } from 'src/app/models/users.model';
 
 //import notie from 'notie';
 //import { confirm } from 'notie';
@@ -37,6 +38,8 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
+  usuario: number = 0;
+  
   popoverMessage: string = 'Are you sure to remove it?';
 
   constructor(private usersService: UsersService,
@@ -59,6 +62,7 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
       this.usuarios = data;
       this.usuarios.map((item) => {
         if (item.id === this.childItem) {
+          this.usuario = item.id
           console.log("entro ---- " + JSON.stringify(item.city));
           this.wishlist = JSON.parse(item.city);
 
@@ -196,19 +200,33 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
   =============================================*/
 
   removeProduct(product) {
-    console.log("entro ");
+    console.log("entro " +product.id);
     let provisional = []
     /*=============================================
     Buscamos coincidencia para remover el producto
     =============================================*/
     this.wishlist.map((item)=>{
-      if(item.id !== product){            
+      if(item.id+"" !== product.id + ""){
         console.log("agrego");
         provisional.push(item);
       }
     })
     console.log("salio " + JSON.stringify(provisional));
     this.wishlist = provisional
+    let us : UsersModel;
+    this.usersService.loginAux().subscribe(data=>{
+      this.usuarios = data;
+      this.usuarios.map(item=>{
+        if(item.id === this.usuario){
+          us = item
+          us.city = JSON.stringify(this.wishlist)
+          this.usersService.changePasswordFnc(us).subscribe(dataU=>{
+            Sweetalert.fnc("success", "Producto eliminado", "account")
+          });
+        }
+      })
+    })
+    
     /*this.wishlist.forEach((list, index) => {
 
       if (list == product) {
@@ -223,11 +241,13 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
     Actualizamos en Firebase la lista de deseos
     =============================================*/
 
-    let body = {
+    /*let body = {
 
       wishlist: JSON.stringify(this.wishlist)
 
     }
+
+
 
     this.usersService.patchData(this.childItem, body)
       .subscribe(resp => {
@@ -239,7 +259,7 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
         }
 
       })
-
+    */
   }
 
   /*=============================================

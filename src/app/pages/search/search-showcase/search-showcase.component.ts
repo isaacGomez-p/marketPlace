@@ -1,55 +1,65 @@
 import { Component, OnInit } from '@angular/core';
 import { Path } from '../../../config';
-import { Rating,
-  		 DinamicRating, 
-	     DinamicReviews, 
-	     DinamicPrice,
-	     Pagination,
-	     Select2Cofig, 
-	     Tabs } from '../../../functions';
+import {
+	Rating,
+	DinamicRating,
+	DinamicReviews,
+	DinamicPrice,
+	Pagination,
+	Select2Cofig,
+	Tabs
+} from '../../../functions';
 
-import { ProductsService} from '../../../services/products.service';
+import { ProductsService } from '../../../services/products.service';
 
 import { ActivatedRoute } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
+import { CategoriesService } from 'src/app/services/categories.service';
 
-declare var jQuery:any;
-declare var $:any;
+declare var jQuery: any;
+declare var $: any;
 
 @Component({
-  selector: 'app-search-showcase',
-  templateUrl: './search-showcase.component.html',
-  styleUrls: ['./search-showcase.component.css']
+	selector: 'app-search-showcase',
+	templateUrl: './search-showcase.component.html',
+	styleUrls: ['./search-showcase.component.css']
 })
 export class SearchShowcaseComponent implements OnInit {
 
- 	path:String = Path.url;
-  	products:Array<any> = [];
-  	render:Boolean = true;
-  	cargando:Boolean = false;
-  	rating:Array<any> = [];
-	reviews:Array<any> = [];
-	price:Array<any> = [];
-	params:String = null;
+	path: String = Path.url;
+	products: Array<any> = [];
+	render: Boolean = true;
+	cargando: Boolean = false;
+	rating: Array<any> = [];
+	reviews: Array<any> = [];
+	price: Array<any> = [];
+	params: String = null;
 	page;
-	productFound:Number = 0;
-	currentRoute:String = null;
-	totalPage:Number = 0;
+	productFound: Number = 0;
+	currentRoute: String = null;
+	totalPage: Number = 0;
 	sort;
-	sortItems:Array<any> = [];
-	sortValues:Array<any> = [];
-	properties:Array<any> = ["category","name","store","sub_category","tags","title_list","url"];
-	listProducts:Array<any> = [];
+	sortItems: Array<any> = [];
+	sortValues: Array<any> = [];
+	properties: Array<any> = ["category", "name", "store", "sub_category", "tags", "title_list", "url"];
+	listProducts: Array<any> = [];
 
-  	constructor(private productsService: ProductsService,
-  		        private activateRoute: ActivatedRoute) { }
 
- 	ngOnInit(): void {
+	productos: any = [];
+	categorias: any = [];
 
- 		this.cargando = true;
+	constructor(private productsService: ProductsService,
+		private categoriaService: CategoriesService,
+		private activateRoute: ActivatedRoute,
+		private usuarioService: UsersService) { }
 
- 		/*=============================================
-		Capturamos el parámetro URL
-		=============================================*/	
+	ngOnInit(): void {
+
+		this.cargando = true;
+
+		/*=============================================
+	Capturamos el parámetro URL
+	=============================================*/
 
 		this.params = this.activateRoute.snapshot.params["param"].split("&")[0];
 		this.sort = this.activateRoute.snapshot.params["param"].split("&")[1];
@@ -57,92 +67,112 @@ export class SearchShowcaseComponent implements OnInit {
 
 		/*=============================================
 		Evaluamos que el segundo parámetro sea de paginación
-		=============================================*/	
-		if(Number.isInteger(Number(this.sort))){
+		=============================================*/
+		if (Number.isInteger(Number(this.sort))) {
 
 			this.page = this.sort;
 			this.sort = undefined;
-		
+
 		}
 
 		/*=============================================
 		Evaluamos que el parámetro de orden no esté definido
-		=============================================*/	
+		=============================================*/
 
-		if(this.sort == undefined){
+		if (this.sort == undefined) {
 
 			this.currentRoute = `search/${this.params}`;
-		
-		}else{
+
+		} else {
 
 			this.currentRoute = `search/${this.params}&${this.sort}`;
 
 		}
-		
+
 		/*=============================================
 		Filtramos data de productos con todas las propiedades
-		=============================================*/	
-		this.properties.forEach(property=>{
-
-			this.productsService.getSearchData(property, this.params)
-			.subscribe(resp=>{
-
-				let i;
-				
-				for(i in resp){
-
-					this.listProducts.push(resp[i])
-
-				}	
-
-				this.productsFnc(this.listProducts);
-
-			})
+		=============================================*/
+		//this.properties.forEach(property=>{
+		this.productsService.getData().subscribe(data => {
+			this.categoriaService.getData().subscribe(
+				dataCategoria => {
+					this.categorias = dataCategoria;
+					this.productos = data;
+					this.productos.map((item) => {						
+						if (item.name.toUpperCase().includes(this.params.toUpperCase())) {
+							this.categorias.map((itemCate)=>{
+								if(item.category === itemCate.id){
+									item.category = itemCate.url
+									this.listProducts.push(item)									
+								}
+							})
+							
+						}
+					})
+					this.productsFnc(this.listProducts);
+				}
+			)
 
 		})
+		/*this.productsService.getSearchData(property, this.params)
+		.subscribe(resp=>{
 
-  	}
+			let i;
+			
+			for(i in resp){
 
-  	/*=============================================
-	Declaramos función para mostrar el catálogo de productos
-	=============================================*/	
+				this.listProducts.push(resp[i])
 
-  	productsFnc(response){
+			}	
 
-  		if(response.length > 0){
+			this.productsFnc(this.listProducts);
 
-	  		this.products = [];
+		})
+		*/
+		//})
 
-	  		/*=============================================
-			Hacemos un recorrido por la respuesta que nos traiga el filtrado
-			=============================================*/	
+	}
 
-	  		let i;
-	  		let getProducts = [];
-	  		let total = 0;
+	/*=============================================
+Declaramos función para mostrar el catálogo de productos
+=============================================*/
 
-	  		for(i in response){
+	productsFnc(response) {
 
-	  			total++;
+		if (response.length > 0) {
 
-				getProducts.push(response[i]);						
-					
+			this.products = [];
+
+			/*=============================================
+		Hacemos un recorrido por la respuesta que nos traiga el filtrado
+		=============================================*/
+
+			let i;
+			let getProducts = [];
+			let total = 0;
+			getProducts = response;
+			for (i in response) {
+
+				total++;
+
+				//	getProducts.push(response[i]);						
+
 			}
 
 			/*=============================================
 			Definimos el total de productos y la paginación de productos
-			=============================================*/	
+			=============================================*/
 
 			this.productFound = total;
-			this.totalPage =  Math.ceil(Number(this.productFound)/6);
+			this.totalPage = Math.ceil(Number(this.productFound) / 6);
 
 			/*=============================================
 			Ordenamos el arreglo de objetos lo mas actual a lo más antiguo
 			=============================================*/
-			if(this.sort == undefined || this.sort == "fisrt"){
+			if (this.sort == undefined || this.sort == "fisrt") {
 
 				getProducts.sort(function (a, b) {
-				    return (b.date_created - a.date_created)
+					return (b.date_created - a.date_created)
 				})
 
 				this.sortItems = [
@@ -169,16 +199,16 @@ export class SearchShowcaseComponent implements OnInit {
 			Ordenamos el arreglo de objetos lo mas antiguo a lo más actual
 			=============================================*/
 
-			if(this.sort == "latest"){
+			if (this.sort == "latest") {
 
 				getProducts.sort(function (a, b) {
-				    return (a.date_created - b.date_created)
+					return (a.date_created - b.date_created)
 				})
 
 				this.sortItems = [
 
 					"Sort by latest",
-					"Sort by first",	
+					"Sort by first",
 					"Sort by popularity",
 					"Sort by price: low to high",
 					"Sort by price: high to low"
@@ -192,24 +222,24 @@ export class SearchShowcaseComponent implements OnInit {
 					"low",
 					"high"
 				]
-				
+
 			}
 
 			/*=============================================
 			Ordenamos el arreglo de objetos lo mas visto
 			=============================================*/
 
-			if(this.sort == "popularity"){
+			if (this.sort == "popularity") {
 
 				getProducts.sort(function (a, b) {
-				    return (b.views - a.views)
+					return (b.views - a.views)
 				})
 
 				this.sortItems = [
 
 					"Sort by popularity",
 					"Sort by first",
-					"Sort by latest",					
+					"Sort by latest",
 					"Sort by price: low to high",
 					"Sort by price: high to low"
 				]
@@ -218,28 +248,28 @@ export class SearchShowcaseComponent implements OnInit {
 
 					"popularity",
 					"first",
-					"latest",				
+					"latest",
 					"low",
 					"high"
 				]
-				
+
 			}
 
 			/*=============================================
 			Ordenamos el arreglo de objetos de menor a mayor precio
 			=============================================*/
 
-			if(this.sort == "low"){
+			if (this.sort == "low") {
 
 				getProducts.sort(function (a, b) {
-				    return (a.price - b.price)
+					return (a.price - b.price)
 				})
 
 				this.sortItems = [
 
-					"Sort by price: low to high",			
+					"Sort by price: low to high",
 					"Sort by first",
-					"Sort by latest",					
+					"Sort by latest",
 					"Sort by popularity",
 					"Sort by price: high to low"
 				]
@@ -253,27 +283,27 @@ export class SearchShowcaseComponent implements OnInit {
 					"high"
 				]
 
-				
+
 			}
 
 			/*=============================================
 			Ordenamos el arreglo de objetos de mayor a menor precio
 			=============================================*/
 
-			if(this.sort == "high"){
+			if (this.sort == "high") {
 
 				getProducts.sort(function (a, b) {
-				    return (b.price - a.price)
+					return (b.price - a.price)
 				})
 
 				this.sortItems = [
 
-					"Sort by price: high to low",		
+					"Sort by price: high to low",
 					"Sort by first",
-					"Sort by latest",					
+					"Sort by latest",
 					"Sort by popularity",
-					"Sort by price: low to high"	
-					
+					"Sort by price: low to high"
+
 				]
 
 				this.sortValues = [
@@ -283,49 +313,50 @@ export class SearchShowcaseComponent implements OnInit {
 					"latest",
 					"popularity",
 					"low"
-					
+
 				]
 
-				
+
 			}
 
 			/*=============================================
 			Filtramos solo hasta 10 productos
 			=============================================*/
 
-			getProducts.forEach((product, index)=>{
+			getProducts.forEach((product, index) => {
 
 				/*=============================================
 				Evaluamos si viene número de página definida
 				=============================================*/
 
-				if(this.page == undefined){
+				if (this.page == undefined) {
 
 					this.page = 1;
-				}	
+				}
 
 				/*=============================================
 				Configuramos la paginación desde - hasta
-				=============================================*/						
+				=============================================*/
 
-				let first = Number(index) + (this.page*6)-6; 
-				let last = 6*this.page;
+				let first = Number(index) + (this.page * 6) - 6;
+				let last = 6 * this.page;
 
 				/*=============================================
 				Filtramos los productos a mostrar
-				=============================================*/		
+				=============================================*/
 
-				if(first < last){
+				if (first < last) {
 
-					if(getProducts[first] != undefined){
+					if (getProducts[first] != undefined) {
 
 						this.products.push(getProducts[first]);
 
 						this.rating.push(DinamicRating.fnc(getProducts[first]));
-						
+
 						this.reviews.push(DinamicReviews.fnc(this.rating[index]));
 
-						this.price.push(DinamicPrice.fnc(getProducts[first]));
+						this.price.push()
+						//this.price.push(DinamicPrice.fnc(getProducts[first]));
 
 						this.cargando = false;
 
@@ -334,39 +365,43 @@ export class SearchShowcaseComponent implements OnInit {
 
 			})
 
-		}else{
+		} else {
 
 			this.cargando = false;
 
 		}
 
-  	}
+	}
 
-  	/*=============================================
-	Función que nos avisa cuando finaliza el renderizado de Angular
-	=============================================*/
+	/*=============================================
+Función que nos avisa cuando finaliza el renderizado de Angular
+=============================================*/
 
-  	callback(params){
+	callback(params) {
 
-  		if(this.render){
+		if (this.render) {
 
-  			this.render = false;
+			this.render = false;
 
-  			Rating.fnc();
-  			Pagination.fnc();
-  			Select2Cofig.fnc();
-  			Tabs.fnc();
+			Rating.fnc();
+			Pagination.fnc();
+			Select2Cofig.fnc();
+			Tabs.fnc();
 
-  			/*=============================================
-			Captura del Select Sort Items
-			=============================================*/	
+			/*=============================================
+		Captura del Select Sort Items
+		=============================================*/
 
-			$(".sortItems").change(function(){
+			$(".sortItems").change(function () {
 
 				window.open(`search/${params}&${$(this).val()}`, '_top')
 
 			})
-  		}
-  	}
+		}
+	}
+
+	addWishList(product) {
+		this.usuarioService.addWishList(product);
+	}
 
 }

@@ -31,15 +31,7 @@ export class AccountProfileComponent implements OnInit {
 	body:UsersModel;
 	usuarios: any = [];
 	idUser: number = 0;
-
-	productos: any = [
-		{
-			"id": "2"
-		},
-		{
-			"id": "3"
-		}
-	]
+	
 	constructor(private usersService: UsersService,
 				private http: HttpClient) { }
 
@@ -376,8 +368,7 @@ export class AccountProfileComponent implements OnInit {
 					this.usuarios = resp1;
 					this.usuarios.map(usuario =>{				
 							if(usuario.id === this.idUser){
-								us = usuario;
-								us.city = JSON.stringify(this.productos);
+								us = usuario;								
 								us.state = resp["result"];
 								console.log("USSS"+JSON.stringify(us));		
 								this.usersService.changePasswordFnc(us).subscribe(change =>{

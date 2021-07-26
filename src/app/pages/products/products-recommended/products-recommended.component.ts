@@ -14,6 +14,7 @@ import { ProductsService } from '../../../services/products.service';
 
 import { ActivatedRoute } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
 	selector: 'app-products-recommended',
@@ -36,7 +37,8 @@ export class ProductsRecommendedComponent implements OnInit {
 	rutaCategoria: String = "";
 	constructor(private productsService: ProductsService,
 		private categoriasService: CategoriesService,
-		private activateRoute: ActivatedRoute) { }
+		private activateRoute: ActivatedRoute,
+		private usuarioService: UsersService) { }
 
 	ngOnInit(): void {
 
@@ -193,6 +195,10 @@ Declaramos función para mostrar los productos recomendados
 
 		}
 
+	}
+
+	addWishList(product){
+		this.usuarioService.addWishList(product);
 	}
 
 }

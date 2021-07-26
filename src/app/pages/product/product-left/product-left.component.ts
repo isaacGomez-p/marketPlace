@@ -17,6 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ProductsService } from '../../../services/products.service';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
 	selector: 'app-product-left',
@@ -42,7 +43,8 @@ export class ProductLeftComponent implements OnInit {
 	categorias: any = [];
 	constructor(private activateRoute: ActivatedRoute,
 		private productsService: ProductsService,
-		private categoriaService: CategoriesService) { }
+		private categoriaService: CategoriesService,
+		private usuarioService: UsersService	) { }
 
 	ngOnInit(): void {
 		this.url = this.activateRoute.snapshot.params["param"];
@@ -198,7 +200,10 @@ export class ProductLeftComponent implements OnInit {
 			ProductLightbox.fnc()
 
 		}
+	}
 
+	addWishList(product){
+		this.usuarioService.addWishList(product);
 	}
 
 }

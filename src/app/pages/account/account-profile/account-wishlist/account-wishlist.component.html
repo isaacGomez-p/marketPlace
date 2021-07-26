@@ -89,11 +89,17 @@ Nav Account
 
                     <td>
                         <a *ngIf="product.stock > 0" class="ps-btn" href="#">
-                            Add to cart
+                            Añadir al carrito
                         </a>
                     </td>
                         
                     <td>
+                        <a
+                            style="cursor:pointer"
+                            (click)="removeProduct(product)"    
+                        >
+                            <i class="icon-cross"></i>
+                        </a>
                         <!--<a 
                         mwlConfirmationPopover
                         [popoverMessage]="popoverMessage"

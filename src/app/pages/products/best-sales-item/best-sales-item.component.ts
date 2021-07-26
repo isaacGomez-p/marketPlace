@@ -191,44 +191,6 @@ export class BestSalesItemComponent implements OnInit {
   	}
 
 	addWishList(product){
-		if(localStorage.getItem("idToken") !== undefined){
-			if(localStorage.getItem("email") !== undefined){
-				this.usuarioService.loginAux().subscribe(data=>{
-					this.usuarios = data;
-					this.usuarios.map(item => {
-						if(item.email === localStorage.getItem("email")){
-							let deseos = JSON.parse(item.city)
-							let validacion = true;
-							deseos.map(itemDeseos => {
-								if(itemDeseos.id+"" === product.id+""){
-									validacion = false;
-								}
-							})
-							if(validacion === true){
-								deseos.push(
-									{
-										"id": product.id+''
-									}
-								)
-								item.city = JSON.stringify(deseos);
-								this.modificarUsuario(item)
-								
-							}else{
-								Sweetalert.fnc("error", "Ya se encuentra registrado.", null)      
-							}
-							
-						}
-					})
-				})
-			}
-		}else{
-			Sweetalert.fnc("error", "Por favor inicie sesión", null)      
-		}
-	}
-
-	modificarUsuario(usuario){
-		this.usuarioService.changePasswordFnc(usuario).subscribe(data => {
-			Sweetalert.fnc("success", "Agregado correctamente.", null)
-		});
+		this.usuarioService.addWishList(product);
 	}
 }
