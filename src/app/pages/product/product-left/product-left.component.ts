@@ -134,7 +134,7 @@ export class ProductLeftComponent implements OnInit {
 				Gallery
 				=============================================*/
 				
-				//this.gallery.push(JSON.parse(this.product[index].gallery))
+				this.gallery.push(JSON.parse(this.product[index].gallery))
 
 				/*=============================================
 				Video
