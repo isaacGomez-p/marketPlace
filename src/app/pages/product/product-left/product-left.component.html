@@ -86,14 +86,14 @@
 
                 	Sold By:<a class="mr-20" href="shop-default.html"><strong>{{p.store}}</strong></a> 
 
-                	Status:
+                	Estado:
                     <strong 
                     *ngIf="p.stock > 0"
-                    class="ps-tag--in-stock"> In stock</strong>
+                    class="ps-tag--in-stock"> En Inventario</strong>
 
                     <strong 
                     *ngIf="p.stock == 0"
-                    class="ps-tag--out-stock"> Out stock</strong>
+                    class="ps-tag--out-stock"> Fuera de Inventario</strong>
 
                 </p>
 
@@ -119,29 +119,29 @@
             </div>
 
             <div 
-            *ngIf="p.offer != ''"
+            *ngIf="p.offer != '' && offer"
             class="ps-product__countdown">
 
                 <figure>
 
-                    <figcaption> Don't Miss Out! This promotion will expires in</figcaption>
+                    <figcaption> ¡No te lo pierdas! Esta promoción expira en:</figcaption>
 
                     <ul class="ps-countdown" [attr.data-time]="countd[i]">
 
                         <li><span class="days"></span>
-                            <p>Days</p>
+                            <p>Días</p>
                         </li>
 
                         <li><span class="hours"></span>
-                            <p>Hours</p>
+                            <p>Horas</p>
                         </li>
 
                         <li><span class="minutes"></span>
-                            <p>Minutes</p>
+                            <p>Minutos</p>
                         </li>
 
                         <li><span class="seconds"></span>
-                            <p>Seconds</p>
+                            <p>Segundos</p>
                         </li>
 
                     </ul>
@@ -150,13 +150,13 @@
 
                 <figure>
 
-                    <figcaption>Sold Items</figcaption>
+                    <figcaption>Productos Vendidos</figcaption>
 
                     <div class="ps-product__progress-bar ps-progress" [attr.data-value]="p.stock">
 
                         <div class="ps-progress__value"><span></span></div>
 
-                        <p><b>{{100-p.stock}}/100</b> Sold</p>
+                        <p><b>{{100-p.stock}}/100</b> Vendido</p>
 
                     </div>
 

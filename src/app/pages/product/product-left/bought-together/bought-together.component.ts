@@ -20,17 +20,21 @@ export class BoughtTogetherComponent implements OnInit {
 	products:Array<any> = [];
 	price:Array<any> = [];
 	render:Boolean = true;
+	productos = [];
 
   	constructor(private productsService: ProductsService) { }
 
   	ngOnInit(): void {
-
-  		this.productsService.getFilterData("title_list", this.childItem["title_list"])	
+	
+		this.productsService.getData().subscribe( resp => {
+			this.productsFnc(resp);
+		})
+  		/*this.productsService.getFilterData("title_list", this.childItem["title_list"])	
   		.subscribe( resp => {
   			
   			this.productsFnc(resp);
 
-  		})	
+  		})*/	
 
   	}
 
@@ -49,10 +53,12 @@ export class BoughtTogetherComponent implements OnInit {
 	    let i;
 	    let getProduct = [];
 
-	    for(i in response){
-
-	      getProduct.push(response[i]);           
-	        
+	    for(i in response){		  
+			if(this.childItem["name"] != response[i]["name"]){
+				if(this.childItem["title_list"] == response[i]["title_list"]){
+					getProduct.push(response[i]);    					
+				}
+			}           	        
 	    }
 
 	    /*=============================================
@@ -66,17 +72,13 @@ export class BoughtTogetherComponent implements OnInit {
 		/*=============================================
 	    Filtramos solo 1 producto
 	    =============================================*/
-
-	    getProduct.forEach((product, index)=>{
-
-	    	if(index < 1){
-
-	    		this.products.push(product);
- 		
-	    	}
-
-
-	    })
+		
+	    getProduct.forEach((product, index)=>{	    	
+			if(index == 0){
+				this.products.push(product);				
+				return;
+			}			
+		})
 
 	    for(const i in this.products){
 

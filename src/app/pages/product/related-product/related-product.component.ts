@@ -24,6 +24,7 @@ export class RelatedProductComponent implements OnInit {
   	reviews:Array<any> = [];
   	price:Array<any> = [];
   	render:Boolean = true;
+	url: string = "";
   	cargando:Boolean = false;
 
   	constructor(private activateRoute: ActivatedRoute,
@@ -33,8 +34,14 @@ export class RelatedProductComponent implements OnInit {
   	ngOnInit(): void {
 
   		this.cargando = true;
+	    this.url = this.activateRoute.snapshot.params["param"];
+	
+		this.productsService.getData().subscribe(data => {
+			this.productsFnc(data);
+		});
+		
 
-  		this.productsService.getFilterData("url", this.activateRoute.snapshot.params["param"]) 
+  		/*this.productsService.getFilterData("url", this.activateRoute.snapshot.params["param"]) 
   		.subscribe( resp => { 
 
   			for(const i in resp){
@@ -45,10 +52,8 @@ export class RelatedProductComponent implements OnInit {
   					this.productsFnc(resp);		
 
   				})
-
   			}
-
-  		}) 
+  		})*/
   	}
 
   	/*=============================================
@@ -65,12 +70,21 @@ export class RelatedProductComponent implements OnInit {
 
   		let i;
   		let getProduct = [];
+		let product;
+		  
+  		for(i in response){		  
+			if(this.url == response[i]["url"]){				
+				product = response[i];				
+			}			 									
+	    }
 
-  		for(i in response){
-
-			getProduct.push(response[i]);						
-				
-		}
+  		for(i in response){		  
+			if(this.url != response[i]["url"]){				
+				if(product["category"] === response[i]["category"]){
+					getProduct.push(response[i]);    									
+				}				
+			}           	        
+	    }
 
 	  	/*=============================================
 		Ordenamos de mayor a menor views el arreglo de objetos

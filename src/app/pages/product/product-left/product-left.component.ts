@@ -41,6 +41,7 @@ export class ProductLeftComponent implements OnInit {
 	totalReviews: String;
 	url: string = "";
 	categorias: any = [];
+	offer: Boolean = false;
 	constructor(private activateRoute: ActivatedRoute,
 		private productsService: ProductsService,
 		private categoriaService: CategoriesService,
@@ -75,25 +76,19 @@ export class ProductLeftComponent implements OnInit {
 
 		let i;
 		let getProduct = [];
-		console.log("--- productos " + JSON.stringify(response));
 		this.categoriaService.getData().subscribe(data => {
 			this.categorias = data;
 			for (i in response) {
 				if (this.url === response[i].url) {
 					this.categorias.map((item) => {
-						console.log("--- item.id " + (item.id) + " -- " + response[i].category);
 						if (item.id === response[i].category) {
 							response[i].category = item.url
 							getProduct.push(response[i]);
-							console.log("agrego --- ")
 						}
-						console.log("sale 1 --- ")
 					})
-					console.log("sale 2 --- ")
-					console.log("sale 3 --- ")
 
 				}
-				console.log("sale 4 --- ")
+				
 			}
 
 
@@ -101,9 +96,7 @@ export class ProductLeftComponent implements OnInit {
 			/*=============================================
 			Filtramos el producto
 			=============================================*/
-			console.log("1 --- ")
 			getProduct.forEach((product, index) => {
-				console.log("2 --- ")
 				this.product.push(product);
 
 				this.rating.push(DinamicRating.fnc(this.product[index]));
@@ -117,44 +110,45 @@ export class ProductLeftComponent implements OnInit {
 				=============================================*/
 
 				if (this.product[index].offer != "") {
-
-					const date = JSON.parse(this.product[index].offer)[2];
-
-					this.countd.push(
-
-						new Date(
-							/*parseInt(date.split("-")[0]),
-							parseInt(date.split("-")[1])-1,
-							parseInt(date.split("-")[2])
-							*/
-							parseInt('2021-07-30'.split("-")[0]),
-							parseInt('2021-07-30'.split("-")[1]) - 1,
-							parseInt('2021-07-30'.split("-")[2])
+					let today = new Date();
+        			let offerDate = new Date(
+         				parseInt(JSON.parse(this.product[index].offer)[2].split("-")[0]),
+          				parseInt(JSON.parse(this.product[index].offer)[2].split("-")[1])-1,
+          				parseInt(JSON.parse(this.product[index].offer)[2].split("-")[2])
+       				)
+					if(today < offerDate){
+						this.offer = true;
+						const date = JSON.parse(this.product[index].offer)[2];
+						
+						this.countd.push(
+							new Date(
+								parseInt(date.split("-")[0]),
+								parseInt(date.split("-")[1])-1,
+								parseInt(date.split("-")[2])
+							)
 						)
-
-					)
-
+					}
 				}
 
 				/*=============================================
 				Gallery
 				=============================================*/
-				console.log("3 --- ")
-				this.gallery.push(JSON.parse(this.product[index].gallery))
+				
+				//this.gallery.push(JSON.parse(this.product[index].gallery))
 
 				/*=============================================
 				Video
 				=============================================*/
 
-				if (JSON.parse(this.product[index].video)[0] == "youtube") {
+				if (JSON.parse(this.product[index].offer)[3] == "youtube") {
 
-					this.video = `https://www.youtube.com/embed/${JSON.parse(this.product[index].video)[1]}?rel=0&autoplay=0 `
+					this.video = `https://www.youtube.com/embed/${JSON.parse(this.product[index].offer)[4]}?rel=0&autoplay=0 `
 
 				}
 
-				if (JSON.parse(this.product[index].video)[0] == "vimeo") {
+				if (JSON.parse(this.product[index].offer)[3] == "vimeo") {
 
-					this.video = `https://player.vimeo.com/video/${JSON.parse(this.product[index].video)[1]}`
+					this.video = `https://player.vimeo.com/video/${JSON.parse(this.product[index].offer)[4]}`
 
 				}
 
@@ -162,7 +156,7 @@ export class ProductLeftComponent implements OnInit {
 				 Agregamos los tags
 				 =============================================*/
 
-				this.tags = this.product[index].tags.split(",");
+				//this.tags = this.product[index].tags.split(",");
 
 				/*=============================================
 				  Total Reviews

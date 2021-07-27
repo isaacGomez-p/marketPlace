@@ -23,6 +23,7 @@ export class SimilarBoughtComponent implements OnInit {
   	price:Array<any> = [];
   	render:Boolean = true;
   	cargando:Boolean = false;
+	url: String = "";
 
   	constructor(private activateRoute: ActivatedRoute,
   		        private productsService: ProductsService,
@@ -31,8 +32,13 @@ export class SimilarBoughtComponent implements OnInit {
   	ngOnInit(): void {
 
   		this.cargando = true;
+		this.url = this.activateRoute.snapshot.params["param"];
+		this.productsService.getData().subscribe(data => {
+			this.productsFnc(data);
+		});
+		
 
-  		this.productsService.getFilterData("url", this.activateRoute.snapshot.params["param"]) 
+ 		/*this.productsService.getFilterData("url", this.activateRoute.snapshot.params["param"]) 
   		.subscribe( resp => { 
 
   			for(const i in resp){
@@ -46,7 +52,7 @@ export class SimilarBoughtComponent implements OnInit {
 
   			}
 
-  		}) 
+  		})*/ 
   	}
 
   	/*=============================================
@@ -63,12 +69,21 @@ export class SimilarBoughtComponent implements OnInit {
 
   		let i;
   		let getProduct = [];
+		let product;
+		  
+  		for(i in response){		  
+			if(this.url == response[i]["url"]){				
+				product = response[i];				
+			}			 									
+	    }
 
-  		for(i in response){
-
-			getProduct.push(response[i]);						
-				
-		}
+  		for(i in response){		  
+			if(this.url != response[i]["url"]){				
+				if(product["sub_category"] === response[i]["sub_category"]){
+					getProduct.push(response[i]);    									
+				}				
+			}           	        
+	    }
 
 	  	/*=============================================
 		Ordenamos de mayor a menor views el arreglo de objetos
