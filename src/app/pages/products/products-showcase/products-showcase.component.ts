@@ -12,9 +12,10 @@ import {
 
 import { ProductsService } from '../../../services/products.service';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { UsersService } from 'src/app/services/users.service';
+import { CarritoComprasModel } from 'src/app/models/carritoCompras.model';
 
 declare var jQuery: any;
 declare var $: any;
@@ -48,7 +49,8 @@ export class ProductsShowcaseComponent implements OnInit {
 	constructor(private productsService: ProductsService,
 		private categoriasService: CategoriesService,
 		private activateRoute: ActivatedRoute,
-		private usuarioService: UsersService) { }
+		private usuarioService: UsersService,
+		private router: Router) { }
 
 	ngOnInit(): void {
 		console.log("entro 1")
@@ -426,6 +428,22 @@ Función que nos avisa cuando finaliza el renderizado de Angular
 
 	addWishList(product){
 		this.usuarioService.addWishList(product);
+	}
+
+	/*=============================================
+	Función para agregar productos al carrito de compras
+	=============================================*/
+
+	addShoppinCart(product, unit, details) {
+		let url = this.router.url;
+		let item = new CarritoComprasModel();
+		item = {
+			details: details,
+			product: product,
+			unit: unit,
+			url: url
+		}		
+		this.usuarioService.addShoppinCart(item)
 	}
 
 }

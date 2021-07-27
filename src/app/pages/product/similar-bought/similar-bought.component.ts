@@ -5,9 +5,10 @@ import { Rating,
          DinamicReviews, 
          DinamicPrice   } from '../../../functions';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../../services/products.service';
 import { UsersService } from 'src/app/services/users.service';
+import { CarritoComprasModel } from 'src/app/models/carritoCompras.model';
 
 @Component({
   selector: 'app-similar-bought',
@@ -27,7 +28,8 @@ export class SimilarBoughtComponent implements OnInit {
 
   	constructor(private activateRoute: ActivatedRoute,
   		        private productsService: ProductsService,
-				private usuarioService: UsersService) { }
+				private usuarioService: UsersService,
+				private router: Router) { }
 
   	ngOnInit(): void {
 
@@ -123,6 +125,22 @@ export class SimilarBoughtComponent implements OnInit {
 
 		})
 
+	}
+
+	/*=============================================
+	Función para agregar productos al carrito de compras
+	=============================================*/
+
+	addShoppinCart(product, unit, details) {
+		let url = this.router.url;
+		let item = new CarritoComprasModel();
+		item = {
+			details: details,
+			product: product,
+			unit: unit,
+			url: url
+		}		
+		this.usuarioService.addShoppinCart(item)
 	}
 
 	callback(){

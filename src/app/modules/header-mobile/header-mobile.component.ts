@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductsService } from 'src/app/services/products.service';
 import { UsersService } from 'src/app/services/users.service';
 import { Path } from '../../config';
 import { Search } from '../../functions';
+import { Sweetalert } from '../../functions';
 
 declare var jQuery: any;
 declare var $: any;
@@ -24,29 +27,76 @@ export class HeaderMobileComponent implements OnInit {
 	authValidate: boolean = false;
 	picture: String;
 	usuarios: any = [];
-	constructor(private categoriesService: CategoriesService, private subCategoriesService: SubCategoriesService, private serviceUsuario: UsersService) { }
+
+	shoppingCart: any[] = [];
+	wishList: number = 0;
+	totalShoppingCart: number = 0;
+	categorias: any = [];
+	renderShopping: Boolean = true;
+	cantidadShopping: number = 0;
+	productos: any = [];
+	
+	constructor(private categoriesService: CategoriesService,
+		private subCategoriesService: SubCategoriesService,
+		private serviceUsuario: UsersService,
+		private router: Router,
+		private productsService: ProductsService) { }
 
 	ngOnInit(): void {
-
-
-		if(localStorage.getItem("idToken") !== undefined){			
-			if(localStorage.getItem("email") !== undefined){			
+		if (localStorage.getItem("idToken") !== undefined) {
+			if (localStorage.getItem("email") !== undefined) {
 				this.serviceUsuario.loginAux().subscribe(data => {
 					this.usuarios = data;
-					this.usuarios.map((item)=>{
-						if(item.email === localStorage.getItem("email")){
+					this.usuarios.map((item) => {
+						if (item.email === localStorage.getItem("email")) {
 							this.authValidate = true;
-							if(item.state !== 'state'){
-								this.picture = `<img src="assets/img/users/`+item.username.toLowerCase()+`/`+item.state+`" class="img-fluid rounded-circle ml-auto">`;
-							}else{
+							if (item.state !== 'state') {
+								this.picture = `<img src="assets/img/users/` + item.username.toLowerCase() + `/` + item.state + `" class="img-fluid rounded-circle ml-auto">`;
+							} else {
 								this.picture = `<img src="assets/img/users/default/default.png" class="img-fluid rounded-circle ml-auto">`;
-							}							
+							}
 						}
-					})					
-				});				
-			}			
+					})
+				});
+			}
 		}
 
+		/*=============================================
+			Productos en el carrito de compras en el localStorage
+			=============================================*/
+		this.categoriesService.getData().subscribe((dataCategoria) => {
+			this.categorias = dataCategoria;
+		})
+		if (localStorage.getItem("list")) {
+			this.productsService.getData().subscribe(data => {
+				this.productos = data;
+				let list = JSON.parse(localStorage.getItem("list"));
+				this.totalShoppingCart = list.length
+				list.map((itemCarrito) => {
+					this.productos.map((itemPoductos) => {
+						if (itemCarrito.product === itemPoductos.id) {
+							this.categorias.map((itemCategorias) => {
+								if (itemCategorias.id === itemPoductos.category) {
+									itemPoductos.category = itemCategorias.url
+								}
+							})
+							this.shoppingCart.push({
+								idProducto: itemPoductos.id,
+								category: itemPoductos.category,
+								url: itemPoductos.url,
+								name: itemPoductos.name,
+								image: itemPoductos.image,
+								delivery_time: itemPoductos.delivery_time,
+								quantity: itemCarrito.unit,
+								price: (itemPoductos.price * itemCarrito.unit).toFixed(2)
+							})
+							this.cantidadShopping = this.cantidadShopping + itemPoductos.price * itemCarrito.unit
+							this.cantidadShopping.toFixed(2)
+						}
+					})
+				})
+			})
+		}
 
 		/*=============================================
 		Tomamos la data de las categorías
@@ -85,6 +135,24 @@ export class HeaderMobileComponent implements OnInit {
 			$(this).parent().children('ul').toggle();
 
 		})
+
+	}
+
+	/*=============================================
+	Función para eliminar el producto del carrito
+	=============================================*/
+
+	removeProduct(product) {
+		if (localStorage.getItem("list")) {
+			let shoppingCart = JSON.parse(localStorage.getItem("list"))
+			shoppingCart.forEach((list, index) => {
+				if (list.product === product) {
+					shoppingCart.splice(index, 1);
+				}
+			})
+			localStorage.setItem("list", JSON.stringify(shoppingCart))
+			Sweetalert.fnc("success", "Producto eliminado.", this.router.url);
+		}
 
 	}
 
@@ -155,8 +223,8 @@ export class HeaderMobileComponent implements OnInit {
 						/*=============================================
 						Recorremos el array de objetos nuevo para buscar coincidencias con los nombres de categorías
 						=============================================*/
-						arraySubCategories.map((item) => {							
-							if (category.id === item.category) {								
+						arraySubCategories.map((item) => {
+							if (category.id === item.category) {
 								$(`[category='${category.id}']`).append(
 									`<li class="current-menu-item ">
 		                        	<a href="products/${arraySubCategories[i].url}">${arraySubCategories[i].subcategory}</a>

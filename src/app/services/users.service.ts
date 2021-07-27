@@ -17,6 +17,8 @@ import {
 import { UsersModel } from '../models/users.model';
 
 import { Sweetalert } from '../functions';
+import { ProductsService } from './products.service';
+import { CarritoComprasModel } from '../models/carritoCompras.model';
 
 declare var jQuery: any;
 declare var $: any;
@@ -38,9 +40,11 @@ export class UsersService {
 	private confirmPasswordReset: string = ConfirmPasswordReset.url;
 	private changePassword: string = ChangePassword.url;
 
-
+	private products: any = [];
 	private usuarios: any = [];
-	constructor(private http: HttpClient) { }
+	validacion: boolean = false;
+	constructor(private http: HttpClient,
+		private productosService: ProductsService) { }
 
 	// Login
 	loginAux() {
@@ -261,30 +265,30 @@ Tomar información de un solo usuario
 				/*=============================================
 				Traemos la lista de deseos que ya tenga el usuario
 				=============================================*/
-		/*		this.getFilterData("idToken", localStorage.getItem("idToken"))
-					.subscribe(resp => {
+	/*		this.getFilterData("idToken", localStorage.getItem("idToken"))
+				.subscribe(resp => {
 
-						/*=============================================
-						Capturamos el id del usuario
-						=============================================*/
-/*
-						let id = Object.keys(resp).toString();
-
-						for (const i in resp) {
-
-							/*=============================================
-								Pregutnamos si existe una lista de deseos
-								=============================================*/
-
-/*							if (resp[i].wishlist != undefined) {
-
-								let wishlist = JSON.parse(resp[i].wishlist);
-
-								let length = 0;
-
+					/*=============================================
+					Capturamos el id del usuario
+					=============================================*/
+	/*
+							let id = Object.keys(resp).toString();
+	
+							for (const i in resp) {
+	
 								/*=============================================
-								Pregutnamos si existe un producto en la lista de deseos
-								=============================================*/
+									Pregutnamos si existe una lista de deseos
+									=============================================*/
+
+	/*							if (resp[i].wishlist != undefined) {
+	
+									let wishlist = JSON.parse(resp[i].wishlist);
+	
+									let length = 0;
+	
+									/*=============================================
+									Pregutnamos si existe un producto en la lista de deseos
+									=============================================*/
 
 	/*							if (wishlist.length > 0) {
 
@@ -306,98 +310,103 @@ Tomar información de un solo usuario
 								Preguntamos si no ha agregado este producto a la lista de deseos anteriormente
 								=============================================*/
 
-/*									if (length != wishlist.length) {
-
-										Sweetalert.fnc("error", "It already exists on your wishlist", null);
-
+	/*									if (length != wishlist.length) {
+	
+											Sweetalert.fnc("error", "It already exists on your wishlist", null);
+	
+										} else {
+	
+											wishlist.push(product);
+	
+											let body = {
+	
+												wishlist: JSON.stringify(wishlist)
+											}
+	
+											this.patchData(id, body)
+												.subscribe(resp => {
+	
+													if (resp["wishlist"] != "") {
+	
+														let totalWishlist = Number($(".totalWishlist").html());
+	
+														$(".totalWishlist").html(totalWishlist + 1);
+	
+														Sweetalert.fnc("success", "Product added to wishlist", null);
+													}
+	
+												})
+	
+										}
+	
 									} else {
-
+	
 										wishlist.push(product);
-
+	
 										let body = {
-
+	
 											wishlist: JSON.stringify(wishlist)
 										}
-
+	
 										this.patchData(id, body)
 											.subscribe(resp => {
-
+	
 												if (resp["wishlist"] != "") {
-
+	
 													let totalWishlist = Number($(".totalWishlist").html());
-
+	
 													$(".totalWishlist").html(totalWishlist + 1);
-
+	
 													Sweetalert.fnc("success", "Product added to wishlist", null);
 												}
-
+	
+	
 											})
-
+	
 									}
-
+	
+									/*=============================================
+									Cuando no exista lista de deseos inicialmente
+									=============================================*/
+	/*
 								} else {
-
-									wishlist.push(product);
-
+	
 									let body = {
-
-										wishlist: JSON.stringify(wishlist)
+	
+										wishlist: `["${product}"]`
 									}
-
+	
 									this.patchData(id, body)
 										.subscribe(resp => {
-
+	
 											if (resp["wishlist"] != "") {
-
+	
 												let totalWishlist = Number($(".totalWishlist").html());
-
+	
 												$(".totalWishlist").html(totalWishlist + 1);
-
+	
 												Sweetalert.fnc("success", "Product added to wishlist", null);
 											}
-
-
+	
 										})
-
+	
 								}
-
-								/*=============================================
-								Cuando no exista lista de deseos inicialmente
-								=============================================*/
-/*
-							} else {
-
-								let body = {
-
-									wishlist: `["${product}"]`
-								}
-
-								this.patchData(id, body)
-									.subscribe(resp => {
-
-										if (resp["wishlist"] != "") {
-
-											let totalWishlist = Number($(".totalWishlist").html());
-
-											$(".totalWishlist").html(totalWishlist + 1);
-
-											Sweetalert.fnc("success", "Product added to wishlist", null);
-										}
-
-									})
-
+	
 							}
+	
+						})
+	
+				}
+	
+			})
+	
+		}
+	*/
 
-						}
+	/*=============================================
+	Función para agregar productos a la lista de deseos
+	=============================================*/
 
-					})
-
-			}
-
-		})
-
-	}
-*/
 	addWishList(product) {
 		if (localStorage.getItem("idToken") !== undefined) {
 			if (localStorage.getItem("email") !== undefined) {
@@ -440,6 +449,61 @@ Tomar información de un solo usuario
 			$(".totalWishlist").html(totalWishlist + 1);
 			Sweetalert.fnc("success", "Agregado correctamente.", null)
 		});
+	}
+
+	/*=============================================
+	Función para agregar productos al carrito de compras
+	=============================================*/
+
+	addShoppinCart(itemObject: CarritoComprasModel) {
+
+		this.productosService.getData().subscribe((data) => {
+			this.products = data;
+			this.products.map((item) => {
+				if (item.id === itemObject.product) {
+					/*=============================================
+					Valida la cantidad disponible del producto
+					=============================================*/
+					if (item.stock === 0) {
+						Sweetalert.fnc("error", "No hay cantidad disponible", null);
+					} else {
+						/*=============================================
+						Agregar el producto al localStorage
+						=============================================*/
+						let listaCarrito = [];
+						if (localStorage.getItem("list") === null) {
+							listaCarrito.push(itemObject);
+							localStorage.setItem("list", JSON.stringify(listaCarrito))
+							Sweetalert.fnc("success", "Producto adicionado a tu carrito de compras.", itemObject.url);
+						} else {
+							listaCarrito = JSON.parse(localStorage.getItem("list"))
+							/*=============================================
+							Validación en el caso que ya este agregado el producto al carrito
+							=============================================*/
+							let cant = 0;
+							listaCarrito.map((itemCarrito) => {
+								if (itemCarrito.product === itemObject.product) {									
+									cant = itemCarrito.unit;
+									cant = cant + itemObject.unit;
+									itemCarrito.unit = cant;									
+									this.validacion = true;
+								}
+							})
+							if (this.validacion === false) {
+								listaCarrito.push(itemObject)
+								localStorage.setItem("list", JSON.stringify(listaCarrito))
+								Sweetalert.fnc("success", "Producto adicionado a tu carrito de compras.", itemObject.url);
+							} else {																
+								localStorage.setItem("list", JSON.stringify(listaCarrito))
+								Sweetalert.fnc("success", "Producto adicionado a tu carrito de compras.", itemObject.url);
+							}
+
+						}
+					}
+				}
+			})
+
+		})
 	}
 
 }

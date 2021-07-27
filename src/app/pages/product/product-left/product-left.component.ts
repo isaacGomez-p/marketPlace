@@ -13,11 +13,12 @@ import {
 	Quantity
 } from '../../../functions';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProductsService } from '../../../services/products.service';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { UsersService } from 'src/app/services/users.service';
+import { CarritoComprasModel } from 'src/app/models/carritoCompras.model';
 
 @Component({
 	selector: 'app-product-left',
@@ -42,10 +43,12 @@ export class ProductLeftComponent implements OnInit {
 	url: string = "";
 	categorias: any = [];
 	offer: Boolean = false;
+	
 	constructor(private activateRoute: ActivatedRoute,
 		private productsService: ProductsService,
 		private categoriaService: CategoriesService,
-		private usuarioService: UsersService	) { }
+		private usuarioService: UsersService,
+		private router: Router	) { }
 
 	ngOnInit(): void {
 		this.url = this.activateRoute.snapshot.params["param"];
@@ -168,6 +171,22 @@ export class ProductLeftComponent implements OnInit {
 
 			})
 		})
+	}
+
+	/*=============================================
+	Función para agregar productos al carrito de compras
+	=============================================*/
+
+	addShoppinCart(product, unit, details) {
+		let url = this.router.url;
+		let item = new CarritoComprasModel();
+		item = {
+			details: details,
+			product: product,
+			unit: unit,
+			url: url
+		}		
+		this.usuarioService.addShoppinCart(item)
 	}
 
 	callback() {

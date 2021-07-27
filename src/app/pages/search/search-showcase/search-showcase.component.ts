@@ -12,9 +12,10 @@ import {
 
 import { ProductsService } from '../../../services/products.service';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { CarritoComprasModel } from 'src/app/models/carritoCompras.model';
 
 declare var jQuery: any;
 declare var $: any;
@@ -51,7 +52,8 @@ export class SearchShowcaseComponent implements OnInit {
 	constructor(private productsService: ProductsService,
 		private categoriaService: CategoriesService,
 		private activateRoute: ActivatedRoute,
-		private usuarioService: UsersService) { }
+		private usuarioService: UsersService,
+		private router: Router) { }
 
 	ngOnInit(): void {
 
@@ -98,15 +100,15 @@ export class SearchShowcaseComponent implements OnInit {
 				dataCategoria => {
 					this.categorias = dataCategoria;
 					this.productos = data;
-					this.productos.map((item) => {						
+					this.productos.map((item) => {
 						if (item.name.toUpperCase().includes(this.params.toUpperCase())) {
-							this.categorias.map((itemCate)=>{
-								if(item.category === itemCate.id){
+							this.categorias.map((itemCate) => {
+								if (item.category === itemCate.id) {
 									item.category = itemCate.url
-									this.listProducts.push(item)									
+									this.listProducts.push(item)
 								}
 							})
-							
+
 						}
 					})
 					this.productsFnc(this.listProducts);
@@ -131,6 +133,22 @@ export class SearchShowcaseComponent implements OnInit {
 		*/
 		//})
 
+	}
+
+	/*=============================================
+	Función para agregar productos al carrito de compras
+	=============================================*/
+
+	addShoppinCart(product, unit, details) {
+		let url = this.router.url;
+		let item = new CarritoComprasModel();
+		item = {
+			details: details,
+			product: product,
+			unit: unit,
+			url: url
+		}
+		this.usuarioService.addShoppinCart(item)
 	}
 
 	/*=============================================

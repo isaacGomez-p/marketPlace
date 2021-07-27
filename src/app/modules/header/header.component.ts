@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from 'src/app/services/products.service';
 import { UsersService } from 'src/app/services/users.service';
 import { Path } from '../../config';
 import { Search } from '../../functions';
-
+import { Sweetalert } from '../../functions';
 import { CategoriesService } from '../../services/categories.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
+import { Router } from '@angular/router'
 
 declare var jQuery: any;
 declare var $: any;
@@ -23,29 +25,73 @@ export class HeaderComponent implements OnInit {
 	authValidate: boolean = false;
 	picture: String;
 	usuarios: any = [];
-
+	productos: any = [];
+	shoppingCart: any[] = [];
 	wishList: number = 0;
+	totalShoppingCart: number = 0;
+	categorias: any = [];
+	renderShopping: Boolean = true;
+	cantidadShopping: number = 0;
+	constructor(private categoriesService: CategoriesService,
+		private subCategoriesService: SubCategoriesService,
+		private serviceUsuario: UsersService,
+		private productsService: ProductsService,
+		private router: Router) { }
 
-	constructor(private categoriesService: CategoriesService, private subCategoriesService: SubCategoriesService, private serviceUsuario: UsersService) { }
-
-	ngOnInit(): void {		
-		if(localStorage.getItem("idToken") !== undefined){			
-			if(localStorage.getItem("email") !== undefined){			
+	ngOnInit(): void {
+		if (localStorage.getItem("idToken") !== undefined) {
+			if (localStorage.getItem("email") !== undefined) {
 				this.serviceUsuario.loginAux().subscribe(data => {
 					this.usuarios = data;
-					this.usuarios.map((item)=>{
-						if(item.email === localStorage.getItem("email")){
+					this.usuarios.map((item) => {
+						if (item.email === localStorage.getItem("email")) {
 							this.wishList = Number(JSON.parse(item.city).length)
 							this.authValidate = true;
-							if(item.state !== 'state'){
-								this.picture = `<img src="assets/img/users/`+item.username.toLowerCase()+`/`+item.state+`" class="img-fluid rounded-circle ml-auto">`;
-							}else{
+							if (item.state !== 'state') {
+								this.picture = `<img src="assets/img/users/` + item.username.toLowerCase() + `/` + item.state + `" class="img-fluid rounded-circle ml-auto">`;
+							} else {
 								this.picture = `<img src="assets/img/users/default/default.png" class="img-fluid rounded-circle ml-auto">`;
-							}							
+							}
 						}
-					})					
-				});				
-			}			
+					})
+				});
+			}
+			/*=============================================
+			Productos en el carrito de compras en el localStorage
+			=============================================*/
+			this.categoriesService.getData().subscribe((dataCategoria) => {
+				this.categorias = dataCategoria;
+			})
+			if (localStorage.getItem("list")) {
+				this.productsService.getData().subscribe(data => {
+					this.productos = data;
+					let list = JSON.parse(localStorage.getItem("list"));					
+					this.totalShoppingCart = list.length					
+					list.map((itemCarrito) => {						
+						this.productos.map((itemPoductos)=>{
+							if(itemCarrito.product === itemPoductos.id){
+								this.categorias.map((itemCategorias)=>{
+									if(itemCategorias.id === itemPoductos.category){
+										itemPoductos.category = itemCategorias.url
+									}
+								})
+								this.shoppingCart.push({
+									idProducto: itemPoductos.id,
+									category: itemPoductos.category,
+									url: itemPoductos.url,
+									name: itemPoductos.name,
+									image: itemPoductos.image,
+									delivery_time: itemPoductos.delivery_time,
+									quantity: itemCarrito.unit,
+									price: (itemPoductos.price * itemCarrito.unit).toFixed(2)
+								})
+								this.cantidadShopping = this.cantidadShopping + itemPoductos.price * itemCarrito.unit
+								this.cantidadShopping.toFixed(2)
+							}
+						})
+					})
+				})
+			}
 		}
 
 		/*=============================================
@@ -89,6 +135,24 @@ export class HeaderComponent implements OnInit {
 		}
 
 		window.open(`search/${Search.fnc(search)}`, '_top')
+
+	}
+
+	/*=============================================
+	Función para eliminar el producto del carrito
+	=============================================*/
+
+	removeProduct(product){
+		if(localStorage.getItem("list")){
+			let shoppingCart = JSON.parse(localStorage.getItem("list"))
+			shoppingCart.forEach((list, index)=>{
+				if(list.product === product){
+					shoppingCart.splice(index, 1);
+				}
+			})
+			localStorage.setItem("list", JSON.stringify(shoppingCart))			
+			Sweetalert.fnc("success", "Producto eliminado.", this.router.url);
+		}
 
 	}
 
@@ -143,8 +207,8 @@ export class HeaderComponent implements OnInit {
 									/*=============================================
 									Creamos un nuevo array de objetos clasificando cada subcategoría con la respectiva lista de título a la que pertenece
 									=============================================*/
-									arrayTitleName.map((item) => {										
-										if (item.subcategory === arraySubCategories[f][g].name && item.titleList === arraySubCategories[f][g].title_list) {											
+									arrayTitleName.map((item) => {
+										if (item.subcategory === arraySubCategories[f][g].name && item.titleList === arraySubCategories[f][g].title_list) {
 											validacion = true;
 										}
 									})
@@ -162,7 +226,7 @@ export class HeaderComponent implements OnInit {
 
 								}
 
-							}							
+							}
 
 							/*=============================================
 							Recorremos el array de objetos nuevo para buscar coincidencias con las listas de título
@@ -197,6 +261,16 @@ export class HeaderComponent implements OnInit {
 
 	}
 
+	/*=============================================
+	Función que nos avisa cuando finaliza el renderizado de Angular
+	=============================================*/
+
+	callbackShopping() {
+		if(this.renderShopping){
+			this.renderShopping = false;
+
+		}
+	}
 
 
 }

@@ -2,266 +2,241 @@
 	Header
 	======================================-->
 
-    <header class="header header--standard header--market-place-4" data-sticky="true">
+<header class="header header--standard header--market-place-4" data-sticky="true">
 
-    	<!--=====================================
+    <!--=====================================
 		Header TOP
 		======================================-->
 
-        <div class="header__top">
+    <div class="header__top">
 
-            <div class="container">
+        <div class="container">
 
-            	<!--=====================================
+            <!--=====================================
 				Social 
 				======================================-->
 
-                <div class="header__left">
-                    <ul class="d-flex justify-content-center">
-						<li><a href="#" target="_blank"><i class="fab fa-facebook-f mr-4"></i></a></li>
-						<li><a href="#" target="_blank"><i class="fab fa-instagram mr-4"></i></a></li>					
-						<li><a href="#" target="_blank"><i class="fab fa-twitter mr-4"></i></a></li>
-						<li><a href="#" target="_blank"><i class="fab fa-youtube mr-4"></i></a></li>
-					</ul>
-                </div>
+            <div class="header__left">
+                <ul class="d-flex justify-content-center">
+                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f mr-4"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-instagram mr-4"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-twitter mr-4"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-youtube mr-4"></i></a></li>
+                </ul>
+            </div>
 
-                <!--=====================================
+            <!--=====================================
 				Contact & lenguage 
 				======================================-->
 
-                <div class="header__right">
-                    <ul class="header__top-links"> 
-                        <li><a href="#">Sell on MarketPlace</a></li>
-                        <li><a href="#">Store List</a></li>
-                    	<li><i class="icon-telephone"></i> Hotline:<strong> 1-800-234-5678</strong></li>                     
-                        <li>
-                            <div class="ps-dropdown language"><a href="#"><img src="{{path}}img/template/en.png" alt="">English</a>
-                                <ul class="ps-dropdown-menu">
-                                    <li><a href="#"><img src="{{path}}img/template/es.png" alt=""> Spanish</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+            <div class="header__right">
+                <ul class="header__top-links">
+                    <li><a href="#">Sell on MarketPlace</a></li>
+                    <li><a href="#">Store List</a></li>
+                    <li><i class="icon-telephone"></i> Hotline:<strong> 1-800-234-5678</strong></li>
+                    <li>
+                        <div class="ps-dropdown language"><a href="#"><img src="{{path}}img/template/en.png"
+                                    alt="">English</a>
+                            <ul class="ps-dropdown-menu">
+                                <li><a href="#"><img src="{{path}}img/template/es.png" alt=""> Spanish</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-            </div><!-- End Container -->
+        </div><!-- End Container -->
 
-        </div><!-- Header Top -->
+    </div><!-- Header Top -->
 
-      	<!--=====================================
+    <!--=====================================
 		Header Content
 		======================================-->
 
-        <div class="header__content">
+    <div class="header__content">
 
-            <div class="container">
+        <div class="container">
 
-                <div class="header__content-left">
+            <div class="header__content-left">
 
-                	<!--=====================================
+                <!--=====================================
 					Logo
 					======================================-->
 
-                	<a class="ps-logo" routerLink="/">
-                		<img src="{{path}}img/template/logo_light.png" alt="">
-                	</a>
+                <a class="ps-logo" routerLink="/">
+                    <img src="{{path}}img/template/logo_light.png" alt="">
+                </a>
 
-                	<!--=====================================
+                <!--=====================================
 					Menú
 					======================================-->
 
-                    <div class="menu--product-categories">
-                        
-                        <div class="menu__toggle">
-                        	<i class="icon-menu"></i>
-                        	<span> Shop by Department</span>
-                        </div>
+                <div class="menu--product-categories">
 
-                        <div class="menu__content">
-                            <ul class="menu--dropdown">
-                           
-                                <li 
-                                *ngFor="let category of categories; let i = index; let lastIndex = last"
+                    <div class="menu__toggle">
+                        <i class="icon-menu"></i>
+                        <span> Shop by Department</span>
+                    </div>
+
+                    <div class="menu__content">
+                        <ul class="menu--dropdown">
+
+                            <li *ngFor="let category of categories; let i = index; let lastIndex = last"
                                 class="menu-item-has-children has-mega-menu">
-                                	
-                                    <a routerLink="products/{{category.url}}" target="_top">
-                                        <i class="{{category.icon}}"></i> {{category.name}}
-                                    </a>
 
-                                    <div class="mega-menu">
+                                <a routerLink="products/{{category.url}}" target="_top">
+                                    <i class="{{category.icon}}"></i> {{category.name}}
+                                </a>
 
-                                        <div 
-                                        *ngFor="let title of arrayTitleList[i]"
-                                        class="mega-menu__column">
+                                <div class="mega-menu">
 
-                                            <h4>{{title}}
-                                                <span class="sub-toggle"></span>
-                                            </h4>
+                                    <div *ngFor="let title of arrayTitleList[i]" class="mega-menu__column">
 
-                                            <ul class="mega-menu__list" [attr.titleList]="title">
-                                              
-                                            </ul>
+                                        <h4>{{title}}
+                                            <span class="sub-toggle"></span>
+                                        </h4>
 
-                                        </div>
-                                        
-                                    </div>  
+                                        <ul class="mega-menu__list" [attr.titleList]="title">
 
-                                {{ lastIndex ? callback() : "" }}                                    
-                                </li>                    
-                            </ul>
+                                        </ul>
 
-                        </div>
+                                    </div>
 
-                    </div><!-- End menu-->
+                                </div>
 
-                </div><!-- End Header Content Left-->
+                                {{ lastIndex ? callback() : "" }}
+                            </li>
+                        </ul>
 
-                <!--=====================================
+                    </div>
+
+                </div><!-- End menu-->
+
+            </div><!-- End Header Content Left-->
+
+            <!--=====================================
 				Search
 				======================================-->
 
-                <div class="header__content-center">
-                    
-                    <form class="ps-form--quick-search"> 
-                        
-                        <input 
-                        (keyup.enter)="goSearch(search.value)"
-                        #search
-                        class="form-control" 
-                        type="text" 
+            <div class="header__content-center">
+
+                <form class="ps-form--quick-search">
+
+                    <input (keyup.enter)="goSearch(search.value)" #search class="form-control" type="text"
                         placeholder="I'm shopping for...">
 
-                        <button type="button"
-                        (click)="goSearch(search.value)"
-                        >Search</button>
+                    <button type="button" (click)="goSearch(search.value)">Search</button>
 
-                    </form>
+                </form>
 
-                </div>
+            </div>
 
-                <div class="header__content-right">
+            <div class="header__content-right">
 
-                    <div class="header__actions">
+                <div class="header__actions">
 
-                    	<!--=====================================
+                    <!--=====================================
 						Wishlist
 						======================================-->
 
-                    	<a class="header__extra" href="#">
-                    		<i class="icon-heart"></i>
-                            <span>
-                                <i class="totalWishlist">{{this.wishList}}</i>
-                            </span>
-                    	</a>
+                    <a class="header__extra" href="#">
+                        <i class="icon-heart"></i>
+                        <span>
+                            <i class="totalWishlist">{{this.wishList}}</i>
+                        </span>
+                    </a>
 
-                    	<!--=====================================
+                    <!--=====================================
 						Cart
 						======================================-->
 
-                        <div class="ps-cart--mini">
+                    <div class="ps-cart--mini">
 
-                        	<a class="header__extra" href="#">
-                        		<i class="icon-bag2"></i><span><i>0</i></span>
-                        	</a>
+                        <a class="header__extra" href="#">
+                            <i class="icon-bag2"></i><span><i>{{totalShoppingCart}}</i></span>
+                        </a>
 
-                            <div class="ps-cart__content">
+                        <div *ngIf="shoppingCart.length > 0" class="ps-cart__content">
 
-                                <div class="ps-cart__items">
+                            <div class="ps-cart__items">
 
-                                    <div class="ps-product--cart-mobile">
+                                <div *ngFor="let product of shoppingCart" class="ps-product--cart-mobile">
 
-                                        <div class="ps-product__thumbnail">
-                                        	<a href="#">
-                                        		<img src="{{path}}img/products/clothing/7.jpg" alt="">
-                                        	</a>
-                                        </div>
-
-                                        <div class="ps-product__content">
-                                        	<a class="ps-product__remove" href="#">
-                                        		<i class="icon-cross"></i>
-                                        	</a>
-                                        	<a href="product-default.html">MVMTH Classical Leather Watch In Black</a>
-                                            <p><strong>Sold by:</strong> YOUNG SHOP</p>
-                                            <small>1 x $59.99</small>
-                                        </div>
-
+                                    <div class="ps-product__thumbnail">
+                                        <a href="product/{{product.url}}">
+                                            <img src="{{path}}img/products/{{product.category}}/{{product.image}}">
+                                        </a>
                                     </div>
 
-                                    <div class="ps-product--cart-mobile">
-
-                                        <div class="ps-product__thumbnail">
-                                        	<a href="#">
-                                        		<img src="{{path}}img/products/clothing/5.jpg" alt="">
-                                        	</a>
-                                        </div>
-
-                                        <div class="ps-product__content">
-                                        	<a class="ps-product__remove" href="#">
-                                        		<i class="icon-cross"></i>
-                                        	</a>
-                                        	<a href="product-default.html">Sleeve Linen Blend Caro Pane Shirt</a>
-                                            <p><strong>Sold by:</strong> YOUNG SHOP</p>
-                                            <small>1 x $59.99</small>
-                                        </div>
-
+                                    <div class="ps-product__content">
+                                        <a class="ps-product__remove" (click)="removeProduct(product.idProducto)">
+                                            <i class="icon-cross"></i>
+                                        </a>
+                                        <a href="product-default.html">{{product.name}}</a>
+                                        <br>
+                                        <small class="ps-product text-left p-0 m-0">
+                                            Cantidad
+                                            <span>{{product.quantity}}</span>
+                                        </small>
+                                        <br>
+                                        <small class="ps-product text-left p-0 m-0">
+                                            Precio
+                                            <span>{{product.price}}</span>
+                                        </small>
                                     </div>
 
                                 </div>
+                            </div>
 
-                                <div class="ps-cart__footer">
+                            <div class="ps-cart__footer">
 
-                                    <h3>Sub Total:<strong>$59.99</strong></h3>
-                                    <figure>
-                                    	<a class="ps-btn" href="shopping-cart.html">View Cart</a>
-                                    	<a class="ps-btn" href="checkout.html">Checkout</a>
-                                    </figure>
-
-                                </div>
+                                <h3>Sub Total:<strong>${{cantidadShopping}}</strong></h3>
+                                <figure>
+                                    <a class="ps-btn" href="shopping-cart.html">View Cart</a>
+                                    <a class="ps-btn" href="checkout.html">Checkout</a>
+                                </figure>
 
                             </div>
 
                         </div>
 
-						<!--=====================================
+                    </div>
+
+                    <!--=====================================
 						Login and Register
 						======================================-->
 
-                        <div 
-                        *ngIf="authValidate === false"
-                        class="ps-block--user-header">
-                            <div class="ps-block__left">
-                            	<i class="icon-user"></i>
-                            </div>
-                            <div class="ps-block__right">
-                            	<a routerLink="login">Login</a>
-                            	<a routerLink="register">Register</a>
-                            </div>
+                    <div *ngIf="authValidate === false" class="ps-block--user-header">
+                        <div class="ps-block__left">
+                            <i class="icon-user"></i>
                         </div>
+                        <div class="ps-block__right">
+                            <a routerLink="login">Login</a>
+                            <a routerLink="register">Register</a>
+                        </div>
+                    </div>
 
-                        <!--=====================================
+                    <!--=====================================
 						Go to Account
 						======================================-->
 
-                        <div 
-                        *ngIf="authValidate === true"
-                        class="ps-block--user-header">
-                            <div class="ps-block__left text-right">
-                                <a routerLink="account">
-                            	    <div [innerHTML]="picture"  style="width:40px"></div>
-                                </a>
-                            </div>
-                            <div class="ps-block__right">
-                            	<a routerLink="account">Perfil</a>
-                            </div>
+                    <div *ngIf="authValidate === true" class="ps-block--user-header">
+                        <div class="ps-block__left text-right">
+                            <a routerLink="account">
+                                <div [innerHTML]="picture" style="width:40px"></div>
+                            </a>
                         </div>
+                        <div class="ps-block__right">
+                            <a routerLink="account">Perfil</a>
+                        </div>
+                    </div>
 
-                    </div><!-- End Header Actions-->
+                </div><!-- End Header Actions-->
 
-                </div><!-- End Header Content Right-->
+            </div><!-- End Header Content Right-->
 
-            </div><!-- End Container-->
+        </div><!-- End Container-->
 
-        </div><!-- End Header Content-->
+    </div><!-- End Header Content-->
 
-    </header>
-
+</header>
