@@ -116,13 +116,13 @@ export class BoughtTogetherComponent implements OnInit {
 
 	  addWishlist(response){
  
-		this.usersService.addWishlist(response[0].url);
+		this.usersService.addWishList(response[0]);
 
 		let localUsersService = this.usersService;
 
 		setTimeout(function(){
 			if(response[1] != undefined){
-				localUsersService.addWishlist(response[1].url);
+				localUsersService.addWishList(response[1]);
 			}	
 
 		},1000)

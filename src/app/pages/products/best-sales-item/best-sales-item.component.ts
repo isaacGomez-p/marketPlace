@@ -193,4 +193,8 @@ export class BestSalesItemComponent implements OnInit {
 	addWishList(product){
 		this.usuarioService.addWishList(product);
 	}
+
+	addShoppinCart(product){
+		
+	}
 }

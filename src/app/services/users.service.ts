@@ -242,13 +242,13 @@ Tomar información de un solo usuario
 	Función para agregar productos a la lista de deseos
 	=============================================*/
 
-	addWishlist(product: string) {
+	/*addWishlist(product: string) {
 
 		/*=============================================
 		Validamos que el usuario esté autenticado
 		=============================================*/
 
-		this.authActivate().then(resp => {
+	/*	this.authActivate().then(resp => {
 
 			if (!resp) {
 
@@ -261,13 +261,13 @@ Tomar información de un solo usuario
 				/*=============================================
 				Traemos la lista de deseos que ya tenga el usuario
 				=============================================*/
-				this.getFilterData("idToken", localStorage.getItem("idToken"))
+		/*		this.getFilterData("idToken", localStorage.getItem("idToken"))
 					.subscribe(resp => {
 
 						/*=============================================
 						Capturamos el id del usuario
 						=============================================*/
-
+/*
 						let id = Object.keys(resp).toString();
 
 						for (const i in resp) {
@@ -276,7 +276,7 @@ Tomar información de un solo usuario
 								Pregutnamos si existe una lista de deseos
 								=============================================*/
 
-							if (resp[i].wishlist != undefined) {
+/*							if (resp[i].wishlist != undefined) {
 
 								let wishlist = JSON.parse(resp[i].wishlist);
 
@@ -286,7 +286,7 @@ Tomar información de un solo usuario
 								Pregutnamos si existe un producto en la lista de deseos
 								=============================================*/
 
-								if (wishlist.length > 0) {
+	/*							if (wishlist.length > 0) {
 
 									wishlist.forEach((list, index) => {
 
@@ -306,7 +306,7 @@ Tomar información de un solo usuario
 								Preguntamos si no ha agregado este producto a la lista de deseos anteriormente
 								=============================================*/
 
-									if (length != wishlist.length) {
+/*									if (length != wishlist.length) {
 
 										Sweetalert.fnc("error", "It already exists on your wishlist", null);
 
@@ -364,7 +364,7 @@ Tomar información de un solo usuario
 								/*=============================================
 								Cuando no exista lista de deseos inicialmente
 								=============================================*/
-
+/*
 							} else {
 
 								let body = {
@@ -397,7 +397,7 @@ Tomar información de un solo usuario
 		})
 
 	}
-
+*/
 	addWishList(product) {
 		if (localStorage.getItem("idToken") !== undefined) {
 			if (localStorage.getItem("email") !== undefined) {
