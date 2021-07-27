@@ -63,62 +63,64 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
       this.usuarios.map((item) => {
         if (item.id === this.childItem) {
           this.usuario = item.id          
-          this.wishlist = JSON.parse(item.city);
+          try{
+            this.wishlist = JSON.parse(item.city);
 
-          let load = 0;
+            let load = 0;
 
-          /*=============================================
-          Realizamos un foreach en la lista de deseos
-          =============================================*/
-
-          if (this.wishlist.length > 0) {
-            this.productsService.getData().subscribe(data => {
-              this.productosAll = data;
-              console.log("1 ---- ");
-              this.wishlist.map((itemDeseos) => {
-                this.productosAll.map((itemProductos) => {
-                  console.log("2 ---- ");
-                  if (itemDeseos.id === itemProductos.id + "") {
-                    console.log("3 ---- ");
-                    /*=============================================
-                    agregamos los productos 
-                    =============================================*/
-                    this.categoriaService.getData().subscribe((dataCategorias) => {
-                      this.categoriasAll = dataCategorias;
-                      this.categoriasAll.map((itemCategorias) => {
-                        if (itemCategorias.id === itemProductos.category) {
-                          if (itemCategorias.url === 'consumer-electrict') {
-                            itemProductos.category = 'consumer-electric';
-                          } else {
-                            itemProductos.category = itemCategorias.url
+            if (this.wishlist.length > 0) {
+              this.productsService.getData().subscribe(data => {
+                this.productosAll = data;
+                console.log("1 ---- ");
+                this.wishlist.map((itemDeseos) => {
+                  this.productosAll.map((itemProductos) => {
+                    console.log("2 ---- ");
+                    if (itemDeseos.id === itemProductos.id + "") {
+                      console.log("3 ---- ");
+                      /*=============================================
+                      agregamos los productos 
+                      =============================================*/
+                      this.categoriaService.getData().subscribe((dataCategorias) => {
+                        this.categoriasAll = dataCategorias;
+                        this.categoriasAll.map((itemCategorias) => {
+                          if (itemCategorias.id === itemProductos.category) {
+                            if (itemCategorias.url === 'consumer-electrict') {
+                              itemProductos.category = 'consumer-electric';
+                            } else {
+                              itemProductos.category = itemCategorias.url
+                            }
+                            if (itemProductos.category === 'home-kitchen') {
+                              itemProductos.image = '1.jpg';
+                            }
+                            this.products.push(itemProductos);
+                            /*=============================================
+                              validamos los precios en oferta
+                            =============================================*/
+  
+                            this.price.push(itemProductos.price)
+  
+                            if (load == this.wishlist.length) {
+  
+                              this.dtTrigger.next();
+  
+                            }
                           }
-                          if (itemProductos.category === 'home-kitchen') {
-                            itemProductos.image = '1.jpg';
-                          }
-                          this.products.push(itemProductos);
-                          /*=============================================
-                            validamos los precios en oferta
-                          =============================================*/
-
-                          this.price.push(itemProductos.price)
-
-                          if (load == this.wishlist.length) {
-
-                            this.dtTrigger.next();
-
-                          }
-                        }
+                        });
+  
                       });
-
-                    });
-
-                  }
+  
+                    }
+                  })
                 })
+  
               })
-
-            })
-
+  
+            }
           }
+          catch(exception){
+            console.log(exception);
+          }
+
         }
       })
     })

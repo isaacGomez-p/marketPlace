@@ -3,6 +3,7 @@ import { Path } from '../../../../config';
 import { DinamicPrice  } from '../../../../functions';
 
 import { ProductsService } from '../../../../services/products.service';
+import { UsersService } from '../../../../services/users.service';
 
 declare var jQuery:any;
 declare var $:any;
@@ -22,7 +23,8 @@ export class BoughtTogetherComponent implements OnInit {
 	render:Boolean = true;
 	productos = [];
 
-  	constructor(private productsService: ProductsService) { }
+  	constructor(private productsService: ProductsService,
+		private usersService: UsersService ) { }
 
   	ngOnInit(): void {
 	
@@ -111,5 +113,21 @@ export class BoughtTogetherComponent implements OnInit {
   			$(".ps-block__total strong").html(`$${total.toFixed(2)}`)
   		}
   	}
+
+	  addWishlist(response){
+ 
+		this.usersService.addWishlist(response[0].url);
+
+		let localUsersService = this.usersService;
+
+		setTimeout(function(){
+			if(response[1] != undefined){
+				localUsersService.addWishlist(response[1].url);
+			}	
+
+		},1000)
+
+	}
+
 
 }
