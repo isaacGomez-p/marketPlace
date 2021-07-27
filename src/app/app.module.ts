@@ -48,6 +48,7 @@ import { AccountProfileComponent } from './pages/account/account-profile/account
 import { AccountWishlistComponent } from './pages/account/account-profile/account-wishlist/account-wishlist.component';
 import { DataTablesModule } from 'angular-datatables';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
     AccountComponent,
     AccountBreadcrumbComponent,
     AccountProfileComponent,
-    AccountWishlistComponent
+    AccountWishlistComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

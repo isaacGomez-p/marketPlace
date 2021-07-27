@@ -43,7 +43,8 @@ export class ProductLeftComponent implements OnInit {
 	url: string = "";
 	categorias: any = [];
 	offer: Boolean = false;
-	
+	cantidadProducto: number = 0;
+
 	constructor(private activateRoute: ActivatedRoute,
 		private productsService: ProductsService,
 		private categoriaService: CategoriesService,
@@ -183,7 +184,7 @@ export class ProductLeftComponent implements OnInit {
 		item = {
 			details: details,
 			product: product,
-			unit: unit,
+			unit: Number(unit),
 			url: url
 		}		
 		this.usuarioService.addShoppinCart(item)
@@ -217,6 +218,10 @@ export class ProductLeftComponent implements OnInit {
 
 	addWishList(product){
 		this.usuarioService.addWishList(product);
+	}
+
+	changeQuantity(actual, aumento, metodo, producto){
+		this.cantidadProducto = Number(actual);
 	}
 
 }

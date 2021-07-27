@@ -11453,6 +11453,22 @@ input[type=number]
   background-color: #fff;
   border: 1px solid #e1e1e1;
   border-bottom: none;
+  overflow-y: scroll;
+  height: 350px;
+}
+
+.ps-cart--mini .ps-cart__items::-webkit-scrollbar {
+  width:12px;
+}
+
+/*.ps-cart--mini .ps-cart__items::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px;
+  border-radius: 5px;
+}*/
+
+.ps-cart--mini .ps-cart__items::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 3px;
+  border-radius: 5px;
 }
 
 .ps-cart--mini .ps-cart__items:before {

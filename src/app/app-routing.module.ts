@@ -11,6 +11,7 @@ import { RegisterComponent } from './pages/register/register.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { AccountComponent } from './pages/account/account.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
 
@@ -21,7 +22,8 @@ const routes: Routes = [
 	{path: 'login', component: LoginComponent },
 	{path: 'register', component: RegisterComponent },
 	{path: 'account', component: AccountComponent},
-
+	{path: 'shopping-cart', component: ShoppingCartComponent},
+	
 	{path: '**', pathMatch:'full', component: Error404Component }
 
 ];

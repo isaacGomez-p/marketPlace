@@ -172,7 +172,7 @@
                                         <a class="ps-product__remove" (click)="removeProduct(product.idProducto)">
                                             <i class="icon-cross"></i>
                                         </a>
-                                        <a href="product-default.html">{{product.name}}</a>
+                                        <a href="product/{{product.url}}">{{product.name}}</a>
                                         <br>
                                         <small class="ps-product text-left p-0 m-0">
                                             Cantidad
@@ -192,7 +192,7 @@
 
                                 <h3>Sub Total:<strong>${{cantidadShopping}}</strong></h3>
                                 <figure>
-                                    <a class="ps-btn" href="shopping-cart.html">View Cart</a>
+                                    <a class="ps-btn" routerLink="shopping-cart">Ver Carrito</a>
                                     <a class="ps-btn" href="checkout.html">Checkout</a>
                                 </figure>
 

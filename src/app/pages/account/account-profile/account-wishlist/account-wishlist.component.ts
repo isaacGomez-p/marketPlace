@@ -13,6 +13,8 @@ import { UsersModel } from 'src/app/models/users.model';
 
 import notie from 'notie';
 import { confirm } from 'notie';
+import { CarritoComprasModel } from 'src/app/models/carritoCompras.model';
+import { Router } from '@angular/router';
 
 declare var jQuery: any;
 declare var $: any;
@@ -43,7 +45,9 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
   popoverMessage: string = '¿Desea eliminar el producto?';
 
   constructor(private usersService: UsersService,
-    private productsService: ProductsService, private categoriaService: CategoriesService) { }
+    private productsService: ProductsService,
+    private categoriaService: CategoriesService,
+    private router: Router) { }
 
   ngOnInit(): void {
     /*=============================================
@@ -62,8 +66,8 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
       this.usuarios = data;
       this.usuarios.map((item) => {
         if (item.id === this.childItem) {
-          this.usuario = item.id          
-          try{
+          this.usuario = item.id
+          try {
             this.wishlist = JSON.parse(item.city);
 
             let load = 0;
@@ -96,28 +100,28 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
                             /*=============================================
                               validamos los precios en oferta
                             =============================================*/
-  
+
                             this.price.push(itemProductos.price)
-  
+
                             if (load == this.wishlist.length) {
-  
+
                               this.dtTrigger.next();
-  
+
                             }
                           }
                         });
-  
+
                       });
-  
+
                     }
                   })
                 })
-  
+
               })
-  
+
             }
           }
-          catch(exception){
+          catch (exception) {
             console.log(exception);
           }
 
@@ -291,16 +295,16 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
             cancelCallback: function () {
               return;
             },
-            submitCallback: function () {              
+            submitCallback: function () {
               let provisional = []
               /*=============================================
               Buscamos coincidencia para remover el producto
               =============================================*/
               localWishlist.map((item) => {
-                if (item.id + "" ! == product.id + "") {                  
+                if (item.id + ""! == product.id + "") {
                   provisional.push(item);
                 }
-              })                    
+              })
               localWishlist = provisional
               let us: UsersModel;
               localUsersService.loginAux().subscribe(data => {
@@ -371,6 +375,22 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
 
     this.dtTrigger.unsubscribe();
 
+  }
+
+  /*=============================================
+  Función para agregar productos al carrito de compras
+  =============================================*/
+
+  addShoppinCart(product, unit, details) {
+    let url = this.router.url;
+    let item = new CarritoComprasModel();
+    item = {
+      details: details,
+      product: product,
+      unit: unit,
+      url: url
+    }
+    this.usersService.addShoppinCart(item)
   }
 
 }
