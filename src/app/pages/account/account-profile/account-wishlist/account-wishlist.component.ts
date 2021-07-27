@@ -11,8 +11,8 @@ import { Subject } from 'rxjs';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { UsersModel } from 'src/app/models/users.model';
 
-//import notie from 'notie';
-//import { confirm } from 'notie';
+import notie from 'notie';
+import { confirm } from 'notie';
 
 declare var jQuery: any;
 declare var $: any;
@@ -39,13 +39,13 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
   dtTrigger: Subject<any> = new Subject();
 
   usuario: number = 0;
-  
-  popoverMessage: string = 'Are you sure to remove it?';
+
+  popoverMessage: string = '¿Desea eliminar el producto?';
 
   constructor(private usersService: UsersService,
     private productsService: ProductsService, private categoriaService: CategoriesService) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     /*=============================================
     Agregamos opciones a DataTable
     =============================================*/
@@ -62,8 +62,7 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
       this.usuarios = data;
       this.usuarios.map((item) => {
         if (item.id === this.childItem) {
-          this.usuario = item.id
-          console.log("entro ---- " + JSON.stringify(item.city));
+          this.usuario = item.id          
           this.wishlist = JSON.parse(item.city);
 
           let load = 0;
@@ -106,7 +105,7 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
                           if (load == this.wishlist.length) {
 
                             this.dtTrigger.next();
-               
+
                           }
                         }
                       });
@@ -200,33 +199,33 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
   =============================================*/
 
   removeProduct(product) {
-    console.log("entro " +product.id);
+    console.log("entro " + product);
     let provisional = []
     /*=============================================
     Buscamos coincidencia para remover el producto
     =============================================*/
-    this.wishlist.map((item)=>{
-      if(item.id+"" !== product.id + ""){
+    this.wishlist.map((item) => {
+      if (item.id + "" !== product + "") {
         console.log("agrego");
         provisional.push(item);
       }
     })
     console.log("salio " + JSON.stringify(provisional));
     this.wishlist = provisional
-    let us : UsersModel;
-    this.usersService.loginAux().subscribe(data=>{
+    let us: UsersModel;
+    this.usersService.loginAux().subscribe(data => {
       this.usuarios = data;
-      this.usuarios.map(item=>{
-        if(item.id === this.usuario){
+      this.usuarios.map(item => {
+        if (item.id === this.usuario) {
           us = item
           us.city = JSON.stringify(this.wishlist)
-          this.usersService.changePasswordFnc(us).subscribe(dataU=>{
+          this.usersService.changePasswordFnc(us).subscribe(dataU => {
             Sweetalert.fnc("success", "Producto eliminado", "account")
           });
         }
       })
     })
-    
+
     /*this.wishlist.forEach((list, index) => {
 
       if (list == product) {
@@ -275,58 +274,84 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
 
         let localWishlist = this.wishlist;
         let localUsersService = this.usersService;
-        let localChildItem = this.childItem;
+        let users = this.usuarios
+        let title = this.popoverMessage
+        //let localChildItem = this.childItem;
+        let localChildItem = this.usuario;
 
         $(document).on("click", ".removeProduct", function () {
 
           let product = $(this).attr("remove");
 
-          /* notie.confirm({
- 
-             text: "Are you sure to remove it?",
-             cancelCallback: function(){
-               return;
-             },
-             submitCallback: function(){
- 
-               /*=============================================
-               Buscamos coincidencia para remover el producto
-               =============================================*/
+          notie.confirm({
 
-          /*   localWishlist.forEach((list, index)=>{
-               
-               if(list == product){
+            text: title,
+            cancelCallback: function () {
+              return;
+            },
+            submitCallback: function () {              
+              let provisional = []
+              /*=============================================
+              Buscamos coincidencia para remover el producto
+              =============================================*/
+              localWishlist.map((item) => {
+                if (item.id + "" ! == product.id + "") {                  
+                  provisional.push(item);
+                }
+              })                    
+              localWishlist = provisional
+              let us: UsersModel;
+              localUsersService.loginAux().subscribe(data => {
+                users = data;
+                users.map(item => {
+                  if (item.id === localChildItem) {
+                    us = item
+                    us.city = JSON.stringify(localWishlist)
+                    localUsersService.changePasswordFnc(us).subscribe(dataU => {
+                      Sweetalert.fnc("success", "Producto eliminado", "account")
+                    });
+                  }
+                })
+              })
 
-                 localWishlist.splice(index, 1);
+              /*=============================================
+              Buscamos coincidencia para remover el producto
+              =============================================*/
 
-               }
+              /*   localWishlist.forEach((list, index)=>{
+                   
+                   if(list == product){
+    
+                     localWishlist.splice(index, 1);
+    
+                   }
+    
+                 })
+    
+                 /*=============================================
+                 Actualizamos en Firebase la lista de deseos
+                 =============================================*/
 
-             })
-
-             /*=============================================
-             Actualizamos en Firebase la lista de deseos
-             =============================================*/
-
-          /*   let body ={
-
-               wishlist: JSON.stringify(localWishlist)
-             
-             }
-
-             localUsersService.patchData(localChildItem, body)
-             .subscribe(resp=>{
-
-                 if(resp["wishlist"] != ""){
-
-                   Sweetalert.fnc("success", "Product removed", "account")
-
+              /*   let body ={
+    
+                   wishlist: JSON.stringify(localWishlist)
+                 
                  }
+    
+                 localUsersService.patchData(localChildItem, body)
+                 .subscribe(resp=>{
+    
+                     if(resp["wishlist"] != ""){
+    
+                       Sweetalert.fnc("success", "Product removed", "account")
+    
+                     }
+    
+                 })
+                */
+            }
 
-             })
-
-           }
-
-         })      */
+          })
 
         })
 

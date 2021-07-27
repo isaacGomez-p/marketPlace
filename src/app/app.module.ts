@@ -47,7 +47,7 @@ import { AccountBreadcrumbComponent } from './pages/account/account-breadcrumb/a
 import { AccountProfileComponent } from './pages/account/account-profile/account-profile.component';
 import { AccountWishlistComponent } from './pages/account/account-profile/account-wishlist/account-wishlist.component';
 import { DataTablesModule } from 'angular-datatables';
-
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 @NgModule({
   declarations: [
@@ -96,8 +96,10 @@ import { DataTablesModule } from 'angular-datatables';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    DataTablesModule
-    
+    DataTablesModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger'
+    })    
   ],
   providers: [],
   bootstrap: [AppComponent]

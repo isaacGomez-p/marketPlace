@@ -39,7 +39,7 @@ Nav Account
             </thead>
 
             <tr *ngIf="products.length == 0">
-                <td colspan="3" class="text-center">You haven't products in the wishlist yet!</td>
+                <td colspan="3" class="text-center">No tiene productos en la lista de deseos!</td>
             </tr>
 
             <!-- Product -->
@@ -94,13 +94,7 @@ Nav Account
                     </td>
                         
                     <td>
-                        <a
-                            style="cursor:pointer"
-                            (click)="removeProduct(product)"    
-                        >
-                            <i class="icon-cross"></i>
-                        </a>
-                        <!--<a 
+                        <a 
                         mwlConfirmationPopover
                         [popoverMessage]="popoverMessage"
                         placement="left"
@@ -109,7 +103,7 @@ Nav Account
                         (confirm)="removeProduct(product.id)"
                         [attr.remove]="product.url">
                             <i class="icon-cross"></i>
-                        </a>-->
+                        </a>
                     </td>
 
                     {{ lastIndex ? callback() : ""}}

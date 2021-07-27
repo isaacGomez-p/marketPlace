@@ -23,6 +23,9 @@ export class HeaderComponent implements OnInit {
 	authValidate: boolean = false;
 	picture: String;
 	usuarios: any = [];
+
+	wishList: number = 0;
+
 	constructor(private categoriesService: CategoriesService, private subCategoriesService: SubCategoriesService, private serviceUsuario: UsersService) { }
 
 	ngOnInit(): void {		
@@ -32,6 +35,7 @@ export class HeaderComponent implements OnInit {
 					this.usuarios = data;
 					this.usuarios.map((item)=>{
 						if(item.email === localStorage.getItem("email")){
+							this.wishList = Number(JSON.parse(item.city).length)
 							this.authValidate = true;
 							if(item.state !== 'state'){
 								this.picture = `<img src="assets/img/users/`+item.username.toLowerCase()+`/`+item.state+`" class="img-fluid rounded-circle ml-auto">`;
