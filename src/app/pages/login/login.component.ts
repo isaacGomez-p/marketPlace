@@ -183,12 +183,9 @@ export class LoginComponent implements OnInit {
 	Envío del formulario
 	=============================================*/
 
-	onSubmit(f: NgForm) {
-		console.log("entro")
+	onSubmit(f: NgForm) {		
 		if (f.invalid) {
-
 			return;
-
 		}
 
 		/*=============================================
@@ -243,8 +240,8 @@ export class LoginComponent implements OnInit {
 
 						window.open("account", "_top");
 					}else{
-						console.log("no validado")
-						//Sweetalert.fnc("error", 'Credenciales incorrectas', null)
+						//console.log("no validado")
+						Sweetalert.fnc("error", 'Credenciales incorrectas', null)
 					}
 				})
 

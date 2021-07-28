@@ -47,8 +47,7 @@ export class HeaderComponent implements OnInit {
 						if (item.email === localStorage.getItem("email")) {
 							if(item.city !== "city"){							
 								this.wishList = Number(JSON.parse(item.city).length)
-							}
-							
+							}							
 							this.authValidate = true;
 							if (item.state !== 'state') {
 								this.picture = `<img src="assets/img/users/` + item.username.toLowerCase() + `/` + item.state + `" class="img-fluid rounded-circle ml-auto">`;
@@ -293,18 +292,14 @@ export class HeaderComponent implements OnInit {
 
 				let totalPrice = 0;
 
-				for(let i = 0; i < price.length; i++){
-									
+				for(let i = 0; i < price.length; i++){					
 					/*=============================================
 					Sumar precio con envío
 					=============================================*/
-
 					let shipping_price = Number($(price[i]).html()) + Number($(shipping[i]).html());
-					
 					totalPrice +=  Number($(quantity[i]).html() * shipping_price)
-		
 				}
-
+				this.cantidadShopping = totalPrice.toFixed(2)
 				$(".subTotalHeader").html(`$${totalPrice.toFixed(2)}`)
 
 			},totalProduct.length * 500)

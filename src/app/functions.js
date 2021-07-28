@@ -757,3 +757,68 @@ export let Tooltip = {
 
 }
 
+/*=============================================
+Paypal
+=============================================*/
+
+export let Paypal = {
+
+    fnc: function(price){
+
+        return new Promise(resolve=>{   
+
+            paypal.Buttons({
+
+                createOrder: function(data, actions) {
+
+                    // This function sets up the details of the transaction, including the amount and line item details.
+                    return actions.order.create({
+
+                        purchase_units: [{
+
+                            amount: {
+
+                                value: price
+
+                            }
+
+                        }]
+
+                    });
+                },
+
+                onApprove: function(data, actions) {
+
+                    // This function captures the funds from the transaction.
+                    return actions.order.capture().then(function(details) {
+
+                        if(details.status == "COMPLETED"){
+
+                            localStorage.setItem("id_payment", details.id)
+
+                           resolve(true);
+
+                        }
+                    
+                    });
+
+                },
+
+                onCancel: function (data) {
+
+                    resolve(false);
+
+                },
+
+                onError: function (err) {
+
+                    resolve(false);
+
+                }
+
+            }).render('#paypal-button-container');
+
+         })
+
+    }
+}

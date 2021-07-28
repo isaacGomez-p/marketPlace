@@ -17,5 +17,5 @@ export class UsersModel{
 	city: string;
 	phone: string;
 	address: string;
-
+	country_code: string;
 }
