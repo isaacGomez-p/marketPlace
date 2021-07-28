@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { UsersService } from 'src/app/services/users.service';
 import { Path } from '../../config';
-import { Search } from '../../functions';
-import { Sweetalert } from '../../functions';
+import { Search, DinamicPrice,Sweetalert } from '../../functions';
 import { CategoriesService } from '../../services/categories.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
 import { Router } from '@angular/router'
@@ -32,20 +31,24 @@ export class HeaderComponent implements OnInit {
 	categorias: any = [];
 	renderShopping: Boolean = true;
 	cantidadShopping: number = 0;
+	subTotal:string = `<h3>Sub Total:<strong class="subTotalHeader"><div class="spinner-border"></div></strong></h3>`;
 	constructor(private categoriesService: CategoriesService,
 		private subCategoriesService: SubCategoriesService,
 		private serviceUsuario: UsersService,
 		private productsService: ProductsService,
 		private router: Router) { }
 
-	ngOnInit(): void {
-		if (localStorage.getItem("idToken") !== undefined) {
-			if (localStorage.getItem("email") !== undefined) {
-				this.serviceUsuario.loginAux().subscribe(data => {
+	ngOnInit(): void {		
+		if (localStorage.getItem("idToken") !== null) {			
+			if (localStorage.getItem("email") !== null) {				
+				this.serviceUsuario.loginAux().subscribe(data => {					
 					this.usuarios = data;
-					this.usuarios.map((item) => {
+					this.usuarios.map((item) => {						
 						if (item.email === localStorage.getItem("email")) {
-							this.wishList = Number(JSON.parse(item.city).length)
+							if(item.city !== "city"){							
+								this.wishList = Number(JSON.parse(item.city).length)
+							}
+							
 							this.authValidate = true;
 							if (item.state !== 'state') {
 								this.picture = `<img src="assets/img/users/` + item.username.toLowerCase() + `/` + item.state + `" class="img-fluid rounded-circle ml-auto">`;
@@ -55,6 +58,8 @@ export class HeaderComponent implements OnInit {
 						}
 					})
 				});
+			}else{
+				this.authValidate = false;
 			}
 			/*=============================================
 			Productos en el carrito de compras en el localStorage
@@ -83,7 +88,8 @@ export class HeaderComponent implements OnInit {
 									image: itemPoductos.image,
 									delivery_time: itemPoductos.delivery_time,
 									quantity: itemCarrito.unit,
-									price: (itemPoductos.price * itemCarrito.unit).toFixed(2)
+									price: DinamicPrice.fnc(itemPoductos)[0],
+									shipping: itemPoductos.shipping * itemCarrito.unit
 								})
 								this.cantidadShopping = this.cantidadShopping + itemPoductos.price * itemCarrito.unit
 								this.cantidadShopping.toFixed(2)
@@ -92,6 +98,8 @@ export class HeaderComponent implements OnInit {
 					})
 				})
 			}
+		}else{
+			this.authValidate = false;
 		}
 
 		/*=============================================
@@ -265,12 +273,46 @@ export class HeaderComponent implements OnInit {
 	Función que nos avisa cuando finaliza el renderizado de Angular
 	=============================================*/
 
-	callbackShopping() {
+	callbackShopping(){
+
 		if(this.renderShopping){
+
 			this.renderShopping = false;
 
+			/*=============================================
+			Sumar valores para el precio total
+			=============================================*/
+
+			let totalProduct = $(".ps-product--cart-mobile");
+
+			setTimeout(function(){
+
+				let price = $(".pShoppingHeader .end-price")
+				let quantity = $(".qShoppingHeader");
+				let shipping = $(".sShoppingHeader");
+
+				let totalPrice = 0;
+
+				for(let i = 0; i < price.length; i++){
+									
+					/*=============================================
+					Sumar precio con envío
+					=============================================*/
+
+					let shipping_price = Number($(price[i]).html()) + Number($(shipping[i]).html());
+					
+					totalPrice +=  Number($(quantity[i]).html() * shipping_price)
+		
+				}
+
+				$(".subTotalHeader").html(`$${totalPrice.toFixed(2)}`)
+
+			},totalProduct.length * 500)
+
 		}
+
 	}
+
 
 
 }

@@ -35,7 +35,8 @@ export class HeaderMobileComponent implements OnInit {
 	renderShopping: Boolean = true;
 	cantidadShopping: number = 0;
 	productos: any = [];
-	
+	subTotal:string = `<h3>Sub Total:<strong class="subTotalHeader"><div class="spinner-border"></div></strong></h3>`;
+
 	constructor(private categoriesService: CategoriesService,
 		private subCategoriesService: SubCategoriesService,
 		private serviceUsuario: UsersService,
@@ -244,6 +245,48 @@ export class HeaderMobileComponent implements OnInit {
 						}*/
 					})
 			})
+		}
+	}
+
+	/*=============================================
+	Función que nos avisa cuando finaliza el renderizado de Angular
+	=============================================*/
+
+	callbackShopping(){
+
+		if(this.renderShopping){
+
+			this.renderShopping = false;
+
+			/*=============================================
+			Sumar valores para el precio total
+			=============================================*/
+
+			let totalProduct = $(".ps-product--cart-mobile");
+
+			setTimeout(function(){
+
+				let price = $(".pShoppingHeaderM .end-price")
+				let quantity = $(".qShoppingHeaderM");
+				let shipping = $(".sShoppingHeaderM");
+
+				let totalPrice = 0;
+
+				for(let i = 0; i < price.length; i++){
+									
+					/*=============================================
+					Sumar precio con envío
+					=============================================*/
+
+					let shipping_price = Number($(price[i]).html()) + Number($(shipping[i]).html());
+					
+					totalPrice +=  Number($(quantity[i]).html() * shipping_price)
+		
+				}
+
+				$(".subTotalHeader").html(`$${totalPrice.toFixed(2)}`)
+
+			},totalProduct.length * 500)
 		}
 	}
 }

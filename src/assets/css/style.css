@@ -10969,7 +10969,7 @@ input[type=number]
 }
 
 .ps-table--shopping-cart tbody tr td:last-child {
-  text-align: right;
+  text-align: left;
 }
 
 .ps-table--shopping-cart tbody tr td:last-child a {

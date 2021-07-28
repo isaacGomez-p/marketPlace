@@ -59,6 +59,8 @@ export class AccountBreadcrumbComponent implements OnInit {
 	logout(){
 
 		localStorage.removeItem('idToken');
+		localStorage.removeItem('email');
+		localStorage.removeItem('rememberMe');
     	localStorage.removeItem('expiresIn');
     	window.open('login', '_top')
 

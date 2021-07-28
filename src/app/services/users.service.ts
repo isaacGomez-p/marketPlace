@@ -414,7 +414,11 @@ Tomar información de un solo usuario
 					this.usuarios = data;
 					this.usuarios.map(item => {
 						if (item.email === localStorage.getItem("email")) {
-							let deseos = JSON.parse(item.city)
+							let deseos = []
+							if(item.city !== 'city'){
+								deseos = JSON.parse(item.city)
+							}						
+
 							let validacion = true;
 							deseos.map(itemDeseos => {
 								if (itemDeseos.id + "" === product.id + "") {

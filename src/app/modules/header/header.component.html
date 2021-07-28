@@ -152,7 +152,7 @@
 
                     <div class="ps-cart--mini">
 
-                        <a class="header__extra" href="#">
+                        <a class="header__extra" routerLink="shopping-cart">
                             <i class="icon-bag2"></i><span><i>{{totalShoppingCart}}</i></span>
                         </a>
 
@@ -160,7 +160,7 @@
 
                             <div class="ps-cart__items">
 
-                                <div *ngFor="let product of shoppingCart" class="ps-product--cart-mobile">
+                                <div *ngFor="let product of shoppingCart; let lastShopping = last" class="ps-product--cart-mobile">
 
                                     <div class="ps-product__thumbnail">
                                         <a href="product/{{product.url}}">
@@ -173,24 +173,31 @@
                                             <i class="icon-cross"></i>
                                         </a>
                                         <a href="product/{{product.url}}">{{product.name}}</a>
-                                        <br>
+                                        <br>                                      
+                                        <div [innerHTML]="product.details"></div>
                                         <small class="ps-product text-left p-0 m-0">
-                                            Cantidad
-                                            <span>{{product.quantity}}</span>
-                                        </small>
-                                        <br>
-                                        <small class="ps-product text-left p-0 m-0">
-                                            Precio
-                                            <span>{{product.price}}</span>
-                                        </small>
-                                    </div>
 
+                                            Cantidad:
+                                            <span class="qShoppingHeader">{{product.quantity}}</span>
+                                            x Envio: $
+                                            <span class="sShoppingHeader">{{product.shipping}}</span>
+                                            +
+                                            <span class="pShoppingHeader" [innerHTML]="product.price"></span>
+
+                                        </small>
+                                        <!--<small class="ps-product text-left p-0 m-0">
+                                            Precio
+                                            <span class="pShoppingHeader" [innerHTML]="product.price"></span>
+                                        </small>-->
+                                    </div>
+                                    {{ lastShopping ? callbackShopping() : ""}}
                                 </div>
                             </div>
 
                             <div class="ps-cart__footer">
 
-                                <h3>Sub Total:<strong>${{cantidadShopping}}</strong></h3>
+                                <!--<h3>Sub Total:<strong>${{cantidadShopping}}</strong></h3>-->
+                                <div [innerHTML]="subTotal"></div>
                                 <figure>
                                     <a class="ps-btn" routerLink="shopping-cart">Ver Carrito</a>
                                     <a class="ps-btn" href="checkout.html">Checkout</a>
@@ -226,7 +233,7 @@
                                 <div [innerHTML]="picture" style="width:40px"></div>
                             </a>
                         </div>
-                        <div class="ps-block__right">
+                        <div class="ps-block__right ">
                             <a routerLink="account">Perfil</a>
                         </div>
                     </div>
