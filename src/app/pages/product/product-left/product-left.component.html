@@ -184,9 +184,9 @@
 
                 </figure>
 
-                <a class="ps-btn ps-btn--black" style="cursor:pointer;" (click)="addShoppinCart(p.id, quantity.value, [])">Añadir al carrito</a>
+                <a class="ps-btn ps-btn--black" style="cursor:pointer;" (click)="addShoppinCart(p.id, 1, [])">Añadir al Carrito</a>
 
-                <a class="ps-btn" href="#">Buy Now</a>
+                <a class="ps-btn" href="#">Comprar Ahora</a>
 
                 <div class="ps-product__actions">
 
@@ -200,11 +200,11 @@
 
             <div class="ps-product__specification">
 
-            	<a class="report" href="#">Report Abuse</a> 
+            	<a class="report" href="#">Reportar Abuso</a> 
 
                 <p class="categories">
 
-                	<strong> Categories:</strong>
+                	<strong> Categorías:</strong>
 
                 	<a href="products/{{p.category}}">{{p.category}}</a>,
                     <a href="products/{{p.sub_category}}">{{p.sub_category}}</a>,
@@ -212,13 +212,13 @@
 
                 </p>
 
-                <p class="tags"><strong> Tags</strong>
+                <!--<p class="tags"><strong> Etiquetas: </strong>
 
                 	<a 
                     *ngFor="let tag of tags"
                     href="search/{{tag}}"> {{tag}}</a>
 
-                </p>
+                </p>-->
 
             </div>
 
@@ -263,11 +263,11 @@
 
         <ul class="ps-tab-list">
 
-            <li class="active"><a href="#tab-1">Description</a></li>
-            <li><a href="#tab-2">Specification</a></li>
-            <li><a href="#tab-3">Vendor</a></li>
-            <li><a href="#tab-4">Reviews ({{totalReviews}})</a></li>
-            <li><a href="#tab-5">Questions and Answers</a></li>
+            <li class="active"><a href="#tab-1">Descripción</a></li>
+            <li><a href="#tab-2">Especificación</a></li>
+            <li><a href="#tab-3">Vendedor</a></li>
+            <li><a href="#tab-4">Comentarios ({{totalReviews}})</a></li>
+            <li><a href="#tab-5">Preguntanos</a></li>
 
         </ul>
 
@@ -321,11 +321,11 @@
 
                 <div class="ps-block--questions-answers">
 
-                    <h3>Questions and Answers</h3>
+                    <h3>Preguntas y respuestas</h3>
 
                     <div class="form-group">
 
-                        <input class="form-control" type="text" placeholder="Have a question? Search for answer?">
+                        <input class="form-control" type="text" placeholder="¿ Tienes preguntas? Dejanos saber.">
                     
                     </div>
 

@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../../services/products.service';
 import { UsersService } from 'src/app/services/users.service';
 import { CarritoComprasModel } from 'src/app/models/carritoCompras.model';
+import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
   selector: 'app-product-right',
@@ -25,10 +26,12 @@ export class ProductRightComponent implements OnInit {
   	render:Boolean = true;
   	cargando:Boolean = false;
 	url:String = "";
+	categorias: any = [];
 
   	constructor(private activateRoute: ActivatedRoute,
   		        private productsService: ProductsService,
 				private usuarioService: UsersService,
+				private categoriaService: CategoriesService,
 				private router: Router) { }
 
   	ngOnInit(): void {
@@ -40,7 +43,7 @@ export class ProductRightComponent implements OnInit {
 		});
 		
 
-  		this.productsService.getFilterData("url", this.activateRoute.snapshot.params["param"]) 
+  		/*this.productsService.getFilterData("url", this.activateRoute.snapshot.params["param"]) 
   		.subscribe( resp => { 
 
   			for(const i in resp){
@@ -54,7 +57,7 @@ export class ProductRightComponent implements OnInit {
 
   			}
 
-  		}) 
+  		}) */
   	}
 
   	/*=============================================
@@ -63,66 +66,76 @@ export class ProductRightComponent implements OnInit {
 
   	productsFnc(response){
 
-  		this.products = [];
+		this.categoriaService.getData().subscribe(data => {
+			this.categorias = data;
 
-		/*=============================================
-		Hacemos un recorrido por la respuesta que nos traiga el filtrado
-		=============================================*/	
 
-  		let i;
-  		let getProduct = [];
-		let product;
-		  
-  		for(i in response){		  
-			if(this.url == response[i]["url"]){				
-				product = response[i];				
-			}			 									
-	    }
+			this.products = [];
 
-  		for(i in response){		  
-			if(this.url != response[i]["url"]){				
-				if(product["store"] === response[i]["store"]){
-					getProduct.push(response[i]);    									
-				}				
-			}           	        
-	    }
+			/*=============================================
+			Hacemos un recorrido por la respuesta que nos traiga el filtrado
+			=============================================*/	
 
-	  	/*=============================================
-		Ordenamos de mayor a menor ventas el arreglo de objetos
-		=============================================*/	
-
-		getProduct.sort(function(a,b){
-			return (b.sales - a.sales)
-		})	
-
-		/*=============================================
-		Filtramos el producto
-		=============================================*/
-
-		getProduct.forEach((product, index)=>{
-
-			if(index < 4){
-
-				this.products.push(product);
-
-				 /*=============================================
-	        	Rating y Review
-	        	=============================================*/
-	        
-	        	this.rating.push(DinamicRating.fnc(this.products[index]));
-	        
-	        	this.reviews.push(DinamicReviews.fnc(this.rating[index]));
-	      
-	        	/*=============================================
-	        	Price
-	        	=============================================*/        
-
-	        	this.price.push(DinamicPrice.fnc(this.products[index]));
-				
-				this.cargando = false;
+			let i;
+			let getProduct = [];
+			let product;
+			
+			for(i in response){		  
+				if(this.url == response[i]["url"]){				
+					product = response[i];				
+				}			 									
 			}
 
+			for(i in response){		  
+				if(this.url != response[i]["url"]){				
+					if(product["store"] === response[i]["store"]){
+						this.categorias.map((item)=>{
+							if(item.id === response[i].category){
+								response[i].category = item.url
+								getProduct.push(response[i]); 
+							}
+						})					
+					}				
+				}           	        
+			}
 
+			/*=============================================
+			Ordenamos de mayor a menor ventas el arreglo de objetos
+			=============================================*/	
+
+			getProduct.sort(function(a,b){
+				return (b.sales - a.sales)
+			})	
+
+			/*=============================================
+			Filtramos el producto
+			=============================================*/
+
+			getProduct.forEach((product, index)=>{
+
+				if(index < 4){
+
+					this.products.push(product);
+
+					/*=============================================
+					Rating y Review
+					=============================================*/
+				
+					this.rating.push(DinamicRating.fnc(this.products[index]));
+				
+					this.reviews.push(DinamicReviews.fnc(this.rating[index]));
+			
+					/*=============================================
+					Price
+					=============================================*/        
+
+					this.price.push(DinamicPrice.fnc(this.products[index]));
+					
+					this.cargando = false;
+				}
+
+
+			})
 		})
 
 	}

@@ -73,8 +73,7 @@ export class BoughtTogetherComponent implements OnInit {
 								response[i].category = item.url
 								getProduct.push(response[i]);
 							}
-						})
-						
+						})						
 					}
 				}
 			}

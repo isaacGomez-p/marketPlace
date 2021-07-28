@@ -31,8 +31,8 @@
 
             <div class="header__right">
                 <ul class="header__top-links">
-                    <li><a href="#">Sell on MarketPlace</a></li>
-                    <li><a href="#">Store List</a></li>
+                    <li><a href="#">Vender en MarketPlace</a></li>
+                    <li><a href="#">Lista de la Tienda</a></li>
                     <li><i class="icon-telephone"></i> Hotline:<strong> 1-800-234-5678</strong></li>
                     <li>
                         <div class="ps-dropdown language"><a href="#"><img src="{{path}}img/template/en.png"
@@ -123,9 +123,9 @@
                 <form class="ps-form--quick-search">
 
                     <input (keyup.enter)="goSearch(search.value)" #search class="form-control" type="text"
-                        placeholder="I'm shopping for...">
+                        placeholder="¿Que estás buscando?">
 
-                    <button type="button" (click)="goSearch(search.value)">Search</button>
+                    <button type="button" (click)="goSearch(search.value)">Buscar</button>
 
                 </form>
 
@@ -139,7 +139,7 @@
 						Wishlist
 						======================================-->
 
-                    <a class="header__extra" href="#">
+                    <a class="header__extra" routerLink="account">
                         <i class="icon-heart"></i>
                         <span>
                             <i class="totalWishlist">{{this.wishList}}</i>
@@ -211,8 +211,8 @@
                             <i class="icon-user"></i>
                         </div>
                         <div class="ps-block__right">
-                            <a routerLink="login">Login</a>
-                            <a routerLink="register">Register</a>
+                            <a routerLink="login">Ingresar</a>
+                            <a routerLink="register">Registrarse</a>
                         </div>
                     </div>
 

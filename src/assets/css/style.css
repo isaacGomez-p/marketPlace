@@ -8402,6 +8402,7 @@ input[type=number]
 
 .ps-product--wide .ps-product__shopping {
   flex-basis: 180px;
+  padding: 11px 200px;
 }
 
 .ps-product--wide .ps-product__shopping .ps-btn {
