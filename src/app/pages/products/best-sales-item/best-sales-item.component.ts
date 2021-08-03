@@ -16,6 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { UsersService } from 'src/app/services/users.service';
 import { CarritoComprasModel } from 'src/app/models/carritoCompras.model';
+import { SubCategoriesService } from 'src/app/services/sub-categories.service';
 
 declare var jQuery: any;
 declare var $: any;
@@ -40,11 +41,13 @@ export class BestSalesItemComponent implements OnInit {
 	rutaCategoria: String = "";
 	categoria: number = 0;
 	usuarios: any = [];
+	subCategorias: any = [];
 	constructor(private productsService: ProductsService,
 		private categoriasService: CategoriesService,
 		private activateRoute: ActivatedRoute,
 		private usuarioService: UsersService,
-		private router: Router) { }
+		private router: Router,
+		private subCategoriaService: SubCategoriesService) { }
 
 	ngOnInit(): void {
 
@@ -55,10 +58,10 @@ export class BestSalesItemComponent implements OnInit {
 	=============================================*/
 
 		let params = this.activateRoute.snapshot.params["param"].split("&")[0];
-
+		let validacion = false;
 		/*=============================================
 		Filtramos data de productos con categorías
-		=============================================*/
+		=============================================*/		
 
 		this.categoriasService.getData().subscribe(data => {
 			this.categorias = data;
@@ -68,35 +71,40 @@ export class BestSalesItemComponent implements OnInit {
 					this.rutaCategoria = itemC.url
 				}
 			})
-		})
 
-		this.productsService.getData().subscribe(resp1 => {
-			this.productos = resp1;
-			this.productos.map((item) => {
-				if (item.category === this.categoria) {
-					if (Object.keys(resp1).length > 0) {
-						this.productsFnc(resp1);
-					} else {
-
-						/*=============================================
-						Filtramos data de subategorías
-						=============================================*/
-						this.productsFnc(resp1);
-						/*this.productsService.getFilterData("sub_category", params)
-						.subscribe(resp2=>{
-				
-							this.productsFnc(resp2);			
-							
-						})
-						*/
+			this.productsService.getData().subscribe(resp1 => {
+				this.productos = resp1;
+				this.productos.map((item) => {					
+					if (item.category === this.categoria) {
+						if (Object.keys(resp1).length > 0) {
+							validacion = true;
+							this.productsFnc(resp1);
+						} else {							
+							validacion = true;
+							this.productsFnc(resp1);							
+						}
 					}
+				})
+				if(validacion === false){
+					this.subCategoriaService.getData().subscribe(data=>{
+						this.subCategorias = data;
+						this.subCategorias.map((itemSub)=>{
+							if(itemSub.url === params){
+								this.categoria = itemSub.id
+								this.rutaCategoria = itemSub.url
+							}							
+						})
+						this.productos.map((itemProductos)=>{
+							if(itemProductos.sub_category === this.categoria){
+								this.productsFnc(resp1);
+							}
+						})
+					})
 				}
 			})
 
-
-
 		})
-		this.productsService.getFilterData("category", params)
+		/*this.productsService.getFilterData("category", params)
 			.subscribe(resp1 => {
 
 				if (Object.keys(resp1).length > 0) {
@@ -109,7 +117,7 @@ export class BestSalesItemComponent implements OnInit {
 					Filtramos data de subategorías
 					=============================================*/
 
-					this.productsService.getFilterData("sub_category", params)
+		/*			this.productsService.getFilterData("sub_category", params)
 						.subscribe(resp2 => {
 
 							this.productsFnc(resp2);
@@ -118,7 +126,7 @@ export class BestSalesItemComponent implements OnInit {
 
 				}
 
-			})
+			})*/	
 
 	}
 
@@ -139,10 +147,9 @@ Declaramos función para mostrar las mejores ventas
 
 		for (i in response) {
 			if (this.categoria === response[i].category) {
-				response[i].category = this.rutaCategoria
+				response[i].category = this.rutaCategoria				
 				getSales.push(response[i]);
 			}
-
 		}
 
 		/*=============================================
@@ -162,12 +169,12 @@ Declaramos función para mostrar las mejores ventas
 			if (index < 10) {
 
 				this.bestSalesItem.push(product);
-
+				console.log("this.bestSalesItem: " + JSON.stringify(this.bestSalesItem))
 				this.rating.push(DinamicRating.fnc(this.bestSalesItem[index]));
 
 				this.reviews.push(DinamicReviews.fnc(this.rating[index]));
 
-				//this.price.push(DinamicPrice.fnc(this.bestSalesItem[index]));
+				this.price.push(DinamicPrice.fnc(this.bestSalesItem[index]));
 
 				this.cargando = false;
 
@@ -215,7 +222,7 @@ Declaramos función para mostrar las mejores ventas
 			product: product,
 			unit: unit,
 			url: url
-		}		
+		}
 		this.usuarioService.addShoppinCart(item)
 	}
 }
