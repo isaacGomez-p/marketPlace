@@ -8,9 +8,9 @@ Breadcrumb
 
         <ul class="breadcrumb">
 
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">Inicio</a></li>
 
-            <li>Register</li>
+            <li>Registro</li>
 
         </ul>
 
@@ -36,11 +36,11 @@ Login - Register Content
             <ul class="ps-tab-list">
 
                 <li class="">
-                	<p><a href="login">Login</a></p>
+                	<p><a href="login">Iniciar sesión</a></p>
                 </li>
 
                 <li class="active">
-                	<p><a href="register">Register</a></p>
+                	<p><a href="register">Registro</a></p>
                 </li>
 
             </ul>
@@ -55,24 +55,24 @@ Login - Register Content
 
                     <div class="ps-form__content">
 
-                        <h5>Register An Account</h5>
+                        <h5>Registrar una cuenta</h5>
 
                         <div class="form-group">
 
                             <input 
                             class="form-control" 
                             type="text" 
-                            placeholder="First name"
+                            placeholder="Nombre"
                             [(ngModel)]="user.first_name"
                             name="first_name"
                             required
                             (change)="capitalize(first_name)"
                             #first_name>
 
-                            <div class="valid-feedback">Valid.</div>
+                            <div class="valid-feedback">Válido.</div>
                             <div 
                             *ngIf="f.submitted && f.controls['first_name'].errors"
-                            class="invalid-feedback">Please fill out this field.</div>
+                            class="invalid-feedback">Por favor completa este campo.</div>
 
                         </div>
 
@@ -81,17 +81,17 @@ Login - Register Content
                             <input 
                             class="form-control" 
                             type="text" 
-                            placeholder="Last name"
+                            placeholder="Apellido"
                             [(ngModel)]="user.last_name"
                             name="last_name"
                             required
                             (change)="capitalize(last_name)"
                             #last_name>
 
-                            <div class="valid-feedback">Valid.</div>
+                            <div class="valid-feedback">Válido.</div>
                             <div 
                             *ngIf="f.submitted && f.controls['last_name'].errors"
-                            class="invalid-feedback">Please fill out this field.</div>
+                            class="invalid-feedback">Por favor completa este campo.</div>
 
                         </div>
 
@@ -100,16 +100,16 @@ Login - Register Content
                             <input 
                             class="form-control" 
                             type="email" 
-                            placeholder="Email address"
+                            placeholder="Correo electrónico"
                             [(ngModel)]="user.email"
                             name="email"
                             email
                             required>
 
-                            <div class="valid-feedback">Valid.</div>
+                            <div class="valid-feedback">Válido.</div>
                             <div 
                             *ngIf="f.submitted && f.controls['email'].errors"
-                            class="invalid-feedback">Please fill out this field.</div>
+                            class="invalid-feedback">Por favor completa este campo.</div>
 
                         </div>
 
@@ -118,7 +118,7 @@ Login - Register Content
                             <input 
                             class="form-control" 
                             type="text" 
-                            placeholder="Username"
+                            placeholder="Usuario"
                             [(ngModel)]="user.username"
                             name="username"
                             required
@@ -131,10 +131,10 @@ Login - Register Content
                             #username
                             >
 
-                            <div class="valid-feedback">Valid.</div>
+                            <div class="valid-feedback">Válido.</div>
                             <div 
                             *ngIf="f.submitted && f.controls['username'].errors"
-                            class="invalid-feedback">Please fill out this field.</div>
+                            class="invalid-feedback">Por favor completa este campo.</div>
 
                         </div>
 
@@ -143,7 +143,7 @@ Login - Register Content
                             <input 
                             class="form-control" 
                             type="password" 
-                            placeholder="Password"
+                            placeholder="Contraseña"
                              [(ngModel)]="user.password"
                             name="password"
                             required
@@ -155,16 +155,16 @@ Login - Register Content
                             #password
                             >
 
-                            <div class="valid-feedback">Valid.</div>
+                            <div class="valid-feedback">Válido.</div>
                             <div 
                             *ngIf="f.submitted && f.controls['password'].errors"
-                            class="invalid-feedback">Please fill out this field.</div>
+                            class="invalid-feedback">Por favor completa este campo.</div>
 
                         </div>
 
                         <div class="form-group submtit">
 
-                            <button class="ps-btn ps-btn--fullwidth">Register</button>
+                            <button class="ps-btn ps-btn--fullwidth">Resgistrarse</button>
 
                         </div>
 
@@ -172,7 +172,7 @@ Login - Register Content
 
                     <div class="ps-form__footer">
 
-                        <p>Connect with:</p>
+                        <p>Conectar con:</p>
 
                         <!--=====================================
                         https://firebase.google.com/docs/web/setup

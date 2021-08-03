@@ -8,9 +8,9 @@ Breadcrumb
 
         <ul class="breadcrumb">
 
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">Inicio</a></li>
 
-            <li>Login</li>
+            <li>Iniciar sesión</li>
 
         </ul>
 
@@ -36,13 +36,13 @@ Login - Register Content
 
                 <li class="active">
 
-                	<p><a href="login">Login</a></p>
+                	<p><a href="login">Iniciar sesión</a></p>
 
                 </li>
 
                 <li class="">
 
-                	<p><a href="register">Register</a></p>
+                	<p><a href="register">Registro</a></p>
 
                 </li>
 
@@ -58,23 +58,23 @@ Login - Register Content
 
                     <div class="ps-form__content">
 
-                        <h5>Log In Your Account</h5>
+                        <h5>Iniciar sesión</h5>
 
                         <div class="form-group">
 
                             <input 
                             class="form-control" 
                             type="text" 
-                            placeholder="Email address"
+                            placeholder="Correo electrónico"
                             [(ngModel)]="user.email"
                             name="email"
                             email
                             required>
 
-                            <div class="valid-feedback">Valid.</div>
+                            <div class="valid-feedback">Válido.</div>
                             <div 
                             *ngIf="f.submitted && f.controls['email'].errors"
-                            class="invalid-feedback">Please fill out this field.</div>
+                            class="invalid-feedback">Por favor completa este campo.</div>
 
                         </div>
 
@@ -83,18 +83,18 @@ Login - Register Content
                             <input 
                             class="form-control" 
                             type="password" 
-                            placeholder="Password"
+                            placeholder="Contraseña"
                             [(ngModel)]="user.password"
                             name="password"
                             required
                             >
 
-                            <div class="valid-feedback">Valid.</div>
+                            <div class="valid-feedback">Válido.</div>
                             <div 
                             *ngIf="f.submitted && f.controls['password'].errors"
-                            class="invalid-feedback">Please fill out this field.</div>
+                            class="invalid-feedback">Por favor completa este campo.</div>
 
-                            <a href="#resetPassword" data-toggle="modal">Forgot?</a>
+                            <a href="#resetPassword" data-toggle="modal">Olvidé mi contraseña.</a>
 
                         </div>
 
@@ -109,7 +109,7 @@ Login - Register Content
                                 name="remember-me"
                                 [(ngModel)]="rememberMe">
 
-                                <label for="remember-me">Remember me</label>
+                                <label for="remember-me">Recordar cuenta.</label>
 
                             </div>
 
@@ -117,7 +117,7 @@ Login - Register Content
 
                         <div class="form-group submtit">
 
-                            <button class="ps-btn ps-btn--fullwidth">Login</button>
+                            <button class="ps-btn ps-btn--fullwidth">Iniciar sesión</button>
 
                         </div>
 
@@ -125,7 +125,7 @@ Login - Register Content
 
                     <div class="ps-form__footer">
 
-                        <p>Connect with:</p>
+                        <p>Conectar con:</p>
 
                         <ul class="ps-list--social">
 
@@ -171,7 +171,7 @@ Ventana modal para recuperar contraseña
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Reset Password</h4>
+        <h4 class="modal-title">Restaurar contraseña.</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -185,14 +185,14 @@ Ventana modal para recuperar contraseña
                 <input 
                 type="email" 
                 class="form-control" 
-                placeholder="Input your email address"
+                placeholder="Ingresa el correo electrónico"
                 name="email"
                 #email
                 email
                 required>
 
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill in this field correctly.</div>
+                <div class="valid-feedback">Valido.</div>
+                <div class="invalid-feedback">Por favor completa este campo.</div>
 
             </div>
 
@@ -201,7 +201,7 @@ Ventana modal para recuperar contraseña
                 <button 
                 type="button"
                 (click)="resetPassword(email.value)"
-                class="ps-btn ps-btn--fullwidth">Submit</button>
+                class="ps-btn ps-btn--fullwidth">Enviar</button>
 
             </div>
 
@@ -211,7 +211,7 @@ Ventana modal para recuperar contraseña
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
       </div>
 
     </div>
@@ -228,7 +228,7 @@ Ventana modal para escribir nueva contraseña
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">New Password</h4>
+        <h4 class="modal-title">Nueva Contraseña</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -242,18 +242,18 @@ Ventana modal para escribir nueva contraseña
                 <input 
                 type="password" 
                 class="form-control" 
-                placeholder="Input your new password"
+                placeholder="Ingresa la nueva contraseña"
                 name="password"
                 #password
                 minlength="4"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}"  
                 data-toggle="tooltip"
-                title="Enter your password with at least 4 characters and must include uppercase, lowercase letters and numbers"
+                title="La contraseña debe tener al menos una mayúscula, un número y 4 caracteres de longitud."
                 (change)="validate(password)"
                 required>
 
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill in this field correctly.</div>
+                <div class="valid-feedback">Valido.</div>
+                <div class="invalid-feedback">Por favor completa este campo.</div>
 
             </div>
 
@@ -262,7 +262,7 @@ Ventana modal para escribir nueva contraseña
                 <button 
                 type="button"
                 (click)="newPassword(password.value)"
-                class="ps-btn ps-btn--fullwidth">Submit</button>
+                class="ps-btn ps-btn--fullwidth">Enviar</button>
 
             </div>
 
@@ -272,7 +272,7 @@ Ventana modal para escribir nueva contraseña
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
       </div>
 
     </div>

@@ -5,10 +5,10 @@ Nav Account
 <div class="ps-section__content">
 
     <ul class="ps-section__links">
-        <li class="active"><a href=my-account_wishlist.html>My Wishlist</a></li>
-        <li><a href="my-account_my-shopping.html">My Shopping</a></li>
-        <li><a href="my-account_new-store.html">My Store</a></li>
-        <li><a href="my-account_my-sales.html">My Sales</a></li>
+        <li class="active"><a href=my-account_wishlist.html>Mi lista de deseos</a></li>
+        <li><a href="my-account_my-shopping.html">Mis compras</li>a></li>
+        <li><a href="my-account_new-store.html">Mi tienda</a></li>
+        <li><a href="my-account_my-sales.html">Mis ventas</a></li>
     </ul>
 
     <!--=====================================
@@ -24,11 +24,11 @@ Nav Account
 
                 <tr>
 
-                    <th>Product name</th>
+                    <th>Producto</th>
 
-                    <th>Unit Price</th>
+                    <th>Precio unitario</th>
 
-                    <th>Stock Status</th>
+                    <th>Inventario</th>
 
                     <th></th>
 
@@ -39,7 +39,7 @@ Nav Account
             </thead>
 
             <tr *ngIf="products.length == 0">
-                <td colspan="3" class="text-center">No tiene productos en la lista de deseos!</td>
+                <td colspan="3" class="text-center">¡No tiene productos en la lista de deseos!</td>
             </tr>
 
             <!-- Product -->
@@ -81,9 +81,9 @@ Nav Account
 
                     <td>
 
-                        <span *ngIf="product.stock == 0" class="ps-tag ps-tag--out-stock">Out-stock</span>
+                        <span *ngIf="product.stock == 0" class="ps-tag ps-tag--out-stock">No disponible</span>
 
-                        <span *ngIf="product.stock > 0" class="ps-tag ps-tag--in-stock">In-stock</span>
+                        <span *ngIf="product.stock > 0" class="ps-tag ps-tag--in-stock">Disponible</span>
 
                     </td>
 
