@@ -476,8 +476,8 @@ export let Pagination = {
                     totalPages: totalPages,
                     startPage: actualPage,
                     visiblePages: 4,
-                    first: "First",
-                    last: "Last",
+                    first: "Primera",
+                    last: "Última",
                     prev: '<i class="fas fa-angle-left"></i>',
                     next: '<i class="fas fa-angle-right"></i>'
                 }).on("page", function (evt, page) {
