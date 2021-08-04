@@ -161,12 +161,12 @@ Declaramos función para mostrar las mejores ventas
 		})
 
 		/*=============================================
-		Filtramos solo hasta 10 productos
+		Filtramos solo hasta 5 productos
 		=============================================*/
 		
 		getSales.forEach((product, index) => {
 
-			if (index < 10) {
+			if (index < 5) {
 
 				this.bestSalesItem.push(product);
 				
@@ -179,27 +179,19 @@ Declaramos función para mostrar las mejores ventas
 				this.cargando = false;
 
 			}
-
 		})
-
 	}
 
 	/*=============================================
-  Función que nos avisa cuando finaliza el renderizado de Angular
-  =============================================*/
-
+  	Función que nos avisa cuando finaliza el renderizado de Angular
+  	=============================================*/
 	callback() {
-
 		if (this.render) {
-
 			this.render = false;
-
 			OwlCarouselConfig.fnc();
 			CarouselNavigation.fnc();
 			Rating.fnc();
-
 		}
-
 	}
 
 	/*=============================================
@@ -213,7 +205,6 @@ Declaramos función para mostrar las mejores ventas
 	/*=============================================
 	Función para agregar productos al carrito de compras
 	=============================================*/
-
 	addShoppinCart(product, unit, details) {
 		let url = this.router.url;
 		let item = new CarritoComprasModel();

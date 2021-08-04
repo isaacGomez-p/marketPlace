@@ -230,8 +230,9 @@ export class HomeShowcaseComponent implements OnInit {
 					Recorremos el array de objetos nuevo para buscar coincidencias con las url de categorías
 					=============================================*/
 					let jj = 0;
+					let lj = 0;
 					for (let i in arrayProducts) {						
-						jj++;
+						
 						if (category.url == arrayProducts[i].category) {
 
 							/*=============================================
@@ -325,7 +326,8 @@ export class HomeShowcaseComponent implements OnInit {
 							/*=============================================
 							Imprimimos los productos en el HTML
 							=============================================*/
-
+							if(lj < 6){
+								lj++;
 							$(`[category-pb='${arrayProducts[i].category}']`).append(`
 
 								 <div class="ps-product ps-product--simple">
@@ -367,7 +369,7 @@ export class HomeShowcaseComponent implements OnInit {
 				                </div> 
 
 			                `)
-
+							}
 							/*=============================================
 							Clasificamos la cantidad de estrellas según la calificación
 							=============================================*/
@@ -402,7 +404,8 @@ export class HomeShowcaseComponent implements OnInit {
 							/*=============================================
 							Imprimimos los productos en el Vertical Slider
 							=============================================*/
-							if(jj < 3){							
+							if(jj < 1){		
+								jj++;					
 								$(`[category-sl='${arrayProducts[i].category}']`).append(`
 
 									<a href="product/${arrayProducts[i].url}">
