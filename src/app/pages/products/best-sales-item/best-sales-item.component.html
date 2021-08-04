@@ -39,7 +39,7 @@ class="ps-block--shop-features">
                 <div class="ps-product__thumbnail">
 
                 	<a href="product/{{product.url}}">
-                		<img src="{{path}}img/products/{{product.category}}/{{product.image}}" alt="{{product.name}}">
+                		<img src="{{path}}img/products/{{product.category.toLowerCase()}}/{{product.image}}" alt="{{product.name}}">
                 	</a>
 
                 	<div [innerHTML]="price[i]"></div>

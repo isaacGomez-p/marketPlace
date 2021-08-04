@@ -163,13 +163,13 @@ Declaramos función para mostrar las mejores ventas
 		/*=============================================
 		Filtramos solo hasta 10 productos
 		=============================================*/
-
+		
 		getSales.forEach((product, index) => {
 
 			if (index < 10) {
 
 				this.bestSalesItem.push(product);
-				console.log("this.bestSalesItem: " + JSON.stringify(this.bestSalesItem))
+				
 				this.rating.push(DinamicRating.fnc(this.bestSalesItem[index]));
 
 				this.reviews.push(DinamicReviews.fnc(this.rating[index]));
