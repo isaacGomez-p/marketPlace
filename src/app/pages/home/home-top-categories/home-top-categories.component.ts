@@ -53,11 +53,16 @@ export class HomeTopCategoriesComponent implements OnInit {
 
 			getCategories.forEach((category, index)=>{
 
-				if(index < 6){
+				//if(index < 6){
 
-					this.categories[index] = getCategories[index];
+					this.categories[0] = getCategories[0];
+					this.categories[1] = getCategories[1];
+					this.categories[2] = getCategories[2];
+					this.categories[3] = getCategories[6];
+					this.categories[4] = getCategories[7];
+					this.categories[5] = getCategories[8];
 					this.cargando = false;
-				}
+				//}
 
 			})
 

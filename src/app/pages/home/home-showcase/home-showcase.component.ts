@@ -75,11 +75,16 @@ export class HomeShowcaseComponent implements OnInit {
 
 				getCategories.forEach((category, index) => {
 
-					if (index < 6) {
+					//if (index < 6) {
 
-						this.categories[index] = getCategories[index];
+						this.categories[0] = getCategories[0];
+						this.categories[1] = getCategories[1];
+						this.categories[2] = getCategories[2];
+						this.categories[3] = getCategories[6];
+						this.categories[4] = getCategories[7];
+						this.categories[5] = getCategories[8];
 						this.cargando = false;
-					}
+					//}
 
 				})
 
@@ -158,40 +163,37 @@ export class HomeShowcaseComponent implements OnInit {
 				=============================================*/
 				this.productsService.getData().subscribe((resp) => {
 					this.productos = resp
-					let i;
+					let j = 0;
 
-					this.productos.map((i) => {
-						console.log("---1 ")
-						this.categoriesAll.map((item) => {
-							console.log("---2 ")
-							if (item.id === i.category) {
-								console.log("---3 ")
-								let validacion = true;
-								arrayProducts.map((item) => {
-									if (item.id === i.id) {
-										validacion = false;
-									}
-								})
-								if (validacion === true) {
-
-
-									arrayProducts.push({
-										"category": item.url,
-										"url": i.url,
-										"name": i.name,
-										"image": i.image,
-										"price": i.price,
-										"offer": i.offer,
-										"reviews": i.reviews,
-										"stock": i.stock,
-										"vertical_slider": i.vertical_slider,
-										"id": i.id,
+					this.productos.map((i) => {												
+						this.categoriesAll.map((item) => {			
+								if (item.id === i.category) {
+									
+									let validacion = true;
+									arrayProducts.map((item) => {
+										if (item.id === i.id) {
+											validacion = false;
+										}
 									})
+									if (validacion === true) {									
+										arrayProducts.push({
+											"category": item.url,
+											"url": i.url,
+											"name": i.name,
+											"image": i.image,
+											"price": i.price,
+											"offer": i.offer,
+											"reviews": i.reviews,
+											"stock": i.stock,
+											"vertical_slider": i.vertical_slider,
+											"id": i.id,
+										})
 
-								}
-							}
-
+									}
+								}															
+							
 						})
+					
 						/*arrayProducts.push({
 							"category": resp[i].category,
 							"url": resp[i].url,
@@ -227,8 +229,9 @@ export class HomeShowcaseComponent implements OnInit {
 					/*=============================================
 					Recorremos el array de objetos nuevo para buscar coincidencias con las url de categorías
 					=============================================*/
-					for (i in arrayProducts) {
-						console.log("------------------------ " + JSON.stringify(arrayProducts));
+					let jj = 0;
+					for (let i in arrayProducts) {						
+						jj++;
 						if (category.url == arrayProducts[i].category) {
 
 							/*=============================================
@@ -399,16 +402,17 @@ export class HomeShowcaseComponent implements OnInit {
 							/*=============================================
 							Imprimimos los productos en el Vertical Slider
 							=============================================*/
+							if(jj < 3){							
+								$(`[category-sl='${arrayProducts[i].category}']`).append(`
 
-							$(`[category-sl='${arrayProducts[i].category}']`).append(`
+									<a href="product/${arrayProducts[i].url}">
 
-								<a href="product/${arrayProducts[i].url}">
+										<img src="assets/img/products/${arrayProducts[i].category}/vertical/${arrayProducts[i].vertical_slider}" alt="">
 
-			                		<img src="assets/img/products/${arrayProducts[i].category}/vertical/${arrayProducts[i].vertical_slider}" alt="">
+									</a>
 
-			                	</a>
-
-							`)
+								`)
+							}
 
 							/*=============================================
 							Ejecutar funciones globales con respecto al carrusel

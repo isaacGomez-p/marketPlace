@@ -57,8 +57,10 @@ export class HomePromotionsComponent implements OnInit {
 			}
 
 			for(i in resp){
+				if(i<2){
+					this.banner_default.push(resp[i].default_banner)
+				}
 				
-				this.banner_default.push(resp[i].default_banner)
 				this.categories.map((item) => {
 					if (item.id === resp[i].category) {							
 						this.category.push(item.url)
