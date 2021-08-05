@@ -221,20 +221,20 @@ Declaramos función para mostrar el catálogo de productos
 
 			this.sortItems = [
 
-				"Sort by first",
-				"Sort by latest",
-				"Sort by popularity",
-				"Sort by price: low to high",
-				"Sort by price: high to low"
+				"Ordenar por mas nuevo",
+				"Ordenar por mas antiguo",
+				"Ordenar por popularidad",
+				"Ordenar por precio descendente",
+				"Ordenar por precio ascendente"
 			]
 
 			this.sortValues = [
 
-				"first",
-				"latest",
-				"popularity",
-				"low",
-				"high"
+				"Mas nuevo",
+				"Mas antiguo",
+				"Popularidad",
+				"Barato",
+				"Costoso"
 			]
 
 		}
@@ -251,20 +251,20 @@ Declaramos función para mostrar el catálogo de productos
 
 			this.sortItems = [
 
-				"Sort by latest",
-				"Sort by first",
-				"Sort by popularity",
-				"Sort by price: low to high",
-				"Sort by price: high to low"
+				"Ordenar por mas nuevo",
+				"Ordenar por mas antiguo",
+				"Ordenar por popularidad",
+				"Ordenar por precio descendente",
+				"Ordenar por precio ascendente"
 			]
 
 			this.sortValues = [
 
-				"latest",
-				"first",
-				"popularity",
-				"low",
-				"high"
+				"Mas nuevo",
+				"Mas antiguo",
+				"Popularidad",
+				"Barato",
+				"Costoso"
 			]
 
 		}
@@ -281,20 +281,20 @@ Declaramos función para mostrar el catálogo de productos
 
 			this.sortItems = [
 
-				"Sort by popularity",
-				"Sort by first",
-				"Sort by latest",
-				"Sort by price: low to high",
-				"Sort by price: high to low"
+				"Ordenar por mas nuevo",
+				"Ordenar por mas antiguo",
+				"Ordenar por popularidad",
+				"Ordenar por precio descendente",
+				"Ordenar por precio ascendente"
 			]
 
 			this.sortValues = [
 
-				"popularity",
-				"first",
-				"latest",
-				"low",
-				"high"
+				"Mas nuevo",
+				"Mas antiguo",
+				"Popularidad",
+				"Barato",
+				"Costoso"
 			]
 
 		}
@@ -311,20 +311,20 @@ Declaramos función para mostrar el catálogo de productos
 
 			this.sortItems = [
 
-				"Sort by price: low to high",
-				"Sort by first",
-				"Sort by latest",
-				"Sort by popularity",
-				"Sort by price: high to low"
+				"Ordenar por mas nuevo",
+				"Ordenar por mas antiguo",
+				"Ordenar por popularidad",
+				"Ordenar por precio descendente",
+				"Ordenar por precio ascendente"
 			]
 
 			this.sortValues = [
 
-				"low",
-				"first",
-				"latest",
-				"popularity",
-				"high"
+				"Mas nuevo",
+				"Mas antiguo",
+				"Popularidad",
+				"Barato",
+				"Costoso"
 			]
 
 
@@ -342,24 +342,21 @@ Declaramos función para mostrar el catálogo de productos
 
 			this.sortItems = [
 
-				"Sort by price: high to low",
-				"Sort by first",
-				"Sort by latest",
-				"Sort by popularity",
-				"Sort by price: low to high"
-
+				"Ordenar por mas nuevo",
+				"Ordenar por mas antiguo",
+				"Ordenar por popularidad",
+				"Ordenar por precio descendente",
+				"Ordenar por precio ascendente"
 			]
 
 			this.sortValues = [
 
-				"high",
-				"first",
-				"latest",
-				"popularity",
-				"low"
-
+				"Mas nuevo",
+				"Mas antiguo",
+				"Popularidad",
+				"Barato",
+				"Costoso"
 			]
-
 
 		}
 
