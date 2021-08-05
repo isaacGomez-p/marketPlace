@@ -16,6 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { UsersService } from 'src/app/services/users.service';
 import { CarritoComprasModel } from 'src/app/models/carritoCompras.model';
+import { SubCategoriesService } from 'src/app/services/sub-categories.service';
 
 @Component({
 	selector: 'app-products-recommended',
@@ -33,73 +34,110 @@ export class ProductsRecommendedComponent implements OnInit {
 	cargando: Boolean = false;
 
 	productos: any = [];
+	subCategorias: any = [];
 	categorias: any = [];
 	categoria: number = 0;
 	rutaCategoria: String = "";
+	getSales = [];
 	constructor(private productsService: ProductsService,
 		private categoriasService: CategoriesService,
 		private activateRoute: ActivatedRoute,
 		private usuarioService: UsersService,
-		private router: Router) { }
+		private router: Router,
+		private subCategory: SubCategoriesService) { }
 
 	ngOnInit(): void {
 
 		this.cargando = true;
 
 		/*=============================================
-	Capturamos el parámetro URL
-	=============================================*/
+		Capturamos el parámetro URL
+		=============================================*/
 
 		let params = this.activateRoute.snapshot.params["param"].split("&")[0];
-
-		/*=============================================
-		Filtramos data de productos con categorías
-		=============================================*/
-		this.categoriasService.getData().subscribe(data => {
-			console.log("entro 3")
-			this.categorias = data;
-			this.categorias.map((itemC) => {
-				console.log("entro 4")
-				if (itemC.url === params) {
-					console.log("entro 4 - 1")
-					this.categoria = itemC.id
-					this.rutaCategoria = itemC.url
+		let tipoBusqueda = 'NULL';
+		let idSubCategoria = 0;
+		this.subCategory.getData().subscribe((data2) => {
+			this.subCategorias = data2
+			/*=============================================
+			Se busca si el parametro pertenece a una SubCategoria
+			=============================================*/
+			this.subCategorias.map((itemSubCat) => {
+				if (itemSubCat.url === params) {
+					tipoBusqueda = 'SUBCATEGORIAS'
+					idSubCategoria = itemSubCat.id
 				}
 			})
+			if (tipoBusqueda === 'SUBCATEGORIAS') {
+				/*=============================================
+				Filtramos data de productos con SubCategorías
+				=============================================*/		
+				this.productsService.getData().subscribe(resp1 => {
+					this.categoriasService.getData().subscribe(data => {
+						this.categorias = data;
+						this.productos = resp1;
+						this.productos.map((item) => {
+							if (item.sub_category === idSubCategoria) {
+								this.categorias.map((itemCate)=>{
+									if(item.category === itemCate.id){
+										item.category = itemCate.url
+										this.getSales.push(item)
+									}
+								})
+							}
+						})
+						if(this.getSales.length !== 0){
+							this.productsFnc()
+						}
+					})
+				})
+			} else {
+				/*=============================================
+				Filtramos data de productos con categorías
+				=============================================*/
+				this.categoriasService.getData().subscribe(data => {
+					this.categorias = data;
+					this.categorias.map((itemC) => {
+						if (itemC.url === params) {
+							this.categoria = itemC.id
+							this.rutaCategoria = itemC.url
+						}
+					})
+					this.productsService.getData().subscribe(resp1 => {
+						this.productos = resp1;
+						this.productos.map((item) => {
+							if (item.category === this.categoria) {
+								if (Object.keys(resp1).length > 0) {
+									item.category = this.rutaCategoria
+									this.getSales.push(item)
+									//this.productsFnc(resp1);
+
+								} else {
+									//this.productsFnc(resp1);
+
+
+									/*this.productsService.getFilterData("sub_category", params)
+										.subscribe(resp2=>{		
+											
+											this.productsFnc(resp2);			
+											
+										})
+						
+									}*/
+								}
+							}
+						})
+
+						if (this.getSales.length !== 0) {
+							this.productsFnc()
+						}
+
+					})
+				})
+			}
 		})
-		
-		this.productsService.getData().subscribe(resp1 => {
-			console.log("entro 5")
-			this.productos = resp1;
-			this.productos.map((item) => {
-				console.log("entro 6")
-				if (item.category === this.categoria) {
-					console.log("entro 7")
-					if (Object.keys(resp1).length > 0) {
-
-						this.productsFnc(resp1);
-
-					} else {
-						this.productsFnc(resp1);
-						/*=============================================
-						Filtramos data de subategorías
-						=============================================*/
-
-						/*this.productsService.getFilterData("sub_category", params)
-							.subscribe(resp2=>{		
-								
-								this.productsFnc(resp2);			
-								
-							})
-			
-						}*/
-					}
-				}
-			})
 
 
-
-		})
 		/*this.productsService.getFilterData("category", params)
 		.subscribe(resp1=>{
 
@@ -127,33 +165,18 @@ export class ProductsRecommendedComponent implements OnInit {
 	}
 
 	/*=============================================
-Declaramos función para mostrar los productos recomendados
-=============================================*/
+	Declaramos función para mostrar los productos recomendados
+	=============================================*/
 
-	productsFnc(response) {
+	productsFnc() {
 
 		this.recommendedItems = [];
-
-		/*=============================================
-		Hacemos un recorrido por la respuesta que nos traiga el filtrado
-		=============================================*/
-
-		let i;
-		let getSales = [];
-
-		for (i in response) {
-			if (this.categoria === response[i].category) {
-				response[i].category = this.rutaCategoria
-				getSales.push(response[i]);
-			}
-
-		}
 
 		/*=============================================
 		Ordenamos de mayor a menor ventas el arreglo de objetos
 		=============================================*/
 
-		getSales.sort(function (a, b) {
+		this.getSales.sort(function (a, b) {
 			return (b.views - a.views)
 		})
 
@@ -161,7 +184,7 @@ Declaramos función para mostrar los productos recomendados
 		Filtramos solo hasta 10 productos
 		=============================================*/
 
-		getSales.forEach((product, index) => {
+		this.getSales.forEach((product, index) => {
 
 			if (index < 10) {
 
@@ -171,7 +194,7 @@ Declaramos función para mostrar los productos recomendados
 
 				this.reviews.push(DinamicReviews.fnc(this.rating[index]));
 
-				//this.price.push(DinamicPrice.fnc(this.recommendedItems[index]));
+				this.price.push(DinamicPrice.fnc(this.recommendedItems[index]));
 
 				this.cargando = false;
 
@@ -199,7 +222,7 @@ Declaramos función para mostrar los productos recomendados
 
 	}
 
-	addWishList(product){
+	addWishList(product) {
 		this.usuarioService.addWishList(product);
 	}
 
@@ -215,7 +238,7 @@ Declaramos función para mostrar los productos recomendados
 			product: product,
 			unit: unit,
 			url: url
-		}		
+		}
 		this.usuarioService.addShoppinCart(item)
 	}
 

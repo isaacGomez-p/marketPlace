@@ -26,12 +26,14 @@ export class ProductsBreadcrumbComponent implements OnInit {
     // this.activateRoute.params.subscribe(param => { })
 
 	let params = this.activateRoute.snapshot.params["param"].split("&")[0];
+	
+	this.breadcrumb = params
 
 	/*=============================================
 	Filtramos data de categorías
 	=============================================*/	
 
-	this.categoriesService.getFilterData("url", params)
+	/*this.categoriesService.getFilterData("url", params)
 	.subscribe(resp1=>{
 
 		if(Object.keys(resp1).length > 0){
@@ -59,7 +61,7 @@ export class ProductsBreadcrumbComponent implements OnInit {
 			Filtramos data de subategorías
 			=============================================*/	
 
-			this.subCategoriesService.getFilterData("url", params)
+		/*	this.subCategoriesService.getFilterData("url", params)
 			.subscribe(resp2=>{
 	
 				let i;
@@ -84,7 +86,7 @@ export class ProductsBreadcrumbComponent implements OnInit {
 		}
 		
 	})
-	
+*/	
   }
 
 }

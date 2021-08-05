@@ -23,7 +23,7 @@ export class HomeHotTodayComponent implements OnInit {
 	topSales:Array<any> = [];
 	topSalesBlock:Array<any> = [];
 	renderBestSeller:Boolean = true;
-
+	productos: any = []
   	constructor(private productsService: ProductsService,
   		        private salesService: SalesService) { }
 
@@ -103,13 +103,10 @@ export class HomeHotTodayComponent implements OnInit {
 
 			for(i in resp){
 
-				getSales.push({
-
+				getSales.push({					
 					"product":resp[i].product,
 					"quantity":resp[i].quantity
-
 				})
-
 			}
 
 			/*=============================================
@@ -146,11 +143,20 @@ export class HomeHotTodayComponent implements OnInit {
 
 			let block = 0;
 
-			filterSales.forEach((sale, index)=>{				
+			filterSales.forEach((sale, index)=>{		
+				console.log("------- " + JSON.stringify(sale))
 				/*=============================================
 				Filtramos hasta 20 ventas
 				=============================================*/	
-				this.topSales.push(resp[i])		
+				this.productsService.getData().subscribe(dataP=>{
+					this.productos = dataP
+					this.productos.map((itemP)=>{
+						if(itemP.id+"" === sale.product){
+							this.topSales.push(itemP)		
+						}
+					})
+				})
+				
 				/*if(index < 20){
 
 					block ++;

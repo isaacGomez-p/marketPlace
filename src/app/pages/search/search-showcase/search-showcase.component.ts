@@ -16,6 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { CarritoComprasModel } from 'src/app/models/carritoCompras.model';
+import { SubCategoriesService } from 'src/app/services/sub-categories.service';
 
 declare var jQuery: any;
 declare var $: any;
@@ -44,24 +45,26 @@ export class SearchShowcaseComponent implements OnInit {
 	sortValues: Array<any> = [];
 	properties: Array<any> = ["category", "name", "store", "sub_category", "tags", "title_list", "url"];
 	listProducts: Array<any> = [];
-
+	tituloFound: String = 'No se encontraron productos';
 
 	productos: any = [];
 	categorias: any = [];
+	subCategorias: any = [];
 
 	constructor(private productsService: ProductsService,
 		private categoriaService: CategoriesService,
 		private activateRoute: ActivatedRoute,
 		private usuarioService: UsersService,
-		private router: Router) { }
+		private router: Router,
+		private subCategoryService: SubCategoriesService) { }
 
 	ngOnInit(): void {
 
 		this.cargando = true;
 
 		/*=============================================
-	Capturamos el parámetro URL
-	=============================================*/
+		Capturamos el parámetro URL
+		=============================================*/
 
 		this.params = this.activateRoute.snapshot.params["param"].split("&")[0];
 		this.sort = this.activateRoute.snapshot.params["param"].split("&")[1];
@@ -94,16 +97,17 @@ export class SearchShowcaseComponent implements OnInit {
 		/*=============================================
 		Filtramos data de productos con todas las propiedades
 		=============================================*/
-		//this.properties.forEach(property=>{
+		//this.properties.forEach(property=>{		
 		this.productsService.getData().subscribe(data => {
 			this.categoriaService.getData().subscribe(
 				dataCategoria => {
 					this.categorias = dataCategoria;
 					this.productos = data;
 					this.productos.map((item) => {
-						if (item.name.toUpperCase().includes(this.params.toUpperCase())) {
+						if (item.name.toUpperCase().includes(this.params.toUpperCase()) || item.store.toUpperCase().includes(this.params.toUpperCase())) {
 							this.categorias.map((itemCate) => {
 								if (item.category === itemCate.id) {
+									console.log("agrego " + item.id)
 									item.category = itemCate.url
 									this.listProducts.push(item)
 								}
@@ -111,11 +115,25 @@ export class SearchShowcaseComponent implements OnInit {
 
 						}
 					})
-					this.productsFnc(this.listProducts);
+					if(this.listProducts.length !== 0){
+						this.productsFnc(this.listProducts);
+					}					
 				}
 			)
 
 		})
+
+		/*this.subCategoryService.getData().subscribe(data=>{
+			this.subCategorias = data;
+			this.subCategorias.map((item)=>{
+				if (item.name.toUpperCase().includes(this.params.toUpperCase())) {
+					this.productsService.getData().subscribe(data1=>{
+						this.productos
+					})
+				}
+			})
+		})
+*/
 		/*this.productsService.getSearchData(property, this.params)
 		.subscribe(resp=>{
 
@@ -182,6 +200,9 @@ Declaramos función para mostrar el catálogo de productos
 			=============================================*/
 
 			this.productFound = total;
+			if (total !== 0) {
+				this.tituloFound = 'productos encontrados';
+			}
 			this.totalPage = Math.ceil(Number(this.productFound) / 6);
 
 			/*=============================================

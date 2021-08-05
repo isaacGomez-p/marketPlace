@@ -16,6 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { UsersService } from 'src/app/services/users.service';
 import { CarritoComprasModel } from 'src/app/models/carritoCompras.model';
+import { SubCategoriesService } from 'src/app/services/sub-categories.service';
 
 declare var jQuery: any;
 declare var $: any;
@@ -46,22 +47,25 @@ export class ProductsShowcaseComponent implements OnInit {
 	categorias: any = [];
 	categoria: number = -1;
 	rutaCategoria: String = "";
+	getSales = [];
+	subCategorias: any = [];
+	tipoBusqueda: String = 'NULL';
+	subCategory: number = 0;
 	constructor(private productsService: ProductsService,
 		private categoriasService: CategoriesService,
 		private activateRoute: ActivatedRoute,
 		private usuarioService: UsersService,
-		private router: Router) { }
+		private router: Router,
+		private subCategoriaService: SubCategoriesService) { }
 
-	ngOnInit(): void {
-		console.log("entro 1")
+	ngOnInit(): void {		
 		this.cargando = true;
 
 		/*=============================================
-	Capturamos el parámetro URL
-	=============================================*/
+		Capturamos el parámetro URL
+		=============================================*/
 
-		this.params = this.activateRoute.snapshot.params["param"].split("&")[0];
-		console.log("params: " + this.params)
+		this.params = this.activateRoute.snapshot.params["param"].split("&")[0];		
 		this.sort = this.activateRoute.snapshot.params["param"].split("&")[1];
 		this.page = this.activateRoute.snapshot.params["param"].split("&")[2];
 
@@ -80,65 +84,82 @@ export class ProductsShowcaseComponent implements OnInit {
 		=============================================*/
 
 		if (this.sort == undefined) {
-			console.log("entro 1 - 1")
 			this.currentRoute = `products/${this.params}`;
-
 		} else {
-			console.log("entro 1 - 2")
 			this.currentRoute = `products/${this.params}&${this.sort}`;
 
 		}
 
-		/*=============================================
-		Filtramos data de productos con categorías
-		=============================================*/
-
-		this.categoriasService.getData().subscribe(data => {
-			console.log("entro 3")
-			this.categorias = data;
-			this.categorias.map((itemC) => {
-				console.log("entro 4")
-				if (itemC.url === this.params) {
-					console.log("entro 4 - 1")
-					this.categoria = itemC.id
-					this.rutaCategoria = itemC.url
-					console.log("--- " + this.categoria)
-					this.productsService.getData().subscribe(resp1 => {
-						console.log("entro 5")
-						this.productos = resp1;
-						this.productos.map((item) => {
-							console.log("entro 6")
-							console.log("item.category: " + item.category + "- categoria: " + this.categoria)
-							if (item.category === this.categoria) {
-								console.log("entro 7")
-								if (Object.keys(resp1).length > 0) {
-									console.log("entro 8")
-									this.productsFnc(resp1);
-								} else {
-									console.log("entro 9")
-									/*=============================================
-									Filtramos data de subategorías
-									=============================================*/
-									this.productsFnc(resp1);
-									/*this.productsService.getFilterData("sub_category", this.params)
-										.subscribe(resp2 => {
-			
-											
-			
-										})*/
-								}
-							}
-
-						})
-
-
-
-					})
+		this.subCategoriaService.getData().subscribe((data2) => {
+			this.subCategorias = data2;
+			this.subCategorias.map((itemSubCate) => {
+				/*=============================================
+				Se busca si el parametro pertenece a una SubCategoria
+				=============================================*/
+				if (itemSubCate.url === this.params) {
+					this.tipoBusqueda = 'SUBCATEGORY';
+					this.subCategory = itemSubCate.id
 				}
 			})
+
+			if (this.tipoBusqueda === 'SUBCATEGORY') {				
+				/*=============================================
+				Filtramos data de productos con SubCategorías
+				=============================================*/
+				this.productsService.getData().subscribe(resp1 => {
+					this.categoriasService.getData().subscribe(data => {
+						this.categorias = data;
+						this.productos = resp1;
+						this.productos.map((item) => {
+							if (item.sub_category === this.subCategory) {
+								this.categorias.map((itemCate) => {
+									if (item.category === itemCate.id) {
+										item.category = itemCate.url										
+										this.getSales.push(item)
+									}
+								})
+							}
+						})
+						if (this.getSales.length !== 0) {
+							this.productsFnc();
+						}
+					})
+				})
+			} else {
+
+				/*=============================================
+				Filtramos data de productos con categorías
+				=============================================*/
+
+				this.categoriasService.getData().subscribe(data => {
+					this.categorias = data;
+					this.categorias.map((itemC) => {
+						if (itemC.url === this.params) {
+							this.categoria = itemC.id
+							this.rutaCategoria = itemC.url
+							this.productsService.getData().subscribe(resp1 => {
+								this.productos = resp1;
+								this.productos.map((item) => {
+									if (item.category === this.categoria) {
+										if (Object.keys(resp1).length > 0) {
+											item.category = this.rutaCategoria
+											this.getSales.push(item)
+										} else {
+											item.category = this.rutaCategoria 			
+											this.getSales.push(item)
+										}
+									}
+								})
+								if (this.getSales.length !== 0) {
+									this.productsFnc();
+								}
+							})
+						}
+					})
+				})
+
+			}
 		})
-
-
 
 		/*this.productsService.getFilterData("category", this.params)
 		.subscribe(resp1=>{
@@ -170,27 +191,17 @@ export class ProductsShowcaseComponent implements OnInit {
 Declaramos función para mostrar el catálogo de productos
 =============================================*/
 
-	productsFnc(response) {
+	productsFnc() {
 
 		this.products = [];
 
 		/*=============================================
-	Hacemos un recorrido por la respuesta que nos traiga el filtrado
-	=============================================*/
-
-		let i;
+		Hacemos un recorrido por la respuesta que nos traiga el filtrado
+		=============================================*/
+		
 		let getProducts = [];
-		let total = 0;
-
-		for (i in response) {
-
-
-			if (this.categoria === response[i].category) {
-				total++;
-				response[i].category = this.rutaCategoria
-				getProducts.push(response[i]);
-			}
-		}
+		getProducts = this.getSales;
+		let total = getProducts.length;		
 
 		/*=============================================
 		Definimos el total de productos y la paginación de productos
@@ -426,7 +437,7 @@ Función que nos avisa cuando finaliza el renderizado de Angular
 		}
 	}
 
-	addWishList(product){
+	addWishList(product) {
 		this.usuarioService.addWishList(product);
 	}
 
@@ -442,7 +453,7 @@ Función que nos avisa cuando finaliza el renderizado de Angular
 			product: product,
 			unit: unit,
 			url: url
-		}		
+		}
 		this.usuarioService.addShoppinCart(item)
 	}
 

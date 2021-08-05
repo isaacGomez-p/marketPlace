@@ -405,7 +405,8 @@ export class HomeShowcaseComponent implements OnInit {
 							Imprimimos los productos en el Vertical Slider
 							=============================================*/
 							if(jj < 1){		
-								jj++;					
+								jj++;		
+								console.log("jj: " +arrayProducts[i].name + "arrayProducts[i].vertical_slider: " + arrayProducts[i].vertical_slider)			
 								$(`[category-sl='${arrayProducts[i].category}']`).append(`
 
 									<a href="product/${arrayProducts[i].url}">
