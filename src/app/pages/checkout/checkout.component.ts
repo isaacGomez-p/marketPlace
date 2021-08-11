@@ -45,7 +45,7 @@ export class CheckoutComponent implements OnInit {
 	addInfo: string = "";
 	validateCoupon: boolean = false;
 	productos: any = []
-
+	
 	constructor(private router: Router,
 		private usersService: UsersService,
 		private productsService: ProductsService,
@@ -578,26 +578,18 @@ export class CheckoutComponent implements OnInit {
 					=============================================*/
 
 					if (totalRender == localShoppingCart.length) {
-
 						localStorage.removeItem("list");
 						//Cookies.remove('coupon');
-
 						Sweetalert.fnc("success", "The purchase was successful", "account/my-shopping");
-
 					}
-
-
 				}
-
-
 			}, totalShoppingCart * 500)
 		}
-
 	}
 
 	/*=============================================
-		Envío del formulario checkout
-		=============================================*/
+	Envío del formulario checkout
+	=============================================*/
 
 	onSubmit(f: NgForm) {
 
@@ -607,27 +599,27 @@ export class CheckoutComponent implements OnInit {
 
 		if (f.invalid) {
 
-			Sweetalert.fnc("error", "Por favor llene los campos vacios.", null);
+			Sweetalert.fnc("Error", "Por favor llene los campos vacios.", null);
 
 			return;
 
 		}
 
 		/*=============================================
-			Sweetalert para esperar el proceso de ejecución
-			=============================================*/
+		Sweetalert para esperar el proceso de ejecución
+		=============================================*/
 
 		Sweetalert.fnc("Cargando", "Cargando...", null)
 
 		/*=============================================
-	Pasarelas de pago
-	=============================================*/
+		Pasarelas de pago
+		=============================================*/
 
 		if (f.value.paymentMethod == "paypal") {
 
 			/*=============================================
-		  Checkout con Paypal		
-		  =============================================*/
+		  	Checkout con Paypal
+		  	=============================================*/
 
 			Sweetalert.fnc("html", `<div id="paypal-button-container"></div>`, null);
 
@@ -652,48 +644,41 @@ export class CheckoutComponent implements OnInit {
 						/*=============================================
 						Enviar actualización de cantidad de producto vendido a la base de datos
 						=============================================*/
-
-						this.productsService.getFilterData("url", product.url)
-							.subscribe(resp => {
-
+						this.productsService.getData().subscribe(data=>{
+							this.productos = data;
+							this.productos.map((item)=>{
+								if(item.id === product.product){
+									console.log()
+								}
+							})
+						})
+						this.productsService.getFilterData("url", product.url).subscribe(resp => {
 								for (const i in resp) {
-
 									let id = Object.keys(resp).toString();
-
 									let value = {
-
 										sales: Number(resp[i].sales) + Number(product.quantity)
-
 									}
-
 									/*this.productsService.patchDataAuth(id, value, localStorage.getItem("idToken"))
 										.subscribe(resp => { })
 */
 								}
-
 							})
-
 						/*=============================================
 						Crear el proceso de entrega de la venta
 						=============================================*/
 
 						let moment = Math.floor(Number(product.delivery_time) / 2);
-
 						let sentDate = new Date();
 						sentDate.setDate(sentDate.getDate() + moment);
-
 						let deliveredDate = new Date();
 						deliveredDate.setDate(deliveredDate.getDate() + Number(product.delivery_time))
-
 						let proccess = [
-
 							{
 								stage: "reviewed",
 								status: "ok",
 								comment: "We have received your order, we start delivery process",
 								date: new Date()
 							},
-
 							{
 								stage: "sent",
 								status: "pending",
@@ -706,7 +691,6 @@ export class CheckoutComponent implements OnInit {
 								comment: "",
 								date: deliveredDate
 							}
-
 						]
 
 						/*=============================================
@@ -714,7 +698,6 @@ export class CheckoutComponent implements OnInit {
 						=============================================*/
 
 						let body = {
-
 							store: product.store,
 							user: this.user.username,
 							product: product.name,
@@ -732,7 +715,6 @@ export class CheckoutComponent implements OnInit {
 							info: f.value.addInfo,
 							process: JSON.stringify(proccess),
 							status: "pending"
-
 						}
 
 						this.ordersService.registerDatabase(body, localStorage.getItem("idToken"))
@@ -766,7 +748,6 @@ export class CheckoutComponent implements OnInit {
 									let id_payment = localStorage.getItem("id_payment");
 
 									let body = {
-
 										id_order: resp["name"],
 										client: this.user.username,
 										product: product.name,
@@ -779,17 +760,12 @@ export class CheckoutComponent implements OnInit {
 										id_payment: id_payment,
 										date: new Date(),
 										status: "pending"
-
 									}
-
 									/*this.salesService.registerDatabase(body, localStorage.getItem("idToken"))
 										.subscribe(resp => { })
 */
 								}
-
 							})
-
-
 					})
 
 					/*=============================================
@@ -797,12 +773,9 @@ export class CheckoutComponent implements OnInit {
 					=============================================*/
 
 					if (totalRender == this.shoppingCart.length) {
-
 						localStorage.removeItem("list");
 						//Cookies.remove('coupon');
-
 						Sweetalert.fnc("success", "The purchase was successful", "account/my-shopping");
-
 					}
 
 				} else {
