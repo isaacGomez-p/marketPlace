@@ -74,13 +74,10 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
 
             if (this.wishlist.length > 0) {
               this.productsService.getData().subscribe(data => {
-                this.productosAll = data;
-                console.log("1 ---- ");
+                this.productosAll = data;                
                 this.wishlist.map((itemDeseos) => {
-                  this.productosAll.map((itemProductos) => {
-                    console.log("2 ---- ");
-                    if (itemDeseos.id === itemProductos.id + "") {
-                      console.log("3 ---- ");
+                  this.productosAll.map((itemProductos) => {                    
+                    if (itemDeseos.id === itemProductos.id + "") {                      
                       /*=============================================
                       agregamos los productos 
                       =============================================*/
@@ -102,29 +99,22 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
                             =============================================*/
 
                             this.price.push(itemProductos.price)
-
                             if (load == this.wishlist.length) {
-
                               this.dtTrigger.next();
-
                             }
                           }
                         });
-
                       });
-
                     }
                   })
                 })
 
               })
-
             }
           }
           catch (exception) {
             console.log(exception);
           }
-
         }
       })
     })
@@ -204,19 +194,16 @@ export class AccountWishlistComponent implements OnInit, OnDestroy {
   Removemos el producto de la lista de deseos
   =============================================*/
 
-  removeProduct(product) {
-    console.log("entro " + product);
+  removeProduct(product) {    
     let provisional = []
     /*=============================================
     Buscamos coincidencia para remover el producto
     =============================================*/
     this.wishlist.map((item) => {
-      if (item.id + "" !== product + "") {
-        console.log("agrego");
+      if (item.id + "" !== product + "") {        
         provisional.push(item);
       }
-    })
-    console.log("salio " + JSON.stringify(provisional));
+    })    
     this.wishlist = provisional
     let us: UsersModel;
     this.usersService.loginAux().subscribe(data => {

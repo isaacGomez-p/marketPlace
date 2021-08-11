@@ -118,8 +118,7 @@ export class RegisterComponent implements OnInit {
   Envío del formulario
   =============================================*/
 
-	onSubmit(f: NgForm ){
-    //console.log("f"+ JSON.stringify(f[0]));
+	onSubmit(f: NgForm ){    
     if(f.invalid ){
       return;
     }
@@ -131,18 +130,13 @@ export class RegisterComponent implements OnInit {
     this.user.country = "country";
     this.user.phone = "phone";
     this.user.picture = "picture";
-    this.user.state = "state";
-    console.log("this user:" + JSON.stringify(this.user));
-    
+    this.user.state = "state";        
 		this.usersService.registerDatabase(this.user)
-		.subscribe(resp=>{
-      console.log(resp);
+		.subscribe(resp=>{      
 			Sweetalert.fnc("success", "Registro confirmado.", "login")         		
 		}, err =>{      
       Sweetalert.fnc("error", "Este correo electrónico ya está registrado.", null)      
-
     })
-
   }
 
   /*=============================================

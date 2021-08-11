@@ -60,19 +60,14 @@ export class HomeBannerComponent implements OnInit {
 				/*=============================================
 				Seleccionar data de productos con límites
 				=============================================*/
-				for (i in resp) {
-					console.log("---------")
-					console.log("id: " + resp[i].id)
-					console.log("horizontal_slider: " + resp[i].horizontal_slider)
-					
-					this.banner_home.push(JSON.parse(resp[i].horizontal_slider))					
+				for (i in resp) {									
+					console.log("JSON.parse(resp[i].horizontal_slider): " + JSON.parse(resp[i].horizontal_slider))	
+					this.banner_home.push(JSON.parse(resp[i].horizontal_slider))
 					this.categories.map((item) => {
-						if (item.id === resp[i].category) {							
+						if (item.id === resp[i].category) {
 							this.category.push(item.url)
-							
 						}
 					})
-
 					//this.category.push(resp[i].category)
 					this.url.push(resp[i].url)					
 					this.preload = false;

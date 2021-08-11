@@ -74,10 +74,8 @@ export class SearchShowcaseComponent implements OnInit {
 		Evaluamos que el segundo parámetro sea de paginación
 		=============================================*/
 		if (Number.isInteger(Number(this.sort))) {
-
 			this.page = this.sort;
 			this.sort = undefined;
-
 		}
 
 		/*=============================================
@@ -85,13 +83,9 @@ export class SearchShowcaseComponent implements OnInit {
 		=============================================*/
 
 		if (this.sort == undefined) {
-
 			this.currentRoute = `search/${this.params}`;
-
 		} else {
-
 			this.currentRoute = `search/${this.params}&${this.sort}`;
-
 		}
 
 		/*=============================================
@@ -106,13 +100,11 @@ export class SearchShowcaseComponent implements OnInit {
 					this.productos.map((item) => {
 						if (item.name.toUpperCase().includes(this.params.toUpperCase()) || item.store.toUpperCase().includes(this.params.toUpperCase())) {
 							this.categorias.map((itemCate) => {
-								if (item.category === itemCate.id) {
-									console.log("agrego " + item.id)
+								if (item.category === itemCate.id) {									
 									item.category = itemCate.url
 									this.listProducts.push(item)
 								}
 							})
-
 						}
 					})
 					if(this.listProducts.length !== 0){
@@ -120,7 +112,6 @@ export class SearchShowcaseComponent implements OnInit {
 					}					
 				}
 			)
-
 		})
 
 		/*this.subCategoryService.getData().subscribe(data=>{
@@ -156,7 +147,6 @@ export class SearchShowcaseComponent implements OnInit {
 	/*=============================================
 	Función para agregar productos al carrito de compras
 	=============================================*/
-
 	addShoppinCart(product, unit, details) {
 		let url = this.router.url;
 		let item = new CarritoComprasModel();
@@ -170,35 +160,27 @@ export class SearchShowcaseComponent implements OnInit {
 	}
 
 	/*=============================================
-Declaramos función para mostrar el catálogo de productos
-=============================================*/
+	Declaramos función para mostrar el catálogo de productos
+	=============================================*/
 
 	productsFnc(response) {
-
 		if (response.length > 0) {
-
 			this.products = [];
-
 			/*=============================================
-		Hacemos un recorrido por la respuesta que nos traiga el filtrado
-		=============================================*/
-
+			Hacemos un recorrido por la respuesta que nos traiga el filtrado
+			=============================================*/
 			let i;
 			let getProducts = [];
 			let total = 0;
 			getProducts = response;
 			for (i in response) {
-
 				total++;
-
 				//	getProducts.push(response[i]);						
-
 			}
 
 			/*=============================================
 			Definimos el total de productos y la paginación de productos
 			=============================================*/
-
 			this.productFound = total;
 			if (total !== 0) {
 				this.tituloFound = 'productos encontrados';

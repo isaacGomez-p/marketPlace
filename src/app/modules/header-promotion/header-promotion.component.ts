@@ -22,9 +22,7 @@ export class HeaderPromotionComponent implements OnInit {
 		this.preload = true;
 
 		this.productsService.getData()
-		.subscribe(resp =>{
-			
-			//console.log("resp", resp[Object.keys(resp)[1]]);
+		.subscribe(resp =>{					
 
 			/*=============================================
 			Tomar la longitud del objeto

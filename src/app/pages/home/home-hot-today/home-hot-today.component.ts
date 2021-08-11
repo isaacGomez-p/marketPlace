@@ -47,19 +47,13 @@ export class HomeHotTodayComponent implements OnInit {
 			Recorremos cada producto para separar las ofertas y el stock
 			=============================================*/
 
-			let i;
-			console.log("products: " + JSON.stringify(resp))
+			let i;			
 			for(i in resp){
-
 				getProducts.push({
-
 					"offer": JSON.parse(resp[i].offer),
 					"stock": resp[i].stock
-
 				})
-
-				this.products.push(resp[i]);
-				console.log("agrego ------ ")
+				this.products.push(resp[i]);				
 			}
 
 			/*=============================================
@@ -143,8 +137,7 @@ export class HomeHotTodayComponent implements OnInit {
 
 			let block = 0;
 
-			filterSales.forEach((sale, index)=>{		
-				console.log("------- " + JSON.stringify(sale))
+			filterSales.forEach((sale, index)=>{						
 				/*=============================================
 				Filtramos hasta 20 ventas
 				=============================================*/	

@@ -30,6 +30,7 @@ export class CheckoutComponent implements OnInit {
 
 	path: string = Path.url;
 	user: UsersModel;
+	users: any = [];
 	id: string = null;
 	saveAddress: boolean = false;
 	countries: any = null;
@@ -62,82 +63,102 @@ export class CheckoutComponent implements OnInit {
 		/*=============================================
 			Validar la existencia de un cupón de la tienda
 			=============================================*/
-/*		if (Cookies.get('coupon') != undefined) {
-
-			this.storesService.getFilterData("url", Cookies.get('coupon'))
-				.subscribe(resp => {
-
-					this.validateCoupon = true;
-
-				})
-		}
-*/
+		/*		if (Cookies.get('coupon') != undefined) {
+		
+					this.storesService.getFilterData("url", Cookies.get('coupon'))
+						.subscribe(resp => {
+		
+							this.validateCoupon = true;
+		
+						})
+				}
+		*/
 
 		/*=============================================
 		Validar si existe usuario autenticado
 		=============================================*/
 
-/*		this.usersService.authActivate().then(resp => {
+		/*		this.usersService.authActivate().then(resp => {
+		
+					if (resp) {
+		
+						this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
+							.subscribe(resp => {
+		
+								this.id = Object.keys(resp).toString();
+		
+								for (const i in resp) {
+		
+									this.user.displayName = resp[i].displayName;
+									this.user.username = resp[i].username;
+									this.user.email = resp[i].email;
+									this.user.country = resp[i].country;
+									this.user.city = resp[i].city;
+		
+									if (resp[i].phone != undefined) {
+		
+										this.user.phone = resp[i].phone.split("-")[1]
+										this.dialCode = resp[i].phone.split("-")[0]
+		
+									}
+		
+									this.user.address = resp[i].address;
+		
+									/*=============================================
+									Traer listado de países
+									=============================================*/
 
-			if (resp) {
 
-				this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
-					.subscribe(resp => {
+		/*			}
 
-						this.id = Object.keys(resp).toString();
+				})
 
-						for (const i in resp) {
+		}
 
-							this.user.displayName = resp[i].displayName;
-							this.user.username = resp[i].username;
-							this.user.email = resp[i].email;
-							this.user.country = resp[i].country;
-							this.user.city = resp[i].city;
+	})
+	*/
 
-							if (resp[i].phone != undefined) {
-
-								this.user.phone = resp[i].phone.split("-")[1]
-								this.dialCode = resp[i].phone.split("-")[0]
-
-							}
-
-							this.user.address = resp[i].address;
-
-							/*=============================================
-							Traer listado de países
-							=============================================*/
-
-							/*this.usersService.getCountries()
-								.subscribe(resp => {
-
-									this.countries = resp;
-
-								})
-*/
-			/*			}
-
-					})
-
-			}
-
+		this.usersService.getCountries().subscribe(resp => {
+			this.countries = resp;
 		})
-*/
+		
+		if (localStorage.getItem("idToken")) {			
+			if (localStorage.getItem("email")) {				
+				this.usersService.loginAux().subscribe(data => {
+					this.users = data;
+					this.users.map(item => {						
+						if (item.email === localStorage.getItem("email")) {							
+							this.user.displayName = item.first_name + " " + item.last_name
+							this.user.username = item.username
+							this.user.email = item.email
+							this.user.country = 'Colombia'
+							if(item.phone !== 'phone'){
+								this.user.phone = item.phone.split("-")[1]
+								this.dialCode = item.phone.split("-")[0]
+							}else{
+								this.dialCode = "+57"
+							}
+							this.user.city = 'city'//item.ciudad
+							this.user.address = item.address
+						}
+					})
+				})
+			}
+		} else {
+			this.router.navigateByUrl("/login");
+			return;
+		}
+
 		/*=============================================
 		Traer la lista del carrito de compras
 		=============================================*/
 
 		if (localStorage.getItem("list")) {
-
 			let list = JSON.parse(localStorage.getItem("list"));
-
 			this.totalShoppingCart = list.length;
-
 			if (list.length == 0) {
-
 				this.router.navigateByUrl("/shopping-cart");
-
 				return;
-
 			}
 
 			/*=============================================
@@ -145,34 +166,23 @@ export class CheckoutComponent implements OnInit {
 			=============================================*/
 
 			for (const i in list) {
-
 				/*=============================================
 				Filtramos los productos del carrito de compras
 				=============================================*/
-
-				this.productsService.getData().subscribe(data=>{
+				this.productsService.getData().subscribe(data => {
 					this.productos = data;
-					this.productos.map((item)=>{
-						if(item.id === list[i].product){
+					this.productos.map((item) => {
+						if (item.id === list[i].product) {
 							let details = `<div class="list-details small text-secondary">`
 							if (item.specification != "") {
-
 								let specification = JSON.parse(item.specification);
-
 								for (const i in specification) {
-
 									let property = Object.keys(specification[i]).toString();
-
 									details += `<div>${property}: ${specification[i][property][0]}</div>`
-
 								}
-
 							}
-
 							details += `</div>`;
-
 							this.shoppingCart.push({
-
 								url: item.url,
 								name: item.name,
 								category: item.category,
@@ -184,9 +194,7 @@ export class CheckoutComponent implements OnInit {
 								details: details,
 								listDetails: list[i].details,
 								store: item.store
-
 							})
-
 						}
 					})
 				})
@@ -219,55 +227,51 @@ export class CheckoutComponent implements OnInit {
 								Mostrar los detalles por defecto del producto 
 								=============================================*/
 
-					/*			if (resp[f].specification != "") {
+				/*			if (resp[f].specification != "") {
 
-									let specification = JSON.parse(resp[f].specification);
+								let specification = JSON.parse(resp[f].specification);
 
-									for (const i in specification) {
+								for (const i in specification) {
 
-										let property = Object.keys(specification[i]).toString();
+									let property = Object.keys(specification[i]).toString();
 
-										details += `<div>${property}: ${specification[i][property][0]}</div>`
-
-									}
+									details += `<div>${property}: ${specification[i][property][0]}</div>`
 
 								}
 
 							}
 
-							details += `</div>`;
-
-							this.shoppingCart.push({
-
-								url: resp[f].url,
-								name: resp[f].name,
-								category: resp[f].category,
-								image: resp[f].image,
-								delivery_time: resp[f].delivery_time,
-								quantity: list[i].unit,
-								price: DinamicPrice.fnc(resp[f])[0],
-								shipping: Number(resp[f].shipping) * Number(list[i].unit),
-								details: details,
-								listDetails: list[i].details,
-								store: resp[f].store
-
-							})
-
 						}
 
-					})
+						details += `</div>`;
+
+						this.shoppingCart.push({
+
+							url: resp[f].url,
+							name: resp[f].name,
+							category: resp[f].category,
+							image: resp[f].image,
+							delivery_time: resp[f].delivery_time,
+							quantity: list[i].unit,
+							price: DinamicPrice.fnc(resp[f])[0],
+							shipping: Number(resp[f].shipping) * Number(list[i].unit),
+							details: details,
+							listDetails: list[i].details,
+							store: resp[f].store
+
+						})
+
+					}
+
+				})
 */
 			}
 
 
 		} else {
-
 			this.router.navigateByUrl("/shopping-cart");
-
 			return;
-
 		}
-
 	}
 
 	/*=============================================
@@ -283,28 +287,43 @@ export class CheckoutComponent implements OnInit {
 				inputPhone.value != "" &&
 				inputAddress.value != "") {
 
-				let body = {
+				/*	let body = {
+	
+						country: this.user.country,
+						country_code: this.user.country_code,
+						city: this.user.city,
+						phone: `${this.dialCode}-${this.user.phone}`,
+						address: this.user.address
+	
+					}*/
 
-					country: this.user.country,
-					country_code: this.user.country_code,
-					city: this.user.city,
-					phone: `${this.dialCode}-${this.user.phone}`,
-					address: this.user.address
+				this.usersService.loginAux().subscribe(data => {
+					this.users = data;
+					this.users.map((item) => {
+						if (item.email === localStorage.getItem("email")) {
+							item.country = this.user.country							
+							//item.ciudad = this.user.city							
+							item.phone = `${this.dialCode}-${this.user.phone}`,
+							item.address = this.user.address
+							this.usersService.changePasswordFnc(item).subscribe(dataM => {
+								Sweetalert.fnc("success", "La información ha sido actualizada", null)
+							})
+						}
+					})
+				})
 
-				}
-
-				this.usersService.patchData(this.id, body)
+				/*this.usersService.patchData(this.id, body)
 					.subscribe(resp => {
 
 						Sweetalert.fnc("success", "Your data was updated", null)
 
 					})
-
+				*/
 			} else {
 
 				inputSaveAddress.checked = false;
 
-				Sweetalert.fnc("error", "Please fill in the required fields", null)
+				Sweetalert.fnc("error", "Por favor llene todos los campos.", null)
 
 			}
 
@@ -317,18 +336,12 @@ export class CheckoutComponent implements OnInit {
 	=============================================*/
 
 	changeCountry(inputCountry) {
-
 		this.countries.forEach(country => {
-
 			if (inputCountry.value == country.name) {
-
 				this.dialCode = country.dial_code;
 				this.user.country_code = country.code;
-
 			}
-
 		})
-
 	}
 
 	/*=============================================
@@ -594,7 +607,7 @@ export class CheckoutComponent implements OnInit {
 
 		if (f.invalid) {
 
-			Sweetalert.fnc("error", "Invalid Request", null);
+			Sweetalert.fnc("error", "Por favor llene los campos vacios.", null);
 
 			return;
 
@@ -604,7 +617,7 @@ export class CheckoutComponent implements OnInit {
 			Sweetalert para esperar el proceso de ejecución
 			=============================================*/
 
-		Sweetalert.fnc("loading", "Loading...", null)
+		Sweetalert.fnc("Cargando", "Cargando...", null)
 
 		/*=============================================
 	Pasarelas de pago
@@ -922,14 +935,13 @@ export class CheckoutComponent implements OnInit {
 
 			$(document).on("click", ".popupMP", function () {
 
-/*				Cookies.set("_x", window.btoa(localTotalPrice), { expires: 1 });
-				Cookies.set("_p", description, { expires: 1 });
-				Cookies.set("_e", email, { expires: 1 });
-
-				window.open(`http://localhost/marketplace-checkout/src/mercadopago/index.php?_x=${Md5.init(localTotalPrice)}`,
-					"_blank",
-					"width=950,height=650,scrollbars=NO")
-*/
+				/*				Cookies.set("_x", window.btoa(localTotalPrice), { expires: 1 });
+								Cookies.set("_p", description, { expires: 1 });
+								Cookies.set("_e", email, { expires: 1 });
+								window.open(`http://localhost/marketplace-checkout/src/mercadopago/index.php?_x=${Md5.init(localTotalPrice)}`,
+									"_blank",
+									"width=950,height=650,scrollbars=NO")
+				*/
 			})
 
 			/*=============================================
@@ -956,19 +968,17 @@ export class CheckoutComponent implements OnInit {
 			let interval = setInterval(function () {
 
 				count++
-				console.log("count", count);
-
 				/*=============================================
 				Validar la compra de Mercado Pago
 				=============================================*/
-				if(true){
-				/*if (Cookies.get('_i') != undefined &&
-					Cookies.get('_k') != undefined &&
-					Cookies.get('_a') != undefined &&
-					Cookies.get('_k') == MercadoPago.public_key &&
-					Cookies.get('_a') == MercadoPago.access_token) {
-
-*/
+				if (true) {
+					/*if (Cookies.get('_i') != undefined &&
+						Cookies.get('_k') != undefined &&
+						Cookies.get('_a') != undefined &&
+						Cookies.get('_k') == MercadoPago.public_key &&
+						Cookies.get('_a') == MercadoPago.access_token) {
+	
+	*/
 					let totalRender = 0;
 
 					/*=============================================

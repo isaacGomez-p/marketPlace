@@ -117,11 +117,7 @@ export class HomeShowcaseComponent implements OnInit {
 				=============================================*/
 				this.subCategoriesService.getFilterData("category", category.name)
 					.subscribe(resp => {
-
 						let i;
-						//console.log("---------------------- ")
-						//console.log(" sub:  " + JSON.stringify(resp))					
-
 						for (i in resp) {
 							this.categoriesAll.map((item) => {
 								if (item.id === resp[i].category) {
@@ -147,10 +143,8 @@ export class HomeShowcaseComponent implements OnInit {
 						Recorremos el array de objetos nuevo para buscar coincidencias con los nombres de categorías
 						=============================================*/
 
-						for (i in arraySubCategories) {
-							console.log(" category.name:  " + category.name + " - arraySubCategories[i].category " + arraySubCategories[i].category)
-							if (category.name === arraySubCategories[i].category) {
-								console.log("entro --------- ")
+						for (i in arraySubCategories) {							
+							if (category.name === arraySubCategories[i].category) {								
 								$(`[category-showcase='${category.name}']`).append(`
 								<li><a href="products/${arraySubCategories[i].url}">${arraySubCategories[i].subcategory}</a></li>
 							`)
@@ -311,7 +305,7 @@ export class HomeShowcaseComponent implements OnInit {
 							=============================================*/
 
 							let rating = Math.round(totalReview / JSON.parse(arrayProducts[i].reviews).length);
-
+							
 							/*=============================================
 							Definimos si el producto tiene stock
 							=============================================*/
@@ -405,16 +399,11 @@ export class HomeShowcaseComponent implements OnInit {
 							Imprimimos los productos en el Vertical Slider
 							=============================================*/
 							if(jj < 1){		
-								jj++;		
-								console.log("jj: " +arrayProducts[i].name + "arrayProducts[i].vertical_slider: " + arrayProducts[i].vertical_slider)			
+								jj++;
 								$(`[category-sl='${arrayProducts[i].category}']`).append(`
-
 									<a href="product/${arrayProducts[i].url}">
-
 										<img src="assets/img/products/${arrayProducts[i].category}/vertical/${arrayProducts[i].vertical_slider}" alt="">
-
 									</a>
-
 								`)
 							}
 

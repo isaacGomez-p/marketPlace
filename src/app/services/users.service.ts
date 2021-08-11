@@ -415,9 +415,9 @@ Tomar información de un solo usuario
 					this.usuarios.map(item => {
 						if (item.email === localStorage.getItem("email")) {
 							let deseos = []
-							if(item.city !== 'city'){
+							if (item.city !== 'city') {
 								deseos = JSON.parse(item.city)
-							}						
+							}
 
 							let validacion = true;
 							deseos.map(itemDeseos => {
@@ -486,10 +486,10 @@ Tomar información de un solo usuario
 							=============================================*/
 							let cant = 0;
 							listaCarrito.map((itemCarrito) => {
-								if (itemCarrito.product === itemObject.product) {									
+								if (itemCarrito.product === itemObject.product) {
 									cant = itemCarrito.unit;
 									cant = cant + itemObject.unit;
-									itemCarrito.unit = cant;									
+									itemCarrito.unit = cant;
 									this.validacion = true;
 								}
 							})
@@ -497,7 +497,7 @@ Tomar información de un solo usuario
 								listaCarrito.push(itemObject)
 								localStorage.setItem("list", JSON.stringify(listaCarrito))
 								Sweetalert.fnc("success", "Producto adicionado a tu carrito de compras.", itemObject.url);
-							} else {																
+							} else {
 								localStorage.setItem("list", JSON.stringify(listaCarrito))
 								Sweetalert.fnc("success", "Producto adicionado a tu carrito de compras.", itemObject.url);
 							}
@@ -508,6 +508,14 @@ Tomar información de un solo usuario
 			})
 
 		})
+	}
+
+	/*=============================================
+	Función para agregar productos al carrito de compras
+	=============================================*/
+
+	getCountries(){
+		return this.http.get('./assets/json/paises.json');
 	}
 
 }

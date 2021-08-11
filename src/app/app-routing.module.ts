@@ -24,7 +24,7 @@ const routes: Routes = [
 	{path: 'register', component: RegisterComponent },
 	{path: 'account', component: AccountComponent},
 	{path: 'shopping-cart', component: ShoppingCartComponent},
-	{path: 'shopping-cart', component: ShoppingCartComponent},
+	{path: 'shopping-cart/checkout', component: CheckoutComponent},
 	{path: 'checkout', component: CheckoutComponent},
 	{path: '**', pathMatch:'full', component: Error404Component }
 

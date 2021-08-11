@@ -222,8 +222,7 @@ export class AccountProfileComponent implements OnInit {
 	    	Sweetalert.fnc("loading", "Loading...", null)
 
 			let email : String = localStorage.getItem("email");
-			let us : UsersModel;
-			console.log("email"+ email);
+			let us : UsersModel;			
 			this.usersService.loginAux().subscribe(resp =>{
 				this.usuarios = resp;
 				this.usuarios.map(usuario =>{				
@@ -239,9 +238,7 @@ export class AccountProfileComponent implements OnInit {
 				})
 			}, err=>{
 				Sweetalert.fnc("error", "Correo electrónico no registrado correctamente. Vuelva a iniciar sesión.")
-			})	
-			console.log("Usuario" + JSON.stringify(this.body));
-			
+			})						
 			/*
 	    	this.usersService.changePasswordFnc(this.body)
 	    	.subscribe(resp1=>{	
@@ -355,8 +352,7 @@ export class AccountProfileComponent implements OnInit {
     	formData.append('height', '200');
 
     	this.http.post(this.server, formData)
-    	.subscribe(resp =>{    		
-			console.log("resp: " + JSON.stringify(resp))
+    	.subscribe(resp =>{    					
     		if(resp["status"] == 200){
 
     			let body = {
@@ -369,8 +365,7 @@ export class AccountProfileComponent implements OnInit {
 					this.usuarios.map(usuario =>{				
 							if(usuario.id === this.idUser){
 								us = usuario;								
-								us.state = resp["result"];
-								console.log("USSS"+JSON.stringify(us));		
+								us.state = resp["result"];								
 								this.usersService.changePasswordFnc(us).subscribe(change =>{
 								Sweetalert.fnc("success", "Cambio de imagen satisfactorio", "account")
 							}, err =>{

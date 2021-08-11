@@ -239,8 +239,7 @@ export class LoginComponent implements OnInit {
 						=============================================*/
 
 						window.open("account", "_top");
-					}else{
-						//console.log("no validado")
+					}else{						
 						Sweetalert.fnc("error", 'Credenciales incorrectas', null)
 					}
 				})
