@@ -1,0 +1,1343 @@
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1045339
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Veggie desmechado pietrán x 150g'
+           ,'Veggie-desmechado-pietrán-x-150g'
+           ,'8.jpg'
+           ,10
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1037765
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Veggie burger pietran x 360g'
+           ,'Veggie-burger-pietran-x-360g'
+           ,'7.jpg'
+           ,4
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1037764
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Veggie bites pietran x 200g'
+           ,'Veggie-bites-pietran-x-200g'
+           ,'6.jpg'
+           ,25
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1023222
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Tocineta ahumada cerdo zenú x 200g'
+           ,'Tocineta-ahumada-cerdo-zenú-x-200g'
+           ,'5.jpg'
+           ,29
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1043000
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Sonata de cerdo zenú x 500g'
+           ,'Sonata-de-cerdo-zenú-x-500g'
+           ,'4.jpg'
+           ,15
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1033388
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Snacks pietran jamón surtido x 210g'
+           ,'Snacks-pietran-jamón-surtido-x-210g'
+           ,'3.jpg'
+           ,19
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+
+
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+
+
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1040682
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Schon Tradi Zenu x 620 g'
+           ,'Schon-Tradi-Zenu-x-620-g'
+           ,'2.jpg'
+           ,18
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1042555
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Schon Cerve Snack Zenu x 300g'
+           ,'Schon-Cerve-Snack-Zenu-x-300g'
+           ,'1.jpg'
+           ,45
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1001383
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchichón zenú x 450g gratis 150g'
+           ,'Salchichón-zenú-x-450g-gratis-150g'
+           ,'8.jpg'
+           ,17
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1000871
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchichón de pollo zenú x 500g'
+           ,'Salchichón-de-pollo-zenú-x-500g'
+           ,'7.jpg'
+           ,18
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+
+
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1037579
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchichón cervecero zenú x 500g'
+           ,'Salchichón-cervecero-zenú-x-500g'
+           ,'6.jpg'
+           ,8
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1052648
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchichón cervecero zenú x 4 unds x 50g c/u'
+           ,'Salchichón-cervecero-zenú-x-4-unds-x-50g'
+           ,'5.jpg'
+           ,12
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1039622
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchichón cervecero zenú x 2 unds x 50g c/u'
+           ,'Salchichón-cervecero-zenú-x-2-unds-x-50g'
+           ,'5.jpg'
+           ,12
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1032861
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchichón cervecero ranchera pg540g lev640g'
+           ,'Salchichón-cervecero-ranchera-pg540g-lev640g'
+           ,'4.jpg'
+           ,19
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+INSERT INTO [Cedix_SQL].[dbo].[MKP_PRODUCTS]
+           ([id]
+           ,[store]
+           ,[category]
+           ,[title_list]
+           ,[sub_category]
+           ,[name]
+           ,[url]
+           ,[image]
+           ,[price]
+           ,[shipping]
+           ,[stock]
+           ,[delivery_time]
+           ,[offer]
+           ,[end_offer]
+           ,[specification]
+           ,[details]
+           ,[description]
+           ,[gallery]
+           ,[top_banner]
+           ,[default_banner]
+           ,[horizontal_slider]
+           ,[vertical_slider]
+           ,[reviews]
+           ,[feedback])
+     VALUES
+           (1032537
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha ranchera x 480g lleva 12 unds mini ranchera'
+           ,'Salchicha-ranchera-x-480g-lleva-12-unds-mini-ranchera'
+           ,'3.jpg'
+           ,29
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1031533
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha ranchera x 480g'
+           ,'Salchicha-ranchera-x-480g'
+           ,'3.jpg'
+           ,26
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1036698
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha ranchera queso fundido chipotle x 2 unds x 675g c/u'
+           ,'Salchicha-ranchera-queso-fundido-chipotle-x-2-unds-x-675g'
+           ,'2.jpg'
+           ,26
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1040692
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha ranchera picante x 342g'
+           ,'Salchicha-ranchera-picante-x-342g'
+           ,'1.jpg'
+           ,26
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1045313
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha ranchera picante x 272g'
+           ,'Salchicha-ranchera-picante-x-272g'
+           ,'8.jpg'
+           ,17
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1045189
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha ranchera chimichurri x272g'
+           ,'Salchicha-ranchera-chimichurri-x272g'
+           ,'7.jpg'
+           ,9
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1034937
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha ranchera chimichurri x 342g'
+           ,'Salchicha-ranchera-chimichurri-x-342g'
+           ,'6.jpg'
+           ,13
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1032538
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha ranchera 480g paga 14 lleva 17 unds'
+           ,'Salchicha-ranchera-480g-paga-14-lleva-17-unds'
+           ,'5.jpg'
+           ,7
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1028482
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha pietran pollo x 350g'
+           ,'Salchicha-pietran-pollo-x-350g'
+           ,'5.jpg'
+           ,7
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1038035
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha perro rellena de queso zenú x 320g'
+           ,'Salchicha-perro-rellena-de-queso-zenú-x-320g'
+           ,'4.jpg'
+           ,9
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1013553
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha perro caliente zenú 480g gratis 3 unds'
+           ,'Salchicha-perro-caliente-zenú-480g-gratis-3-unds'
+           ,'3.jpg'
+           ,27
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1012343
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha perro caliente zenu x 480g'
+           ,'Salchicha-perro-caliente-zenu-x-480g'
+           ,'2.jpg'
+           ,5
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1019943
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha perro caliente zenu tripack x 720g'
+           ,'Salchicha-perro-caliente-zenu-tripack-x-720g'
+           ,'1.jpg'
+           ,17
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1000524
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha mini ranchera x 300g'
+           ,'Salchicha-mini-ranchera-x-300g'
+           ,'1.jpg'
+           ,17
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1035365
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha de pollo pietran x 350g'
+           ,'Salchicha-de-pollo-pietran-x-350g'
+           ,'8.jpg'
+           ,3
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1042123
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchicha-de-pavo-pietran-x-350g-x-7-unds'
+           ,'Salchicha-de-pavo-pietran-x-350g-x-7-unds'
+           ,'7.jpg'
+           ,15
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1000890
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchichon zenu x 450g'
+           ,'Salchichon-zenu-x-450g'
+           ,'6.jpg'
+           ,12
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1000964
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchichon tradicional zenu x 750g'
+           ,'Salchichon-tradicional-zenu-x-750g'
+           ,'5.jpg'
+           ,14
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1032907
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchichon-cerveroni-zenu-x-900g-gratis-150g'
+           ,'Salchichon-cerveroni-zenu-x-900g-gratis-150g'
+           ,'4.jpg'
+           ,27
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO
+================================================================================================================================================================================================================================================================================================================================================
+
+     VALUES
+           (1028478
+           ,'Carniceria CCC'
+           ,9
+           ,'CARNES FRÍAS'
+           ,15
+           ,'Salchichon cervecero ranchera x 8 unds x 52g'
+           ,'Salchichon-cervecero-ranchera-x-8-unds-x-52g'
+           ,'3.jpg'
+           ,9
+           ,3
+           ,10
+           ,'["10","days"]'
+           ,'["Disccount","25", "2021-07-30", "youtube","Sl5FaskVpD4"]'
+           ,'2021-08-03T17:10:04.441607-05:00'
+           ,''
+           ,'<table class=\\\"table table-bordered ps-table ps-table--specification\\\">\\n\\n                                                        <tbody>\\n\\n                                                            <tr>\\n                                                                <td>Color</td>\\n                                                                <td>Black, Gray</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Style</td>\\n                                                                <td>Ear Hook</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Wireless</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Dimensions</td>\\n                                                                <td>5.5 x 5.5 x 9.5 inches</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Weight</td>\\n                                                                <td>6.61 pounds</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Battery Life</td>\\n                                                                <td>20 hours</td>\\n                                                            </tr>\\n                                                            <tr>\\n                                                                <td>Bluetooth</td>\\n                                                                <td>Yes</td>\\n                                                            </tr>\\n\\n                                                        </tbody>\\n\\n                                                    </table>'
+           ,'<h5>Para el antojo</h5> <p>Para el antojo disfruta de la Mini Polet Frutos del Bosque, crocante chocolate Polet con trozos de cookies and cream y helado de frutos del bosque.</p>'
+           ,'["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]'
+           ,'{"H3 tag":"20%","P1 tag":"Disccount", "H4 tag":"For Books Of March", "P2 tag":"Enter Promotion", "Span tag":"Sale2019","Button tag":"Shop now","IMG tag":"header-promotion-1.jpg"}'
+           ,'default-banner-2.jpg'
+           ,'{"H4 tag":"Limit Edition", "H3-1 tag": "Happy Summer", "H3-2 tag": "Combo Super Cool", "H3-3 tag": "Up to", "H3-4s tag": "40%", "Button tag":"Shop now","IMG tag": "h-slider-2.jpg"}'
+           ,'v-slider-2.jpg'
+           ,'[{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":5, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"},{"review":4, "comment":"Lorem Ipsum"}]'
+           ,'{"type":"approved", "comment":""}')
+GO

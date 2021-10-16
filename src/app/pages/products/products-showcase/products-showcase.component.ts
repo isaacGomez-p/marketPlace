@@ -45,7 +45,9 @@ export class ProductsShowcaseComponent implements OnInit {
 	sortValues: Array<any> = [];
 	productos: any = [];
 	categorias: any = [];
+	subcategorias: any = [];
 	categoria: number = -1;
+	subcategoria: number = -1;
 	rutaCategoria: String = "";
 	getSales = [];
 	subCategorias: any = [];
@@ -58,7 +60,7 @@ export class ProductsShowcaseComponent implements OnInit {
 		private router: Router,
 		private subCategoriaService: SubCategoriesService) { }
 
-	ngOnInit(): void {		
+	ngOnInit(): void {
 		this.cargando = true;
 
 		/*=============================================
