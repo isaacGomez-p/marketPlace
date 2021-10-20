@@ -40,7 +40,10 @@ import { SimilarBoughtComponent } from './pages/product/similar-bought/similar-b
 import { RelatedProductComponent } from './pages/product/related-product/related-product.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
-
+import {
+  HashLocationStrategy,
+  LocationStrategy
+} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AccountComponent } from './pages/account/account.component';
 import { AccountBreadcrumbComponent } from './pages/account/account-breadcrumb/account-breadcrumb.component';
@@ -105,7 +108,10 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
       confirmButtonType: 'danger'
     })    
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy,
+    useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
