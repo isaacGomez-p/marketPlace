@@ -53,7 +53,6 @@ import { DataTablesModule } from 'angular-datatables';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -115,3 +114,7 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+function APP_ROUTES(APP_ROUTES: any, arg1: { useHash: true; }): any[] | import("@angular/core").Type<any> | import("@angular/core").ModuleWithProviders<{}> {
+  throw new Error('Function not implemented.');
+}
+
