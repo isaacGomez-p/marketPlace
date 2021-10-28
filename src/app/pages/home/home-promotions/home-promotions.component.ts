@@ -26,6 +26,7 @@ export class HomePromotionsComponent implements OnInit {
 			this.categories = data;
 		});
 
+		console.log("path"+this.path);
 		this.preload = true;
 
 		let index = 0;

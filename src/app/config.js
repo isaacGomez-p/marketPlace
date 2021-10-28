@@ -1,9 +1,11 @@
 /*=============================================
 Exportamos la ruta para tomar imágenes
 =============================================*/
+import { Router } from "@angular/router";
+
 export let Path = {
 
-	url: 'http://localhost:4200/assets/',
+	url: '/assets/',
 	direccion: 'C:/Users/johan/Documents/Udemy/MarketPlace/front/src'
 	//Cuando necestiemos trabajar con certificado SSL (registro o ingreso con facebook)
 	// url: 'https://localhost:4200/assets/'
