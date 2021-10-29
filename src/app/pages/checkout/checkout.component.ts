@@ -435,7 +435,7 @@ export class CheckoutComponent implements OnInit {
 						Enviar actualización de cantidad de producto vendido a la base de datos
 						=============================================*/
 
-						localProductsService.getFilterData("url", product.url)
+/*						localProductsService.getFilterData("url", product.url)
 							.subscribe(resp => {
 
 								for (const i in resp) {
@@ -452,10 +452,10 @@ export class CheckoutComponent implements OnInit {
 										.subscribe(resp => { })
 
 									*/
-								}
+								/*}
 
 							})
-
+*/
 						/*=============================================
 						Crear el proceso de entrega de la venta
 						=============================================*/
