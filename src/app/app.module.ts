@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './modules/header/header.component';
@@ -53,6 +53,8 @@ import { DataTablesModule } from 'angular-datatables';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { ServerErrorInterceptorService } from './services/server-error-interceptor.service';
+import { Error500Component } from './pages/error500/error500.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,7 +97,8 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     AccountProfileComponent,
     AccountWishlistComponent,
     ShoppingCartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    Error500Component
   ],
   imports: [
     BrowserModule,
@@ -105,16 +108,17 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     DataTablesModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger'
-    })    
+    })
   ],
   providers: [
-    {provide: LocationStrategy,
-    useClass: HashLocationStrategy}
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ServerErrorInterceptorService,
+      multi: true
+    },    
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-function APP_ROUTES(APP_ROUTES: any, arg1: { useHash: true; }): any[] | import("@angular/core").Type<any> | import("@angular/core").ModuleWithProviders<{}> {
-  throw new Error('Function not implemented.');
-}
+
 

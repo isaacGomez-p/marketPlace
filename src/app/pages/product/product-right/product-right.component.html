@@ -34,7 +34,7 @@
             		<img src="{{path}}img/products/{{product.category}}/{{product.image}}" alt="{{product.name}}">
             	</a>
 
-                <div [innerHTML]="price[i][1]"></div>
+                <div [innerHTML]="price[i]"></div>
 
                 <ul class="ps-product__actions">
 
@@ -82,7 +82,7 @@
 
                     </div>
 
-                     <div [innerHTML]="price[i][0]"></div>
+                     <div [innerHTML]="price[i]"></div>
 
                 </div>
 
@@ -90,7 +90,7 @@
 
                 	<a class="ps-product__title" href="product/{{product.url}}">{{product.name}}</a>
 
-                    <div [innerHTML]="price[i][0]"></div>
+                    <div [innerHTML]="price[i]"></div>
 
                 </div>
 

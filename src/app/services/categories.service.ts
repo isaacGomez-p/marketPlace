@@ -20,7 +20,7 @@ export class CategoriesService {
 
 	getFilterData(orderBy:String, equalTo:String){
 
-		return this.http.get(`${this.api}categories.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`);
+		//return this.http.get(`${this.api}categories.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`);
 
 	}
 

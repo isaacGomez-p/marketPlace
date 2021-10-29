@@ -21,7 +21,7 @@ export class StoresService {
 
 	getFilterData(orderBy:String, equalTo:String){
 
-		return this.http.get(`${this.api}stores.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`);
+		//return this.http.get(`${this.api}stores.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`);
 
 	}
 

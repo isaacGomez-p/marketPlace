@@ -25,7 +25,7 @@ export class CallToActionComponent implements OnInit {
 
   	ngOnInit(): void {
 
-  		this.productsService.getFilterData("url",  this.activateRoute.snapshot.params["param"])
+  		/*this.productsService.getFilterData("url",  this.activateRoute.snapshot.params["param"])
   		.subscribe( resp => { 			
   			
   			for(const i in resp){
@@ -77,7 +77,7 @@ export class CallToActionComponent implements OnInit {
   			}
 
   		})
-  		
+  		*/
   	}
 
 	/*=============================================

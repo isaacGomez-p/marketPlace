@@ -13,6 +13,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AccountComponent } from './pages/account/account.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { Error500Component } from './pages/error500/error500.component';
 
 const routes: Routes = [
 
@@ -26,14 +27,13 @@ const routes: Routes = [
 	{path: 'shopping-cart', component: ShoppingCartComponent},
 	{path: 'shopping-cart/checkout', component: CheckoutComponent},
 	{path: 'checkout', component: CheckoutComponent},
-	{path: '**', pathMatch:'full', component: Error404Component }
-
+	{path: 'error500', component: Error500Component },
+	{path: '**', pathMatch:'full', component: Error404Component },
+	
 ];
 
-@NgModule({
-  
-  imports: [RouterModule.forRoot(routes),
-			RouterModule.forRoot(routes, { useHash: true })],
+@NgModule({  
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

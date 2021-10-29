@@ -77,7 +77,7 @@ export class UsersService {
 
 	getFilterData(orderBy: string, equalTo: string) {
 
-		return this.http.get(`${this.api}users.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`);
+		//return this.http.get(`${this.api}users.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`);
 
 	}
 

@@ -652,7 +652,7 @@ export class CheckoutComponent implements OnInit {
 								}
 							})
 						})
-						this.productsService.getFilterData("url", product.url).subscribe(resp => {
+						/*this.productsService.getFilterData("url", product.url).subscribe(resp => {
 								for (const i in resp) {
 									let id = Object.keys(resp).toString();
 									let value = {
@@ -660,9 +660,9 @@ export class CheckoutComponent implements OnInit {
 									}
 									/*this.productsService.patchDataAuth(id, value, localStorage.getItem("idToken"))
 										.subscribe(resp => { })
-*/
+
 								}
-							})
+							})*/
 						/*=============================================
 						Crear el proceso de entrega de la venta
 						=============================================*/
@@ -966,7 +966,7 @@ export class CheckoutComponent implements OnInit {
 						Enviar actualización de cantidad de producto vendido a la base de datos
 						=============================================*/
 
-						localProductsService.getFilterData("url", product.url)
+/*						localProductsService.getFilterData("url", product.url)
 							.subscribe(resp => {
 
 								for (const i in resp) {
@@ -981,11 +981,11 @@ export class CheckoutComponent implements OnInit {
 
 									/*localProductsService.patchDataAuth(id, value, localStorage.getItem("idToken"))
 										.subscribe(resp => { })
-*/
+
 								}
 
 							})
-
+*/
 						/*=============================================
 						Crear el proceso de entrega de la venta
 						=============================================*/

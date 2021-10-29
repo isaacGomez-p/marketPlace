@@ -18,7 +18,7 @@ export class VendorStoreComponent implements OnInit {
 
   	ngOnInit(): void {
 
-  		this.storesService.getFilterData("store", this.childItem)
+  		/*this.storesService.getFilterData("store", this.childItem)
   		.subscribe( resp => {	
   			
   			for(const i in resp){
@@ -27,7 +27,7 @@ export class VendorStoreComponent implements OnInit {
   			
   			}
 
-  		})
+  		})*/
   	}
 
 }
