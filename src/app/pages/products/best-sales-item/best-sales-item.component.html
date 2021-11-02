@@ -38,7 +38,7 @@ class="ps-block--shop-features">
 
                 <div class="ps-product__thumbnail">
 
-                	<a href="product/{{product.url}}">
+                	<a routerLink="product/{{product.url}}">
                 		<img src="{{path}}img/products/{{product.category.toLowerCase()}}/{{product.image}}" alt="{{product.name}}">
                 	</a>
 
@@ -53,7 +53,7 @@ class="ps-block--shop-features">
                         </li>
 
                         <li>
-                        	<a href="product/{{product.url}}" data-toggle="tooltip" data-placement="top" title="Quick View">
+                        	<a routerLink="product/{{product.url}}" data-toggle="tooltip" data-placement="top" title="Quick View">
                         		<i class="icon-eye"></i>
                         	</a>
                         </li>

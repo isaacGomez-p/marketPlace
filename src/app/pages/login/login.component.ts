@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
 
 						/*=============================================
 							Actualizar Confirmación de correo en Database
-							=============================================*/
+							=============================================
 
 						this.usersService.getFilterData("email", resp["email"])
 							.subscribe(resp => {
@@ -112,7 +112,7 @@ export class LoginComponent implements OnInit {
 
 								}
 
-							})
+							})*/
 
 					}
 
